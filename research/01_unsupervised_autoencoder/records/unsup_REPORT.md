@@ -1,6 +1,6 @@
 ---
 title: "Deep DAS: unsupervised anomaly detection on fused DAS/camera/GPS vehicle tracks with a 1-D convolutional autoencoder"
-author: "Noa Sapir, Asaf Zini, Neta Shevo — Deep Learning course project, Tel Aviv University"
+author: "Noa Sapir, Asaf Zini, Neta Shaboo — Deep Learning course project, Tel Aviv University"
 date: "September 2026"
 geometry: margin=2.2cm
 fontsize: 10.5pt
@@ -210,7 +210,7 @@ Everything is in `DL/` (README, `docs/PIPELINE.md`). The 13 Final-Project code f
 
 ## References
 
-1. Final Project report and README of SimStudio (Sapir, Zini, Shevo, 2026), vendored design documents in `docs/`.
+1. Final Project report and README of SimStudio (Sapir, Zini, Shaboo, 2026), vendored design documents in `docs/`.
 2. Approved proposal "Deep DAS" and the course guidelines (Deep Learning, TAU, 2026).
 3. Treiber, M., Hennecke, A., Helbing, D. (2000). Congested traffic states in empirical observations and microscopic simulations. *Physical Review E* 62, 1805 — the intelligent driver model.
 4. Sakurada, M., Yairi, T. (2014). Anomaly detection using autoencoders with nonlinear dimensionality reduction. *MLSDA workshop*.
