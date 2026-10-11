@@ -233,7 +233,7 @@ What each project contributed, the physics, the anomaly model and the Klausner r
 
 ## Status and credits
 
-- **Team.** Noa Sapir, Asaf Zini, Neta Shevo. The contribution of each member is to be completed by the authors.
+- **Team.** Noa Sapir, Asaf Zini, Neta Shaboo. The contribution of each member is to be completed by the authors.
 - **Missing before submission.** The items still missing are listed in [MISSING_BEFORE_SUBMISSION.md](MISSING_BEFORE_SUBMISSION.md).
 - **License.** No license has been chosen for this repository yet. Until one is added, all rights are reserved by the authors.
 - **Third-party material.** Credits and attributions are in [CREDITS.md](CREDITS.md).

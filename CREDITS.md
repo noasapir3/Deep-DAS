@@ -2,7 +2,7 @@
 
 ## Authors
 
-- **DeepDAS** (Deep Learning course project, Tel Aviv University, 2026): Noa Sapir, Asaf Zini, Neta Shevo.
+- **DeepDAS** (Deep Learning course project, Tel Aviv University, 2026): Noa Sapir, Asaf Zini, Neta Shaboo.
 - **SimStudio** (Final Project No. 3221, School of Electrical Engineering, Tel Aviv University, 2025–2026: *Optical Fibers for Smart Cities*): Noa Sapir and Nitai Dobrecki; supervisor: Khen Cohen.
 
 ## Reused project code
