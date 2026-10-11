@@ -1,0 +1,4 @@
+variant,speeding,reckless_driver,hard_braking,stalled_vehicle,lane_weaving,lane_straddling,collision,overweight_vehicle,tailgating,macro,FA_normal,FA_legit
+E_DIV (oracle-grouped units),0.333,0.7,0.091,1.0,0.636,0.417,0.6,0.333,1.0,0.568,20/1009,19/28
+CR_P99 (oracle-grouped units),0.083,0.1,0.0,0.917,0.273,0.667,0.9,0.25,0.0,0.354,5/1009,14/28
+Z-score truth-free sensitivity,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.083,0.231,13/1574,23/32

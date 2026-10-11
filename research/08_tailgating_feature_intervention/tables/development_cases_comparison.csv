@@ -1,0 +1,10 @@
+population,case_id,anomaly_type,phi_u,phi_u_standardised,score_phi_active,detected_phi_active,score_phi_neutralized,detected_phi_neutralized,frozen_tau,delta
+"development cases (9, diagnostic)",DC-01,Speeding,0.0,-0.18948869748429073,3.1015,True,3.1305,True,1.9726181803233118,0.028999999999999915
+"development cases (9, diagnostic)",DC-02,Hard braking,0.0,-0.18948869748429073,2.2353,True,2.2691,True,1.9726181803233118,0.03379999999999983
+"development cases (9, diagnostic)",DC-03,Stalled vehicle,0.0,-0.18948869748429073,4.3865,True,4.396,True,1.9726181803233118,0.009500000000000064
+"development cases (9, diagnostic)",DC-04,Collision,0.005922165820642978,-0.0022858055989304652,2.0366,True,2.037,True,1.9726181803233118,0.00039999999999995595
+"development cases (9, diagnostic)",DC-05,Reckless driving,0.0,-0.18948869748429073,3.739,True,3.7632,True,1.9726181803233118,0.0242
+"development cases (9, diagnostic)",DC-06,Lane weaving,0.0,-0.18948869748429073,2.0013,True,2.0338,True,1.9726181803233118,0.03249999999999975
+"development cases (9, diagnostic)",DC-07,Overweight vehicle,0.0,-0.18948869748429073,1.865,False,1.8881,False,1.9726181803233118,0.0230999999999999
+"development cases (9, diagnostic)",DC-08,Lane straddling,0.0,-0.18948869748429073,2.3961,True,2.4233,True,1.9726181803233118,0.02719999999999967
+"development cases (9, diagnostic)",DC-09,Tailgating,0.8098159509202454,25.40923523198236,3.7317,True,-0.0819,False,1.9726181803233118,-3.8136

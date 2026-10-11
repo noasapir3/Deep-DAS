@@ -1,0 +1,20 @@
+{
+ "run_id": "cae_primary",
+ "seed": 0,
+ "T": 64,
+ "stride_train": 16,
+ "stride_val": 16,
+ "bottleneck": 8,
+ "width": 32,
+ "epochs": 100,
+ "patience": 10,
+ "lr": 0.001,
+ "weight_decay": 0.0001,
+ "batch_size": 256,
+ "min_valid_bins": 32,
+ "lr_factor": 0.5,
+ "lr_patience": 3,
+ "bounded": true,
+ "range_pct": 0.5,
+ "notes": "primary model"
+}

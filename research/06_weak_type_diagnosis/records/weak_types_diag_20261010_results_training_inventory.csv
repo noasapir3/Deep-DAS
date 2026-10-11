@@ -1,0 +1,23 @@
+set,anomaly_type,source,n
+train,anomaly_collision,cross-region batch,4
+train,anomaly_hard_braking,cross-region batch,4
+train,anomaly_lane_straddling,cross-region batch,4
+train,anomaly_lane_weaving,cross-region batch,4
+train,anomaly_overweight_vehicle,cross-region batch,4
+train,anomaly_reckless_driver,cross-region batch,4
+train,anomaly_speeding,cross-region batch,4
+train,anomaly_stalled_vehicle,cross-region batch,4
+train,anomaly_stalled_vehicle,stall_div,24
+train,anomaly_tailgating,cross-region batch,2
+train,anomaly_tailgating,tailgating_v3,24
+train,anomaly_tailgating,tailgating_v4,23
+val,anomaly_collision,cross-region batch,2
+val,anomaly_hard_braking,cross-region batch,2
+val,anomaly_lane_straddling,cross-region batch,2
+val,anomaly_lane_weaving,cross-region batch,2
+val,anomaly_overweight_vehicle,cross-region batch,2
+val,anomaly_reckless_driver,cross-region batch,2
+val,anomaly_speeding,cross-region batch,2
+val,anomaly_stalled_vehicle,cross-region batch,2
+val,anomaly_tailgating,cross-region batch,1
+val,anomaly_tailgating,tailgating_v3,12

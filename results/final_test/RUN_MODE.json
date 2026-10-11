@@ -1,0 +1,8 @@
+{
+ "phi_mode": "active",
+ "model": "DeepDAS Ensemble v1 (E_stall_diversity_ENSEMBLE), five frozen checkpoints trained WITH phi_u (head 17->16->1)",
+ "phi_input": "standardised phi_u (as trained)",
+ "ensemble_statistics": "frozen mu_k, sigma_k and tau from ensemble.json",
+ "status": "original hybrid model as selected and tested",
+ "note": "Published v1.0 results, unchanged (byte-identical). Generated with the frozen hybrid model."
+}

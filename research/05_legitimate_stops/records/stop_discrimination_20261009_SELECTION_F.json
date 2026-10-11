@@ -1,0 +1,110 @@
+{
+ "rule": "plan/PLAN_PREREGISTERED.md",
+ "checks": {
+  "F1": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": true,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": true,
+   "4_FA_valA_le_1.5pct": true,
+   "qualifies": false
+  },
+  "F2": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": false,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": false,
+   "4_FA_valA_le_1.5pct": false,
+   "qualifies": false
+  }
+ },
+ "candidate": "E_stall_diversity_ENSEMBLE (unchanged)",
+ "legit_alarms": {
+  "REF": 40,
+  "F1": 37,
+  "F2": 27
+ },
+ "legit_n": {
+  "REF": 54,
+  "F1": 54,
+  "F2": 54
+ },
+ "legit_rate": {
+  "REF": 0.7407407407407407,
+  "F1": 0.6851851851851852,
+  "F2": 0.5
+ },
+ "abn_hits": {
+  "REF": 65,
+  "F1": 65,
+  "F2": 66
+ },
+ "abn_n": {
+  "REF": 66,
+  "F1": 66,
+  "F2": 66
+ },
+ "GENTLE15": {
+  "REF": "23/24",
+  "F1": "23/24",
+  "F2": "24/24"
+ },
+ "nonstall_detected": {
+  "REF": 21,
+  "F1": 21,
+  "F2": 18
+ },
+ "val_tailgating_n": {
+  "REF": "12/13",
+  "F1": "12/13",
+  "F2": "13/13"
+ },
+ "macro9": {
+  "REF": 0.7120412267471091,
+  "F1": 0.7120412267471091,
+  "F2": 0.5
+ },
+ "FA_valA_rate": {
+  "REF": 0.010662604722010662,
+  "F1": 0.014470677837014471,
+  "F2": 0.016755521706016754
+ },
+ "val_AP": {
+  "REF": 0.7811187304490997,
+  "F1": 0.7665727791588228,
+  "F2": 0.7002582074216558
+ },
+ "REF_rescore_determinism": {
+  "0": {
+   "n_compared": 5095,
+   "n_saved": 5095,
+   "max_abs_diff": 0.0
+  },
+  "1": {
+   "n_compared": 5095,
+   "n_saved": 5095,
+   "max_abs_diff": 0.0
+  },
+  "2": {
+   "n_compared": 5095,
+   "n_saved": 5095,
+   "max_abs_diff": 0.0
+  },
+  "3": {
+   "n_compared": 5095,
+   "n_saved": 5095,
+   "max_abs_diff": 0.0
+  },
+  "4": {
+   "n_compared": 5095,
+   "n_saved": 5095,
+   "max_abs_diff": 0.0
+  }
+ }
+}

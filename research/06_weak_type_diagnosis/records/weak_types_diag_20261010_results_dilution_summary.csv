@@ -1,0 +1,10 @@
+type,n,n_windows_median,"spearman(full score, n_windows)",full>thr,AUC_full,AUC_crop_event(vs normals' min-a_lon crop),crop_event>normal_crop_P99,AUC_crop_centre,crop_centre>normal_crop_P99
+hard_braking,11,42.0,0.28,1,0.803,0.708,0,0.567,0
+speeding,12,20.0,-0.53,4,0.775,0.763,1,0.747,3
+overweight_vehicle,12,40.5,0.26,4,0.832,0.647,2,0.585,1
+lane_straddling,12,31.0,0.29,5,0.929,0.955,3,0.854,2
+collision,10,142.0,,6,0.985,0.985,4,0.957,2
+lane_weaving,11,26.0,0.35,7,0.896,0.837,3,0.887,5
+tailgating,11,42.0,-0.44,11,1.0,0.987,6,0.975,5
+stalled_vehicle,14,110.0,0.45,12,0.969,0.734,4,0.742,7
+reckless_driver,10,26.0,-0.25,7,0.972,0.913,4,0.893,4

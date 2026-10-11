@@ -1,0 +1,230 @@
+{
+ "rule": "PLAN_W1_W2_v2_FOR_APPROVAL.md section 6 (frozen)",
+ "conditions": {
+  "W1": {
+   "C1_weak6_gain_ge_0.15": {
+    "value": 0.3592592592592593,
+    "pass": true
+   },
+   "C2_macro9_gain_ge_0.08": {
+    "value": 0.2617283950617283,
+    "pass": true
+   },
+   "C3_no_type_loses_more_than_1": {
+    "value": {
+     "det_diff": {
+      "hard_braking": 4,
+      "speeding": 5,
+      "overweight_vehicle": 0,
+      "lane_straddling": 5,
+      "collision": 1,
+      "lane_weaving": 5,
+      "reckless_driver": 2,
+      "tailgating": 0,
+      "stalled_vehicle": 0
+     },
+     "stallval_stalls": "18/18"
+    },
+    "pass": true
+   },
+   "C4_FA_drive": {
+    "value": {
+     "cand": 0.008816120906801008,
+     "E_DIV": 0.011335012594458438
+    },
+    "pass": true
+   },
+   "C5_FA_legit_stops_le_plus3": {
+    "value": {
+     "cand": 45,
+     "E_DIV": 40,
+     "n": 54
+    },
+    "pass": false
+   },
+   "C6_FA_tg_controls_le_plus1": {
+    "value": {
+     "cand": 0,
+     "E_DIV": 6,
+     "n": 7
+    },
+    "pass": true
+   },
+   "C7_seed_stability": {
+    "value": {
+     "weak6_gain_per_seed": [
+      0.3074074074074075,
+      0.2870370370370369,
+      0.30185185185185187,
+      0.3018518518518519,
+      0.35740740740740745
+     ],
+     "tg_stalled_ok_per_seed": [
+      true,
+      true,
+      false,
+      true,
+      true
+     ],
+     "FA_drive_per_seed": [
+      0.011335012594458438,
+      0.008396305625524769,
+      0.009655751469353484,
+      0.009235936188077247,
+      0.005037783375314861
+     ]
+    },
+    "pass": true
+   },
+   "C8_ranking": {
+    "value": {
+     "AUPRC_diff": 0.1667933002099209,
+     "ROC_AUC_diff": 0.094730540784277
+    },
+    "pass": true
+   },
+   "C9_coverage_equal": {
+    "value": {
+     "coverage_A": [
+      "108/110",
+      "108/110"
+     ],
+     "coverage_N_drive": [
+      "2382/3105",
+      "2382/3105"
+     ],
+     "coverage_L": [
+      "54/54",
+      "54/54"
+     ],
+     "coverage_TC": [
+      "7/8",
+      "7/8"
+     ],
+     "coverage_val_B": [
+      "1242/1537",
+      "1242/1537"
+     ]
+    },
+    "pass": true
+   },
+   "ALL_PASS": false
+  },
+  "W2": {
+   "C1_weak6_gain_ge_0.15": {
+    "value": 0.3944444444444445,
+    "pass": true
+   },
+   "C2_macro9_gain_ge_0.08": {
+    "value": 0.29047619047619044,
+    "pass": true
+   },
+   "C3_no_type_loses_more_than_1": {
+    "value": {
+     "det_diff": {
+      "hard_braking": 5,
+      "speeding": 5,
+      "overweight_vehicle": 1,
+      "lane_straddling": 5,
+      "collision": 1,
+      "lane_weaving": 5,
+      "reckless_driver": 2,
+      "tailgating": 1,
+      "stalled_vehicle": 0
+     },
+     "stallval_stalls": "18/18"
+    },
+    "pass": true
+   },
+   "C4_FA_drive": {
+    "value": {
+     "cand": 0.010495382031905962,
+     "E_DIV": 0.011335012594458438
+    },
+    "pass": true
+   },
+   "C5_FA_legit_stops_le_plus3": {
+    "value": {
+     "cand": 52,
+     "E_DIV": 40,
+     "n": 54
+    },
+    "pass": false
+   },
+   "C6_FA_tg_controls_le_plus1": {
+    "value": {
+     "cand": 2,
+     "E_DIV": 6,
+     "n": 7
+    },
+    "pass": true
+   },
+   "C7_seed_stability": {
+    "value": {
+     "weak6_gain_per_seed": [
+      0.19629629629629636,
+      0.3962962962962963,
+      0.26666666666666666,
+      0.3018518518518518,
+      0.37407407407407406
+     ],
+     "tg_stalled_ok_per_seed": [
+      true,
+      true,
+      true,
+      true,
+      true
+     ],
+     "FA_drive_per_seed": [
+      0.007556675062972292,
+      0.0163727959697733,
+      0.003778337531486146,
+      0.010495382031905962,
+      0.009655751469353484
+     ]
+    },
+    "pass": true
+   },
+   "C8_ranking": {
+    "value": {
+     "AUPRC_diff": 0.1800091188227988,
+     "ROC_AUC_diff": 0.09381316665111783
+    },
+    "pass": true
+   },
+   "C9_coverage_equal": {
+    "value": {
+     "coverage_A": [
+      "108/110",
+      "108/110"
+     ],
+     "coverage_N_drive": [
+      "2382/3105",
+      "2382/3105"
+     ],
+     "coverage_L": [
+      "54/54",
+      "54/54"
+     ],
+     "coverage_TC": [
+      "7/8",
+      "7/8"
+     ],
+     "coverage_val_B": [
+      "1242/1537",
+      "1242/1537"
+     ]
+    },
+    "pass": true
+   },
+   "ALL_PASS": false
+  }
+ },
+ "passing": [],
+ "choice": "none -> E_stall_diversity_ENSEMBLE stays the final model",
+ "ensemble_thresholds": {
+  "E_DIV": 1.9726181803233118,
+  "W1": 1.5474971341823627,
+  "W2": 1.5335374335312633
+ }
+}

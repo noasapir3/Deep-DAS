@@ -1,0 +1,21 @@
+{
+ "fa_limit_valA_rate": 0.015,
+ "eligible": {
+  "C_old": true,
+  "C_new": true
+ },
+ "val_recall_P99": {
+  "C_old": 0.5862068965517241,
+  "C_new": 0.7931034482758621
+ },
+ "val_AP": {
+  "C_old": 0.44854126278924805,
+  "C_new": 0.7658686508271559
+ },
+ "FA_valA_rate_P99": {
+  "C_old": 0.009900990099009901,
+  "C_new": 0.011424219345011425
+ },
+ "candidate": "C_new_ENSEMBLE",
+ "rule": "PLAN_PREREGISTERED.md: FA limit then validation recall, tie -> validation AP"
+}

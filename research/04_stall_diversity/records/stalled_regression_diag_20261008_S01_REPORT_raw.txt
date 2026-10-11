@@ -1,0 +1,96 @@
+## (1) Input statistics (DL input channels after cleaning; median over group members)
+| group                                     |   valid_s |   median_|v_lon| |   std_v_lon |   share_|v|<0.5 |   share_|v|<1.0 |   longest_|v|<0.5_s |   share_m_das |   share_m_cam |   share_m_gps |   share_m_lead |   invalid_share_in_track |   std_a_lon |   n_windows |    n |
+|:------------------------------------------|----------:|-----------------:|------------:|----------------:|----------------:|--------------------:|--------------:|--------------:|--------------:|---------------:|-------------------------:|------------:|------------:|-----:|
+| ORIG stalled (target)                     |    118.9  |            0.685 |       0.992 |           0.378 |           0.664 |                0.8  |         0.5   |         0     |         0     |          0     |                    0     |       2.249 |       142   |    1 |
+| ORIG stalled scene: queued backgrounds    |    118.9  |            0.838 |       2.941 |           0.323 |           0.585 |                0.85 |         0.5   |         0.018 |         0.002 |          0.908 |                    0     |       2.351 |       142   |    2 |
+| ORIG hard-braking scene (frozen veh001)   |    118.9  |            0.67  |       1.006 |           0.399 |           0.69  |                0.8  |         0.5   |         0     |         0.019 |          0     |                    0     |       2.327 |       142   |    1 |
+| ORIG collision striker/target (long stop) |     42.1  |            0.808 |       1.764 |           0.299 |           0.606 |                0.6  |         0.278 |         0     |         0.012 |          0.504 |                    0.025 |       2.485 |        47   |    2 |
+| train stalls (cross-region)               |     78.4  |            7.569 |       5.103 |           0.141 |           0.254 |                0.5  |         0.5   |         0.035 |         0.013 |          0     |                    0     |       2.836 |        91.5 |    4 |
+| val stalls (cross-region)                 |     76.15 |            4.065 |       4.154 |           0.182 |           0.309 |                0.65 |         0.5   |         0.021 |         0.013 |          0.006 |                    0     |       2.103 |        88.5 |    2 |
+| newscene stalls                           |     48.55 |            1.116 |       4.134 |           0.266 |           0.477 |                0.65 |         0.5   |         0.08  |         0.007 |          0.051 |                    0     |       2.857 |        54.5 |    8 |
+| val_B normals                             |     24.7  |            8.541 |       1.4   |           0     |           0     |                0    |         0.5   |         0.064 |         0.012 |          0.032 |                    0     |       2.901 |        25   | 1242 |
+| stop-and-go normals (train)               |     28.4  |            6.684 |       1.329 |           0     |           0     |                0    |         0.5   |         0.083 |         0.014 |          0.035 |                    0     |       2.348 |        29   |  633 |
+
+## (2) Where the signal is lost: stall axis in pooled features (percentile among val_B normals), and logits
+| model                                   |   target_pct_on_stall_axis | val_stalls_pct   |   newscene_stalls_pct_median | train_stalls_pct             |
+|:----------------------------------------|---------------------------:|:-----------------|-----------------------------:|:-----------------------------|
+| initial AE encoder (before supervision) |                    97.4235 | [89.9, 93.2]     |                      99.3156 | [92.8, 99.9, 100.0, 99.9]    |
+| C_old_s0                                |                    91.9485 | [97.3, 100.0]    |                     100      | [99.9, 100.0, 100.0, 100.0]  |
+| C_old_s1                                |                    83.3333 | [100.0, 100.0]   |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_old_s2                                |                    37.4396 | [99.1, 100.0]    |                      99.9195 | [99.9, 100.0, 100.0, 100.0]  |
+| C_old_s3                                |                    52.4155 | [98.4, 100.0]    |                      99.9597 | [100.0, 100.0, 100.0, 100.0] |
+| C_old_s4                                |                    97.1014 | [99.8, 100.0]    |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_new_s0                                |                    87.1176 | [99.7, 100.0]    |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_new_s1                                |                    53.9452 | [100.0, 100.0]   |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_new_s2                                |                    20.3704 | [100.0, 100.0]   |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_new_s3                                |                    71.4976 | [97.1, 100.0]    |                     100      | [100.0, 100.0, 100.0, 100.0] |
+| C_new_s4                                |                    58.5346 | [99.8, 99.8]     |                      99.6779 | [100.0, 100.0, 100.0, 100.0] |
+
+percentile of each focus vehicle among val_B normals (logit), and P99 decision:
+|                                           |   C_old pct (median of 5) |   C_old alarms /5 |   C_new pct (median of 5) |   C_new alarms /5 |
+|:------------------------------------------|--------------------------:|------------------:|--------------------------:|------------------:|
+| crossregion/r002_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| crossregion/r005_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| crossregion/r050_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| crossregion/r065_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| crossregion/r090_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| crossregion/r131_stalled_vehicle|veh001   |                     100   |                 5 |                     100   |                 5 |
+| newscene/r003_stalled_vehicle|veh001      |                     100   |                 4 |                      98.7 |                 1 |
+| newscene/r010_stalled_vehicle|veh001      |                      99.9 |                 5 |                     100   |                 4 |
+| newscene/r020_stalled_vehicle|veh001      |                     100   |                 5 |                     100   |                 5 |
+| newscene/r037_stalled_vehicle|veh001      |                     100   |                 5 |                     100   |                 5 |
+| newscene/r062_stalled_vehicle|veh001      |                      99.9 |                 5 |                     100   |                 5 |
+| newscene/r083_stalled_vehicle|veh001      |                     100   |                 5 |                     100   |                 5 |
+| newscene/r120_stalled_vehicle|veh001      |                     100   |                 5 |                      99.8 |                 5 |
+| newscene/r140_stalled_vehicle|veh001      |                     100   |                 5 |                     100   |                 5 |
+| region_010/anomaly_hard_braking|veh001    |                      96.5 |                 2 |                      85.9 |                 1 |
+| region_020/anomaly_stalled_vehicle|veh001 |                      96.6 |                 2 |                      87   |                 1 |
+| region_020/anomaly_stalled_vehicle|veh002 |                      99.9 |                 5 |                      99.3 |                 4 |
+| region_020/anomaly_stalled_vehicle|veh003 |                     100   |                 5 |                      99.7 |                 4 |
+| region_120/anomaly_collision|veh001       |                      99.9 |                 5 |                      99.6 |                 5 |
+| region_120/anomaly_collision|veh002       |                      99.3 |                 3 |                      97.8 |                 1 |
+
+## (3) Head sensitivity of the target: logit change when one pooled feature is set to the mean of the training stalls (median over seeds)
+|           |   C_old |   C_new |
+|:----------|--------:|--------:|
+| mean_z0   |   -0.09 |   -0.16 |
+| mean_z1   |    1.9  |   -0.42 |
+| mean_z2   |    0.28 |    0.56 |
+| mean_z3   |    0.61 |    0.21 |
+| mean_z4   |   -0.07 |    0.97 |
+| mean_z5   |    0.32 |   -0    |
+| mean_z6   |    0.02 |    0.03 |
+| mean_z7   |    1.01 |    0.81 |
+| std_z0    |    1.51 |    1.66 |
+| std_z1    |   -0.17 |   -2.86 |
+| std_z2    |    0.8  |    1.87 |
+| std_z3    |    1.83 |   -0.01 |
+| std_z4    |    3.89 |    2.13 |
+| std_z5    |   -0.42 |   -1.63 |
+| std_z6    |    2.05 |    0.91 |
+| std_z7    |   15.89 |   13.28 |
+| std_all8  |   17.25 |   17.05 |
+| mean_all8 |    2.06 |    3.21 |
+
+## (4) Training-style 32-window subsets vs all windows (200 random subsets per vehicle; share of subsets above the model's own P99)
+| model    | vkey                                      |   n_windows |   logit_all |   subset_median |   subset_p10 |   subset_p90 |   share_subsets_alarm | all_alarm   |
+|:---------|:------------------------------------------|------------:|------------:|----------------:|-------------:|-------------:|----------------------:|:------------|
+| C_new_s0 | region_020/anomaly_stalled_vehicle|veh001 |         142 |        0.57 |            0.56 |         0.43 |         0.72 |                     1 | True        |
+| C_new_s1 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -9.92 |           -9.91 |       -10.01 |        -9.81 |                     0 | False       |
+| C_new_s2 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -8.1  |           -8.12 |        -8.2  |        -8.03 |                     0 | False       |
+| C_new_s3 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -5.77 |           -5.79 |        -5.98 |        -5.6  |                     0 | False       |
+| C_new_s4 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -9.57 |           -9.57 |        -9.7  |        -9.44 |                     0 | False       |
+| C_old_s0 | region_020/anomaly_stalled_vehicle|veh001 |         142 |        4.36 |            4.33 |         4.19 |         4.5  |                     1 | True        |
+| C_old_s1 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -9.4  |           -9.42 |        -9.55 |        -9.3  |                     0 | False       |
+| C_old_s2 | region_020/anomaly_stalled_vehicle|veh001 |         142 |       -1.86 |           -1.88 |        -2.01 |        -1.76 |                     1 | True        |
+| C_old_s3 | region_020/anomaly_stalled_vehicle|veh001 |         142 |      -10.54 |          -10.61 |       -10.89 |       -10.32 |                     0 | False       |
+| C_old_s4 | region_020/anomaly_stalled_vehicle|veh001 |         142 |      -12.35 |          -12.37 |       -12.51 |       -12.24 |                     0 | False       |
+other stalls (median over models): n_windows / share of subsets that alarm / alarm with all windows
+| vkey                                    |   n_windows |   share_subsets_alarm |   all_alarm |
+|:----------------------------------------|------------:|----------------------:|------------:|
+| crossregion/r002_stalled_vehicle|veh001 |         124 |                   1   |         1   |
+| crossregion/r005_stalled_vehicle|veh001 |          53 |                   1   |         1   |
+| newscene/r003_stalled_vehicle|veh001    |          79 |                   0.6 |         0.5 |
+| newscene/r010_stalled_vehicle|veh001    |          38 |                   0.9 |         0.9 |
+| newscene/r020_stalled_vehicle|veh001    |          40 |                   1   |         1   |
+| newscene/r037_stalled_vehicle|veh001    |          55 |                   1   |         1   |

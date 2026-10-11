@@ -1,0 +1,12 @@
+metric,phi active (original hybrid),phi neutralized (inference-time intervention)
+population,validation regions (val_A anomalies and normals; val_B normals; stop sets),validation regions (val_A anomalies and normals; val_B normals; stop sets)
+tailgating (12 v3 + 1 cross-region),12/13,9/13
+"macro recall, 9 types",0.714,0.688
+validation AP,0.781,0.737
+stall validation (3 modes),18/18,18/18
+"false alarms, val_A normals",14/1313,9/1313
+legitimate stops (54),40/54,40/54
+stop-set matched controls,0/24,0/24
+development cases,8/9,7/9
+val_B alarm rate at frozen tau,0.0105,0.0105
+frozen tau,1.9726181803233118,1.9726181803233118

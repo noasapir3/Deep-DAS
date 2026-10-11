@@ -1,0 +1,10 @@
+case_id,anomaly_type,source,tracks,windows,DeepDAS_Ensemble_v1_score,DeepDAS_Ensemble_v1_detected,DeepDAS_Ensemble_v1_detected_track_units,Supervised_single_model_logit,Supervised_single_model_detected
+DC-01,Speeding,SimStudio anomaly scenario (region 003),1,14,3.1015,True,True,-3.641,True
+DC-02,Hard braking,Controlled scenario,1,18,2.2353,True,True,0.286,True
+DC-03,Stalled vehicle,SimStudio anomaly scenario (region 020),1,142,4.3865,True,True,7.068,True
+DC-04,Collision,Controlled scenario (striking vehicle),1,142,2.0366,True,True,2.705,True
+DC-05,Reckless driving,SimStudio anomaly scenario (region 120),1,8,3.739,True,True,-4.807,True
+DC-06,Lane weaving,SimStudio anomaly scenario (region 037),1,8,2.0013,True,True,-8.687,False
+DC-07,Overweight vehicle,SimStudio anomaly scenario (region 140),1,5,1.865,False,False,8.483,True
+DC-08,Lane straddling,Controlled scenario,1,10,2.3961,True,True,-1.339,True
+DC-09,Tailgating,Controlled scenario,1,14,3.7317,True,True,-14.784,False

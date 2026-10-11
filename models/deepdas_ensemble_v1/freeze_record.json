@@ -1,0 +1,63 @@
+{
+ "candidate": "E_diversity_ENSEMBLE",
+ "frozen_on": "2026-10-09",
+ "selected_by": "plan/PLAN_PREREGISTERED.md replacement rule (SELECTION_STALL.json); both arms passed, E_diversity won on the pre-registered tie-break (macro9 and stallval macro3 tied; val AP 0.781 vs 0.751)",
+ "replaces_as_development_candidate": "C_new_ENSEMBLE (its freeze files in C_tailgating_data_20261008 are unchanged and kept)",
+ "ensemble_rule": "mean over seeds 0-4 of (logit - valB_mean) / valB_std_ddof0; alarm if > threshold and >= 3 windows; < 3 windows = no decision",
+ "thresholds_ensemble": {
+  "P99": 1.9726181803233118,
+  "P95": 1.246164896208973
+ },
+ "n_valB_sufficient": 1242,
+ "seeds": {
+  "0": {
+   "valB_mean": -12.915836251012369,
+   "valB_std_ddof0": 4.1385520705352565,
+   "checkpoint": "runs/DIV_s0/model/checkpoint_best.pt",
+   "checkpoint_sha256": "c382ea351429cb3a7c5775cece298421339d7698e3d54c9a77493de9bdc8fe39",
+   "thresholds_sha256": "d582b1ef75e7137ef65f4f9aba0c1d233721d3954b5db94dae57db2cd5d829a6",
+   "best_epoch": 10
+  },
+  "1": {
+   "valB_mean": -15.576881359836714,
+   "valB_std_ddof0": 5.6950409641261865,
+   "checkpoint": "runs/DIV_s1/model/checkpoint_best.pt",
+   "checkpoint_sha256": "1c7d53d027d0a2739bdfd45c950e0aef023e5ffdbd8fc107798d137d0ae9b2ed",
+   "thresholds_sha256": "2af9b97e4b26738dd0382afad919a03734e6325ff6af5b2ead579dfe375dfe8f",
+   "best_epoch": 21
+  },
+  "2": {
+   "valB_mean": -8.841653166383793,
+   "valB_std_ddof0": 2.775754235247946,
+   "checkpoint": "runs/DIV_s2/model/checkpoint_best.pt",
+   "checkpoint_sha256": "1d85b5a0bc176a39c92a2261e89f2dd46b01dff8d2e0aa175b209305c5058412",
+   "thresholds_sha256": "88f719ee90157d27c1cbb8530e133559aa6b97f52280ca95b7abdb25bec3b83c",
+   "best_epoch": 8
+  },
+  "3": {
+   "valB_mean": -15.448582680305037,
+   "valB_std_ddof0": 5.435913180874668,
+   "checkpoint": "runs/DIV_s3/model/checkpoint_best.pt",
+   "checkpoint_sha256": "2d26505128466f00d23687f5c1f07ab47fc6435eb2182bc515471d62605c0dcc",
+   "thresholds_sha256": "6967dce6ae844e67c6477d1ac075bb32332d1d29bfa0ed9ce76ec1569bb1da56",
+   "best_epoch": 23
+  },
+  "4": {
+   "valB_mean": -18.86246744496523,
+   "valB_std_ddof0": 6.745917776285742,
+   "checkpoint": "runs/DIV_s4/model/checkpoint_best.pt",
+   "checkpoint_sha256": "923181071e4cd97ea78fb8f7742bd4b59cc4dbd96ef1b661ad87f9ac6cc829a2",
+   "thresholds_sha256": "c63c23ff5bda8da280ca0d6c4d776fbb03c16a9d811e7c2fcf8394bce6c338bf",
+   "best_epoch": 22
+  }
+ },
+ "training_script": "x_train_eval_s.py (STALLARM=diversity NEWDATA=1, clean=1, feats=tg)",
+ "training_script_sha256": "16dc8016476e6aaaada5f6c85e5bd9f045df3c5b7f56fb87df6bbd90eceead39",
+ "data_sha256": "f5165bfc28bc1b9fa7379b28bbc35209401caa1332280930c27772f86f9935e1",
+ "holdout": "not generated, not opened",
+ "known_limitations": [
+  "alarms on 4/6 stallval legitimate short stops (C_new also 4/6); not gating by plan",
+  "validation hard braking 1/2 vs C_new 2/2; newscene hard braking 1/6 vs 3/6 (diagnostic)",
+  "original-9 overweight below threshold (1.86 vs 1.97) where C_new detected it"
+ ]
+}

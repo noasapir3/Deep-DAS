@@ -1,0 +1,10 @@
+{
+ "thresholds_logit": {
+  "P99": 0.6091983914375305,
+  "P95": -2.3040294647216797
+ },
+ "n_valB_sufficient": 1242,
+ "checkpoint_epoch": 19,
+ "val_ap": 0.8637918015388198,
+ "rule": "numpy linear percentile of sufficient-evidence normal val_B logits; <3 windows = no decision"
+}

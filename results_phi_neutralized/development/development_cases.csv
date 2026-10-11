@@ -1,0 +1,10 @@
+phi_mode,case_id,anomaly_type,source,tracks,windows,DeepDAS_Ensemble_v1_score,DeepDAS_Ensemble_v1_detected,DeepDAS_Ensemble_v1_detected_track_units,Supervised_single_model_logit,Supervised_single_model_detected
+neutralized,DC-01,Speeding,SimStudio anomaly scenario (region 003),1,14,3.1305,True,True,-3.641,True
+neutralized,DC-02,Hard braking,Controlled scenario,1,18,2.2691,True,True,0.286,True
+neutralized,DC-03,Stalled vehicle,SimStudio anomaly scenario (region 020),1,142,4.396,True,True,7.068,True
+neutralized,DC-04,Collision,Controlled scenario (striking vehicle),1,142,2.037,True,True,2.705,True
+neutralized,DC-05,Reckless driving,SimStudio anomaly scenario (region 120),1,8,3.7632,True,True,-4.807,True
+neutralized,DC-06,Lane weaving,SimStudio anomaly scenario (region 037),1,8,2.0338,True,True,-8.687,False
+neutralized,DC-07,Overweight vehicle,SimStudio anomaly scenario (region 140),1,5,1.8881,False,False,8.483,True
+neutralized,DC-08,Lane straddling,Controlled scenario,1,10,2.4233,True,True,-1.339,True
+neutralized,DC-09,Tailgating,Controlled scenario,1,14,-0.0819,False,False,-14.784,False

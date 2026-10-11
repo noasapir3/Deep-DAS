@@ -1,0 +1,35 @@
+{
+ "phi_mode": "neutralized",
+ "bootstrap_95ci": {
+  "macro recall E_DIV (common)": "[0.475, 0.640]",
+  "macro recall CR_P99 (common)": "[0.303, 0.426]",
+  "macro recall Z (common)": "[0.222, 0.256]",
+  "FA normal E_DIV (common)": "[0.011, 0.029]",
+  "FA normal CR_P99 (common)": "[0.001, 0.010]",
+  "FA normal Z (common)": "[0.003, 0.012]",
+  "macro diff E_DIV - Z": "[0.238, 0.409]",
+  "macro diff E_DIV - CR_P99": "[0.109, 0.284]",
+  "P(E_DIV macro > Z macro)": 1.0,
+  "P(E_DIV macro > CR macro)": 1.0
+ },
+ "mcnemar": {
+  "E_DIV vs Z (pooled common anomalies)": {
+   "only E_DIV": 36,
+   "only Z": 3,
+   "exact McNemar p": 0.0
+  },
+  "E_DIV vs Z (common normals, false alarms)": {
+   "only E_DIV": 20,
+   "only Z": 7
+  },
+  "E_DIV vs CR_P99 (pooled common anomalies)": {
+   "only E_DIV": 26,
+   "only CR_P99": 7,
+   "exact McNemar p": 0.0013
+  },
+  "E_DIV vs CR_P99 (common normals, false alarms)": {
+   "only E_DIV": 19,
+   "only CR_P99": 4
+  }
+ }
+}

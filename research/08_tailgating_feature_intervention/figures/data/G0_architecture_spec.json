@@ -1,0 +1,60 @@
+{
+ "phi_mode": "neutralized (17th head input held at 0 in the standardised coordinate)",
+ "shapes": [
+  [
+   14,
+   64
+  ],
+  [
+   32,
+   64
+  ],
+  [
+   64,
+   32
+  ],
+  [
+   64,
+   16
+  ],
+  [
+   128,
+   8
+  ]
+ ],
+ "kernels_strides": [
+  [
+   7,
+   1
+  ],
+  [
+   5,
+   2
+  ],
+  [
+   5,
+   2
+  ],
+  [
+   3,
+   2
+  ]
+ ],
+ "activation": "GELU",
+ "pooling": "mean and std of the window codes (no max-pooling, no dropout)",
+ "flatten": 1024,
+ "latent": 8,
+ "head": [
+  17,
+  16,
+  1
+ ],
+ "params_per_seed": 67225,
+ "seeds": 5,
+ "tau": 1.9726181803233118,
+ "input_window_track": "007/normal_fast_legal|T000003",
+ "input_window_bins": [
+  74,
+  137
+ ]
+}

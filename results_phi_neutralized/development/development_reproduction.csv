@@ -1,0 +1,10 @@
+phi_mode,case,n_tracks,n_windows,E_DIV_ens_saved_active_hybrid,E_DIV_ens_phi_neutralized,E_DIV_alarm_original_units,E_DIV_alarm_track_units,CR_P99_logit,CR_P99_alarm_original_units,CR_P99_alarm_track_units
+neutralized,speeding,1,14,3.1015,3.1305,True,True,-3.641,True,True
+neutralized,C1 real braking,1,18,2.2353,2.2691,True,True,0.286,True,True
+neutralized,stalled,1,142,4.3865,4.396,True,True,7.068,True,True
+neutralized,C4 collision striker,1,142,2.0366,2.037,True,True,2.705,True,True
+neutralized,reckless,1,8,3.739,3.7632,True,True,-4.807,True,True
+neutralized,weaving,1,8,2.0013,2.0338,True,True,-8.687,False,False
+neutralized,overweight,1,5,1.865,1.8881,False,False,8.483,True,True
+neutralized,C2 straddling,1,10,2.3961,2.4233,True,True,-1.339,True,True
+neutralized,C3 tailgating,1,14,3.7317,-0.0819,False,False,-14.784,False,False

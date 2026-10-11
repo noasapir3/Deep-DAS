@@ -1,0 +1,7 @@
+{
+ "phi_mode": "neutralized",
+ "model": "DeepDAS Ensemble v1 (E_stall_diversity_ENSEMBLE), five frozen checkpoints trained WITH phi_u (head 17->16->1)",
+ "phi_input": "standardised phi_u input held at 0 (inference-time intervention)",
+ "ensemble_statistics": "frozen mu_k, sigma_k and tau from ensemble.json",
+ "status": "post-hoc dependency analysis on exposed data; not a model trained without phi_u; not an independent evaluation"
+}

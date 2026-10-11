@@ -1,0 +1,13 @@
+# DeepDAS Release v1.0: pinned versions of the build and verification platform (Linux x86-64, CPU, Python 3.13).
+# Exact reproduction of scores and retrained weights is verified with exactly these versions (docs/REPRODUCIBILITY.md).
+# For a CPU-only torch wheel:  pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.3
+pandas==3.0.5
+pyarrow==25.0.1
+torch==2.14.1
+scikit-learn==1.9.1
+scipy==1.18.1
+python-calamine==0.8.2
+openpyxl==3.1.5
+matplotlib==3.11.2
+tabulate==0.10.0

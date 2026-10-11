@@ -1,0 +1,16 @@
+W1/W2 reproducibility check (2026-10-10, closing):
+1. The whole W folder was copied into the restored copy of the frozen backup (RESTORE_CHECK_E_stall_diversity_20261010, built only from
+   FROZEN_FINAL_MODEL__E_stall_diversity_ENSEMBLE__20261010/mirror) and scripts/w07_evaluate.py was re-run there from the stored W checkpoints.
+   All 7 result files (metrics_all, unit_scores, SELECTION_W, calibration, recall_partial_vs_whole, bootstrap CI, units) were byte-identical.
+2. Per-seed P99 thresholds: training-time FROZEN_THRESHOLDS.json vs recomputed by w07 from the same checkpoints on val_B:
+   W1 seed 0: frozen 0.911227  recomputed 0.911226  |d|=7.2e-07
+   W1 seed 1: frozen 0.118404  recomputed 0.118404  |d|=4.4e-07
+   W1 seed 2: frozen 0.770016  recomputed 0.770016  |d|=5.3e-07
+   W1 seed 3: frozen -0.623572  recomputed -0.623570  |d|=1.1e-06
+   W1 seed 4: frozen 0.036935  recomputed 0.036936  |d|=4.6e-07
+   W2 seed 0: frozen 1.548806  recomputed 1.548807  |d|=1.1e-06
+   W2 seed 1: frozen -0.716962  recomputed -0.716963  |d|=7.2e-07
+   W2 seed 2: frozen 0.609198  recomputed 0.609199  |d|=8.5e-07
+   W2 seed 3: frozen -0.517861  recomputed -0.517861  |d|=1.9e-07
+   W2 seed 4: frozen -0.163816  recomputed -0.163817  |d|=1.1e-06
+3. Ensemble thresholds (P99 of mean z on val_B): W1 1.547497, W2 1.533537; E_DIV frozen 1.9726181803233118.

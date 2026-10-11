@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepdas"
+version = "1.0.0"
+description = "DeepDAS Ensemble v1: supervised anomaly detection on DAS + camera + GPS vehicle tracks (SimStudio North-TLV simulation)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy", "pandas", "pyarrow", "torch", "scikit-learn", "scipy",
+  "python-calamine", "openpyxl", "matplotlib", "tabulate",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

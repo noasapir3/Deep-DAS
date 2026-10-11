@@ -1,0 +1,13 @@
+arm,seed,detected9,tailgating_case_detected,source
+Baseline,0,7,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+Baseline,1,2,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+Baseline,2,3,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+A,0,6,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+A,1,5,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+A,2,3,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+B,0,8,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+B,1,6,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+B,2,4,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+C,0,8,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+C,1,7,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)
+C,2,4,False,research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)

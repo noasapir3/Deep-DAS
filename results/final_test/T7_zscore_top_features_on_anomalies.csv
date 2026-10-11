@@ -1,0 +1,10 @@
+type,top_feature
+collision,{'kin_stop_event_count': 10}
+hard_braking,"{'kin_stop_event_count': 3, 'das_snr_low_frac': 2}"
+lane_straddling,"{'cov_das_lateral_offset_abs_mean_m': 10, 'kf_rolling_rmse_spike_count': 1}"
+lane_weaving,"{'cov_das_lateral_change_rate_max': 11, 'kin_speed_jump_max_mps': 1}"
+overweight_vehicle,"{'das_snr_max': 9, 'cov_das_amplitude_std': 2}"
+reckless_driver,"{'cov_das_lateral_change_rate_max': 7, 'cov_high_speed_gap_frac': 3}"
+speeding,"{'cov_high_speed_gap_frac': 3, 'iv_rel_speed_at_min_dist_mps': 2}"
+stalled_vehicle,"{'kin_stop_event_count': 12, 'kf_pos_err_mean_m': 1}"
+tailgating,"{'iv_speed_excess_over_others_mps': 1, 'cam_confidence_mean': 1}"

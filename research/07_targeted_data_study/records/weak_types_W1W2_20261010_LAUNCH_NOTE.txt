@@ -1,0 +1,2 @@
+First launch 15:47 stopped by the script's own assertion (STALLARM/NEWDATA env not set by the launcher): nothing was trained; its empty run folders and logs are kept in aborted_launch_missing_env/. Relaunched with the E_DIV env (STALLARM=diversity NEWDATA=1).
+16:00 W1_s0 was killed by the OS (out of memory) while LOADING data, before epoch 0 (both chains loaded at the same time). Nothing was trained; its folder/log are kept in aborted_launch_missing_env/. W1_s0 is run again, unchanged, after the two chains finish.
