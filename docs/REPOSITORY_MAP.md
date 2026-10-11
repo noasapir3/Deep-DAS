@@ -27,7 +27,7 @@
 | **Added** | `scripts/check_models.py` | Installation check without data: model hashes and the two inference options. It scores nothing. |
 | **Added** | `models/deepdas_ensemble_v1/experiment_klausner/` | The final model on the real Klausner recording (inference only, qualitative) |
 | **Added** | `figures/` | Figure gallery. Each figure is in PNG and PDF, with its data CSV and generating script. The scripts are repository copies of the report-figure scripts, with paths made relative. |
-| **Added** | `report/` | The 5-page report (v2.1: PDF, LaTeX and its figures) |
+| **Added** | `report/` | The 5-page report (v2.2: PDF, LaTeX and its figures) |
 | **Added** | `docs/INFERENCE_MODES.md`, `docs/DATA_PACKAGE.md`, `docs/BACKGROUND_SIMSTUDIO.md`, `docs/README.md`, this file, `docs/assets/simstudio/` | Documentation and background images |
 | **Added** | a `README.md` in every main folder; an "At a glance" section at the top of every study page | Orientation |
 | **Added** | `research/01_unsupervised_autoencoder/outputs/figures/` | The 13 archived stage-1 figures, restored so that the image links of the verbatim study report resolve |

@@ -3,7 +3,7 @@
 | Item | Where it is needed | Current state |
 |---|---|---|
 | Team members' contributions | Report v2, "Contributions" paragraph | Placeholder. Only the team can fill it in; no division of work was invented. |
-| Public code link (GitHub) | Report v2, "Code" paragraph | The repository exists: https://github.com/noasapir3/Deep-DAS. The link still has to be written into the report's "Code" paragraph (`report/report_v2_1.tex`). |
+| Public code link (GitHub) | Report, "Code" paragraph | **Done** in report v2.2: https://github.com/noasapir3/Deep-DAS. |
 | Team approval of report v2 and of the v1.1_review additions | Before submission | Not recorded. |
 
 ## Decisions left open, not done (each would need explicit approval)
