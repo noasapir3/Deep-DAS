@@ -109,7 +109,7 @@ The neutralized numbers above were computed with the frozen standardisation and 
 - many false alarms on legitimate short stops and on tailgating matched controls;
 - weak recall on four types;
 - decision coverage set by the tracker;
-- simulation only, with a single real recording used qualitatively.
+- simulation only, except for one real recording (a stalled bus, detected).
 
 ## Repository map
 
@@ -221,13 +221,13 @@ DeepDAS reuses the simulator and tracker unchanged and replaces the hand-crafted
 </tr>
 </table>
 
-**Klausner Street, the one real recording (a city bus at a bus stop).**
+**Klausner Street, the one real recording: a city bus that stands for about 31 s, a stall by the project's rule (stop ≥ 10 s).**
 
 - The SimStudio Z-score flagged it (max |z| = 27.5).
-- The DeepDAS stage-1 autoencoder did not.
-- The final DeepDAS ensemble, run on it by inference only, raises an **ALARM** in both options (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973).
+- The DeepDAS stage-1 autoencoder missed it.
+- The final DeepDAS ensemble, run on it by inference only, **detects it** in both options (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973).
 
-The track is unlabelled, so this is a qualitative observation, not an evaluation ([Klausner experiment](models/deepdas_ensemble_v1/experiment_klausner/)).
+This is one real case, not a statistical evaluation ([Klausner experiment](models/deepdas_ensemble_v1/experiment_klausner/)).
 
 What each project contributed, the physics, the anomaly model and the Klausner results with all figures: [docs/BACKGROUND_SIMSTUDIO.md](docs/BACKGROUND_SIMSTUDIO.md).
 

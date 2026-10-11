@@ -1,4 +1,20 @@
 {
+ "label": {
+  "label": "anomaly: stalled vehicle (project rule: stop >= 10 s)",
+  "evidence": "measured DAS speed of the bus (Kalman Audit sheet of the export)",
+  "standstill_below_0.5_mps_s": 23.6,
+  "standstill_below_0.5_mps_from_to_s": [
+   7.42,
+   31.0
+  ],
+  "standstill_below_2_mps_s": 31.4,
+  "standstill_below_2_mps_from_to_s": [
+   7.42,
+   38.81
+  ],
+  "rule": "docs/ANOMALY_TYPES.md: stall = longest stop >= 10.0 s; legitimate stop = 1 to < 10 s",
+  "note": "a real recording has no simulator truth; the rule is applied to the measured DAS speed"
+ },
  "tracks_in_export": 1,
  "usable_tracks": 1,
  "frozen_tau": 1.9726181803233118,
@@ -58,5 +74,5 @@
   "valid_bins": 175,
   "longest_span_below_1_mps_s": 17.5
  },
- "status": "qualitative observation on one real, unlabelled track; not an evaluation"
+ "status": "one real track, labelled by the project's stall rule from its measured DAS speed; a single case, not a statistical evaluation"
 }

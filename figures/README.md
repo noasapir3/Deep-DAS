@@ -168,8 +168,8 @@ G1: [PDF](../research/08_tailgating_feature_intervention/figures/pdf/G1_developm
 
 **Klausner experiment: the final model on the one real recording.**
 
-- **The result.** The real recording is a city bus at a bus stop on Klausner Street. The model flags it in both options (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973).
-- **Status.** The track is unlabelled, so this is a qualitative observation, not an evaluation.
+- **The result.** The real recording is a city bus on Klausner Street that stands for about 31 s (shaded), a stall by the project's rule. The model detects it in both options (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973).
+- **Status.** One real case, labelled by applying the stall rule to its measured DAS speed; not a statistical evaluation.
 
 [PDF](../models/deepdas_ensemble_v1/experiment_klausner/figures/klausner_experiment.pdf) · [scores](../models/deepdas_ensemble_v1/experiment_klausner/klausner_scores.csv) · [script](../models/deepdas_ensemble_v1/experiment_klausner/run_klausner_experiment.py) · [experiment page](../models/deepdas_ensemble_v1/experiment_klausner/)
 
