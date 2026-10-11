@@ -24,7 +24,7 @@
 
 | Archive | Size | sha256 |
 |---|---|---|
-| `DeepDAS_data_v1.0.zip` | 270,604,098 bytes | `2894af8d90dee693ba4bb341984063bbe0e2ccb3c51b94137fdf2401444a7a08` |
+| `DeepDAS_data_v1.0.zip` | 270,604,098 bytes | `1874bac48c57e223fee23ce7e45a2680fe9161ebfb82a60eba8b7c81ba2b498c` |
 
 **Integrity.** Every file in the package is byte-identical to the frozen release package. Each was checked against the release manifest (`MANIFEST_SHA256_v1.1_review.txt`).
 
@@ -33,16 +33,14 @@
 **Why the data is not stored in git.** It holds about 5,800 files, and one of them is 96 MB, close to GitHub's 100 MB per-file limit. A single versioned archive keeps the repository small and makes the exact data version explicit.
 
 ## Where to download it
-> **Status: hosting not yet set up.** The archive has been built and checked.
->
-> **Proposed hosting:** a GitHub Release asset of this repository. Assets of up to 2 GB per file are included in a normal GitHub account at no cost.
->
-> The download link will be added here once the authors approve the upload.
+The archive is published as an asset of the GitHub release [`data-v1.0`](https://github.com/noasapir3/Deep-DAS/releases/tag/data-v1.0).
 
-**Use after downloading:**
 ```bash
-unzip DeepDAS_data_v1.0.zip -d .              # run from the repository root
-sha256sum -c --quiet DATA_PACKAGE_SHA256.txt
+# from the repository root
+curl -L -o DeepDAS_data_v1.0.zip https://github.com/noasapir3/Deep-DAS/releases/download/data-v1.0/DeepDAS_data_v1.0.zip
+sha256sum DeepDAS_data_v1.0.zip               # expected: 1874bac48c57e223fee23ce7e45a2680fe9161ebfb82a60eba8b7c81ba2b498c
+unzip DeepDAS_data_v1.0.zip -d .
+sha256sum -c --quiet DATA_PACKAGE_SHA256.txt  # no output = every file matches
 ```
 
 ## Raw simulator output

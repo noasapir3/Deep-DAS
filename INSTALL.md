@@ -48,10 +48,11 @@ Expected output: ten `PASS` lines and `ALL CHECKS PASSED`. The script checks:
 It scores no data and produces no result.
 
 ## 4. Get the data package
-The processed data (simulated tracks, anomaly sets, final test, SimStudio inputs) is **not stored in git**. It is distributed as one archive, `DeepDAS_data_v1.0.zip`; see [docs/DATA_PACKAGE.md](docs/DATA_PACKAGE.md) for where to download it and what it contains.
+The processed data (simulated tracks, anomaly sets, final test, SimStudio inputs) is **not stored in git**. It is distributed as one archive, `DeepDAS_data_v1.0.zip` (271 MB), attached to the release [`data-v1.0`](https://github.com/noasapir3/Deep-DAS/releases/tag/data-v1.0). [docs/DATA_PACKAGE.md](docs/DATA_PACKAGE.md) describes what it contains.
 
-Unpack it into the repository root, then check every file:
+Download it, unpack it into the repository root, then check every file:
 ```bash
+curl -L -o DeepDAS_data_v1.0.zip https://github.com/noasapir3/Deep-DAS/releases/download/data-v1.0/DeepDAS_data_v1.0.zip
 unzip DeepDAS_data_v1.0.zip -d .              # creates data/processed, data/scenarios, data/simstudio_inputs, research/07_targeted_data_study/data
 sha256sum -c --quiet DATA_PACKAGE_SHA256.txt  # no output = every file matches
 ```
