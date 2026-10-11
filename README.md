@@ -11,7 +11,7 @@ Deep Learning course project, Tel Aviv University, 2026</p>
   <a href="#quick-start">Quick start</a> ·
   <a href="INSTALL.md">Installation</a> ·
   <a href="models/">Models</a> ·
-  <a href="docs/DATA_PACKAGE.md">Data</a> ·
+  <a href="docs/DATA_PACKAGE.md">Data</a> (<a href="https://github.com/noasapir3/Deep-DAS/releases/tag/data-v1.0">download</a>) ·
   <a href="#key-results">Results</a> ·
   <a href="research/">Research studies</a> ·
   <a href="figures/">Figure gallery</a> ·
@@ -171,7 +171,9 @@ pip install -r requirements.txt --extra-index-url https://download.pytorch.org/w
 # 2. check the installation and the frozen models (no data needed, a few seconds)
 python scripts/check_models.py
 
-# 3. after unpacking the data package (docs/DATA_PACKAGE.md) into the repository root:
+# 3. data package (271 MB, release data-v1.0), unpacked into the repository root
+curl -L -o DeepDAS_data_v1.0.zip https://github.com/noasapir3/Deep-DAS/releases/download/data-v1.0/DeepDAS_data_v1.0.zip
+unzip -q DeepDAS_data_v1.0.zip -d . && sha256sum -c --quiet DATA_PACKAGE_SHA256.txt
 python scripts/reproduce_development_cases.py outputs/dev_neutralized --phi-mode neutralized   # 7 / 9
 python scripts/reproduce_development_cases.py outputs/dev_active      --phi-mode active        # 8 / 9, the published result
 ```
