@@ -15,7 +15,7 @@ Deep Learning course project, Tel Aviv University, 2026</p>
   <a href="models/">Models</a> ·
   <a href="docs/DATA_PACKAGE.md">Data</a> (<a href="https://github.com/noasapir3/Deep-DAS/releases/tag/data-v1.0">download</a>) ·
   <a href="figures/README.md">Figures</a> ·
-  <a href="report/">Report</a>
+  <a href="report/DeepDAS_report_v3.pdf">Report (PDF)</a>
 </p>
 
 ---
@@ -64,7 +64,7 @@ The five networks were **trained, selected and tested with φ<sub>u</sub> active
 | The **inference option** | `active` / `neutralized` | how the same model is run (above) |
 | The **release folders** | `DeepDAS_Release_v1.0` (seven studies) → `DeepDAS_Release_v1.1_review` (adds the `--phi-mode` option, study 08 and the Klausner experiment) | packaging of the same model; v1.0 is the frozen reference release |
 | **This repository** | built from `v1.1_review` | the same model, code and results, plus documentation and figures |
-| The **report** | v3, the final report (approved 2026-10-11); v2.2 and earlier are archived | [`report/`](report/) |
+| The **report** | v3, the final report (approved 2026-10-11); v2.2 and earlier are archived | [`report/DeepDAS_report_v3.pdf`](report/DeepDAS_report_v3.pdf) |
 
 ## Results
 
@@ -268,6 +268,7 @@ What each project contributed, the physics, the anomaly model and the Klausner r
   - **Asaf Zini** contributed to preparing and checking simulation inputs and to technical validation of the experimental workflow.
   - **Neta Shaboo** contributed to the literature review and to organizing and editing the research documentation and report.
 - **Use of software tools.** The team used software tools during the project, including the AI assistant Claude for coding, documentation and editing support. Tools are not team members.
-- **Submission status.** What is final and what remains (publication of this documentation) is listed in [MISSING_BEFORE_SUBMISSION.md](MISSING_BEFORE_SUBMISSION.md).
+- **Branches.** The approved version is on the branch `submission`, and its commits are authored by Noa Sapir. The branch `main` is kept unchanged as the original record: its commits were made under the identity of the AI assistant used in the workspace, and the first five commits of `submission` are copies of them with the same content.
+- **Submission status.** What is final, and the decisions left open, are listed in [MISSING_BEFORE_SUBMISSION.md](MISSING_BEFORE_SUBMISSION.md).
 - **License.** No license has been chosen for this repository yet. Until one is added, all rights are reserved by the authors.
 - **Third-party material.** Credits and attributions are in [CREDITS.md](CREDITS.md).

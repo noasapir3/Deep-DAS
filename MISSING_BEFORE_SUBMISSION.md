@@ -5,13 +5,14 @@
 - **Contributions.** The same approved wording is on the front page ([README.md](README.md#status-and-credits)).
 - **Code link.** https://github.com/noasapir3/Deep-DAS (processed data: release `data-v1.0`).
 
-## Still open
+## Publication
 
 | Item | State |
 |---|---|
-| Publishing this documentation (branch `docs-v3`) | Not published. Planned order, after the authors approve the local package: a secure sign-in in the workspace, push `docs-v3`, then open a pull request for review. No direct update of `main`, and no force push. |
-| Contributor attribution on GitHub | The published commits are attributed to the account `claude`. The supported options, and which of them would change history, are to be decided by the authors before publishing. |
-| Course rules on disclosing the use of software tools | The front page states it in one sentence. The authors check it against the course guidelines. |
+| Branch | The approved version is on the branch `submission`. |
+| Commit authorship | The commits on `submission` are authored by Noa Sapir. The first five are copies, with the same content, of the commits on `main`; the approved report and documentation changes follow in one commit. |
+| The original record | `main` is kept unchanged, with its original commits (made under the identity of the AI assistant used in the workspace). The tag `data-v1.0` and its data release are unchanged. |
+| Use of software tools | Stated on the front page ([README.md](README.md#status-and-credits)). |
 
 ## The clean submission package
 It is assembled outside the repository, in the authors' project folder, and contains:

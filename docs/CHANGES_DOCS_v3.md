@@ -3,7 +3,7 @@
 **What this round was.** Writing and documentation only. Nothing was trained, simulated, re-calibrated or re-thresholded.
 
 - **Unchanged:** weights, thresholds, normalisation, inference options and their default, data, results, identifiers, code paths and folder layout.
-- **How it was done:** on a local working branch (`docs-v3`), not pushed.
+- **How it was done:** on a local working branch (`docs-v3`), then published as one commit on the branch `submission`.
 - **The report:** its changes are listed separately in [report/CHANGES_v3.md](../report/CHANGES_v3.md).
 
 ## 1. A navigation layer by research question
