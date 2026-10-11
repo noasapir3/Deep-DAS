@@ -43,6 +43,7 @@ python scripts/verify_phi_modes.py --original ../DeepDAS_Release_v1.0 --full
 | P7 | All 35 numbers in report v2 are found in their source files. |
 
 **Note on the v1.0 manifest.** `MANIFEST_SHA256.txt` is kept as the v1.0 reference. In this copy, six code files intentionally differ from it:
+
 - `detector.py`, `development.py` and `validation.py`;
 - the three `reproduce_*` scripts.
 
@@ -50,3 +51,11 @@ Their active-mode behaviour is verified by P3. Use `MANIFEST_SHA256_v1.1_review.
 
 ## Not part of this copy (see `MISSING_BEFORE_SUBMISSION.md`)
 Team contributions and the public code link are still placeholders. The package is therefore **not** ready for submission.
+
+*Update in this repository (2026-10-11):*
+
+- the public code link was added in report v2.2;
+- the team contributions remain open;
+- report v3, a reorganised draft, is in [`report/`](report/).
+
+The review-copy folder itself is unchanged.

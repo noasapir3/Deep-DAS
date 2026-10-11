@@ -1,0 +1,4 @@
+configuration,ROC_AUC,AUPRC,op_FPR,op_TPR,op_precision,n_anomalies,n_normals
+SimStudio Z-score,0.8186,0.4963,0.0069,0.2277,0.7667,101,1008
+Supervised single model,0.769,0.5148,0.005,0.3663,0.881,101,1008
+DeepDAS Ensemble v1 (as trained and tested),0.9078,0.7415,0.0198,0.5644,0.7403,101,1008

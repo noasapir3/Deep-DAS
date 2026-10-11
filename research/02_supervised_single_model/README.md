@@ -1,25 +1,72 @@
-# Study 02: Supervised single model with cross-region anomalies
+# Study 02: Supervised single model with anomalies from other regions
 
-## At a glance
+> **Research questions Q1 and Q2** ([research index](../README.md)): does supervision work where reconstruction failed, and is the result stable across random seeds? It also holds the history of the tailgating summary φ<sub>u</sub> (Q4).
+>
+> **Status:** completed; the selected model is shipped as the supervised single-model baseline. **Data role:** development and validation (not independent).
 
-| | |
-|---|---|
-| **Research question** | Can a few labelled anomalies, simulated in <i>other</i> regions, teach a classifier head on top of the pre-trained encoder? |
-| **What was compared** | The supervised single model, then one-change-at-a-time variants: A (lead-artefact cleaning), B (A + a weaving feature), C (A + the tailgating fraction φ<sub>u</sub>), D (both). Baseline, A, B and C were each trained with three seeds. |
-| **Data** | Cross-region anomaly set: 34 training and 17 selection anomalies in non-evaluation regions. The development cases (9) and the old validation split. <b>Not independent.</b> |
-| **Result** | The selected single model detects 7/9 development cases (missing weaving and tailgating). Across seeds the same recipe detects anywhere from 2 to 8 cases. No variant detects the tailgating case, with or without φ<sub>u</sub> (0 of 12 runs). |
-| **Conclusion and limits** | Supervision works where reconstruction failed. Single models are strongly seed-dependent, so all later models are 5-seed ensembles. On this early data φ<sub>u</sub> alone did not make tailgating detectable; this is the only archived comparison with and without φ<sub>u</sub>, and it uses the early data. |
-| **Reproduce** | The selected single model is shipped (<code>models/baselines/supervised_single_p99/</code>) and is scored in every development and final-test reproduction. The study runs are archived in <code>records/</code>. |
+## Summary
+
+**What we wanted to find out.**
+
+- Can a few labelled anomalies, simulated in regions other than the evaluation regions, teach a classifier head on top of the pre-trained encoder?
+- Are the follow-up changes (artefact cleaning, two summary features) stable across random seeds?
+
+**What was compared.**
+
+1. **The supervised single model:** a head on the amplitude-aware encoder.
+2. **One change at a time:**
+   - artefact cleaning;
+   - cleaning + a weaving feature;
+   - cleaning + the tailgating fraction φ<sub>u</sub>;
+   - cleaning + both features.
+3. **Seeds:** the original recipe and three of the variants, each trained with seeds 0, 1 and 2.
+
+**Held constant:** the training data, the encoder initialisation, the training budget and the threshold rule (each model's own P99 on the threshold-region normals).
+
+**Data and its role.**
+
+- **Cross-region anomaly set:** 54 runs in regions outside the evaluation regions, giving 34 verified training anomalies and 17 verified selection anomalies.
+- **Also used:** the 9 development cases and the early validation split.
+- **Role:** development and validation. These sets were inspected while the models were chosen, so no number here is independent.
 
 <p align="center"><img src="../../figures/development/png/S02_seed_dependence.png" width="60%"></p>
 
-Development cases detected per seed (open circles) and the mean of three seeds (bar) for each arm. Data: <code>figures/development/data/S02_seed_dependence.csv</code>.
+*Figure.* Development cases detected (of 9) by each recipe, per seed (open circles) and as the mean of three seeds (bar). The arms differ in one change each; the data and the threshold rule are fixed.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+**Result.**
+
+- **The selected single model** detects 7 of the 9 development cases; it misses weaving and tailgating.
+- **Seed dependence:** the original recipe detects 7, 2 or 3 cases depending on the seed (2–7). Across the four recipes tested with three seeds each, the range is 2–8.
+- **Tailgating:** no arm detects the tailgating case, with or without φ<sub>u</sub> (0 of 12 seed-study runs).
+
+**Decision.**
+
+- Supervision is adopted.
+- Artefact cleaning and φ<sub>u</sub> become part of the recipe.
+- Every later model is a **five-seed ensemble** with per-seed standardisation.
+- The selected model is frozen as the single-model baseline.
+
+**What this does not show.**
+
+- **Why tailgating stays undetected.** With varied, verified tailgating data added and φ<sub>u</sub> kept, tailgating became detectable (study 03). Whether φ<sub>u</sub> was also needed is not identified: no model without it was trained on the final training data.
+- **The value of φ<sub>u</sub>.** This is the only archived comparison with and without φ<sub>u</sub>, and it uses the early data ([study 08](../08_tailgating_feature_intervention/)).
+
+**Code, data and reproduction.**
+
+- **Model:** [`models/baselines/supervised_single_p99/`](../../models/baselines/supervised_single_p99/), scored by `src/deepdas/ensemble/scoring.py` (`SingleModel`).
+- **Data:** `data/processed/anomaly_sets/cross_region/` (data package).
+- **Records:** [`records/crossregion_AD_20261007_SUMMARY.md`](records/crossregion_AD_20261007_SUMMARY.md), [`records/seedstudy_20261007_SEED_SUMMARY.md`](records/seedstudy_20261007_SEED_SUMMARY.md).
+- **Reproduction:**
+  - The single model is scored in every development and final-test reproduction (`scripts/reproduce_development_cases.py`, `scripts/reproduce_final_test.py`).
+  - The variant and seed runs are archived, not regenerated.
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 
 ## Full record
+
+> *Documentation round v3 (2026-10-11): the statements marked † were reworded to separate what was measured from the explanation it supports. The text as first released is in `DeepDAS_Release_v1.0` and in the git history.*
 
 **Status:** completed. The selected model is shipped as the **supervised single-model baseline** (`models/baselines/supervised_single_p99/`, internal identifier `CR_P99`). The follow-up experiments on features and seeds (A–D and the seed study) led to the design of DeepDAS Ensemble v1.
 **Data role:** development and validation. The development cases and the new-scene check had been inspected before these models were chosen, so none of the numbers below is independent.
@@ -88,7 +135,7 @@ A small number of labelled anomalies, simulated in **other regions** than the ev
 1. **Supervision works.** A supervised head on the pre-trained encoder detects types that reconstruction error missed: braking, straddling, overweight and the contact collision.
 2. **Cleaning and `tg` together help.** Lead-artefact cleaning plus the tailgating fraction gave the best and most stable variant (C). Both became part of DeepDAS Ensemble v1. `osc` and the combination D were not adopted.
 3. **Single models are strongly seed-dependent.** The baseline ranged from 2/9 to 7/9 by seed alone. **A 5-seed ensemble with per-seed standardisation was therefore adopted** for every later model.
-4. **The missing ingredient for tailgating was data, not a feature.** Even with `tg`, tailgating stayed undetected at P99. The cross-region set held only a handful of realised tailgaters, from one design. → Study 03.
+4. **† On the early data, adding `tg` was not enough for tailgating.** Even with `tg`, tailgating stayed undetected at P99. The cross-region set held only a handful of realised tailgaters, from one design, which pointed to the data. → Study 03, where varied data with `tg` kept made it detectable. Whether `tg` was also needed is not identified (study 08).
 
 ## Contents
 | Path | Content |

@@ -3,6 +3,8 @@
 
 Repository changes relative to the original script: input paths are relative to the repository root, and each figure is written to the
 gallery folder of its data role (figures/<role>/{png,pdf,data}). Plotting code and data selection are unchanged.
+Documentation round v3 (2026-10-11): V5 axis titles, legend and limit label use descriptive names instead of study codes
+(W1/W2/C5); the plotted values and the data CSV are unchanged (docs/IDENTIFIERS.md maps the names).
 Figures produced here: V3 score distributions (final test), V5 controlled comparisons (validation), S1/S2 stage-1 autoencoder (archived values).
 
 Every value is read from DeepDAS_Release_v1.0 files; nothing is simulated, smoothed or interpolated.
@@ -271,25 +273,29 @@ def fig_ablation():
         d = S3[S3.arm == arm]; seeds_and_ens(ax, j, d[d.seed != "ENSEMBLE"].P99_val_tailgating_recall.astype(float), float(d[d.seed == "ENSEMBLE"].P99_val_tailgating_recall.iloc[0]), M["E_DIV"]["c"])
         out += [dict(panel="a", group=arm, level=s_, value=v) for s_, v in zip(d.seed, d.P99_val_tailgating_recall)]
     ax.set_xticks([0, 1]); ax.set_xticklabels(["without", "with"]); ax.set_xlim(-0.55, 1.55); ax.set_ylim(0, 1.04)
-    ax.set_xlabel("varied tailgating data"); ax.set_ylabel("Recall"); ax.set_title("Tailgating ($n$ = 13)", fontsize=7.2, pad=3)
+    ax.set_xlabel("varied tailgating data in training"); ax.set_ylabel("Tailgating recall")
+    ax.set_title("Tailgating data\n(validation tailgaters, $n$ = 13)", fontsize=7.0, pad=3, linespacing=1.15)
     ax = axs[1]
     for j, arm in enumerate(("E_quantity", "E_diversity")):
         d = S4[S4.arm == arm]; seeds_and_ens(ax, j, d[d.seed != "ENSEMBLE"].stallval_macro3.astype(float), float(d[d.seed == "ENSEMBLE"].stallval_macro3.iloc[0]), M["E_DIV"]["c"])
         out += [dict(panel="b", group=arm, level=s_, value=v) for s_, v in zip(d.seed, d.stallval_macro3)]
     ax.set_xticks([0, 1]); ax.set_xticklabels(["1 mode ×3", "3 modes"]); ax.set_xlim(-0.55, 1.55); ax.set_ylim(0, 1.04)
-    ax.set_xlabel("24 added stall slots"); ax.set_ylabel("Recall (3 stop modes)"); ax.set_title("Stalled vehicles ($n$ = 18)", fontsize=7.2, pad=3)
+    ax.set_xlabel("24 added stall slots"); ax.set_ylabel("Stall recall (mean of 3 stop modes)")
+    ax.set_title("Stop-mode diversity\n(validation stalls, $n$ = 18)", fontsize=7.0, pad=3, linespacing=1.15)
     ax = axs[2]; ref = int(S7[(S7.model == "E_DIV") & (S7.level == "ensemble")].FA_L.iloc[0]); lim = ref + 3
     ax.axvspan(lim + 0.5, 56, color="#F2F2F2", zorder=0, lw=0); ax.axvline(lim + 0.5, color=RED, lw=0.7, ls="--")
-    ax.text(lim + 1.0, 0.22, "pre-registered\nlimit C5", color=RED, fontsize=6, va="bottom")
+    ax.text(lim + 1.0, 0.22, "pre-registered limit:\nat most 3 more\nlegitimate-stop\nalarms than frozen", color=RED, fontsize=5.6, va="bottom", linespacing=1.1)
     cols = {"E_DIV": M["E_DIV"]["c"], "W1": "#2E7D4F", "W2": "#7A4FA0"}; mks = {"E_DIV": "o", "W1": "s", "W2": "^"}
-    names = {"E_DIV": "DeepDAS v1 (frozen)", "W1": "W1: + targeted data", "W2": "W2: W1 + sampling"}
+    # display names only; the data CSV keeps the study identifiers (E_DIV, W1, W2; docs/IDENTIFIERS.md)
+    names = {"E_DIV": "DeepDAS Ensemble v1 (frozen)", "W1": "targeted data expansion", "W2": "same + controlled sampling"}
     for mdl in ("E_DIV", "W1", "W2"):
         d = S7[S7.model == mdl]; s_ = d[d.level != "ensemble"]; e = d[d.level == "ensemble"].iloc[0]
         ax.plot(s_.FA_L, s_.Weak6, ls="none", marker=mks[mdl], ms=3.0, mfc="white", mec=cols[mdl], mew=0.7)
         ax.plot(e.FA_L, e.Weak6, ls="none", marker=mks[mdl], ms=5.4, color=cols[mdl], label=names[mdl])
         out += [dict(panel="c", group=mdl, level=r.level, value=r.Weak6, FA_L=r.FA_L) for r in d.itertuples()]
     ax.set_xlim(29, 55); ax.set_ylim(0.2, 0.92)
-    ax.set_xlabel("False alarms on legitimate stops (of 54)"); ax.set_ylabel("Recall, 6 weak types"); ax.set_title("Targeted data: gain vs. cost", fontsize=7.2, pad=3)
+    ax.set_xlabel("False alarms on legitimate stops < 10 s (of 54)"); ax.set_ylabel("Mean recall, 6 weak types")
+    ax.set_title("Targeted data for six weak types: gain vs. cost\n(validation; after the test was exposed; not adopted)", fontsize=7.0, pad=3, linespacing=1.15)
     ax.legend(loc="upper left", fontsize=6, handlelength=0.8, handletextpad=0.3, borderaxespad=0.2, labelspacing=0.3)
     for ax, lab in zip(axs, "abc"):
         ax.yaxis.grid(True); ax.set_axisbelow(True); panel_label(ax, lab, x=-0.42 if lab != "c" else -0.24, y=1.02)

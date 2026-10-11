@@ -1,25 +1,70 @@
-# Study 07: Targeted data for the weak types (W1 / W2)
+# Study 07: Targeted training data for the weak types (not adopted)
 
-## At a glance
+> **Research question Q3** ([research index](../README.md)): why do more detections not necessarily justify replacing the model?
+>
+> **Status:** completed; **not adopted**; the last round of model development. **Data role:** validation only. These models were trained **after the final test had been exposed**.
 
-| | |
-|---|---|
-| **Research question** | Does diverse, realisation-checked training data for the six weak types raise their recall without losing any existing ability? |
-| **What was compared** | Two arms on top of the final recipe: W1 (+ targeted data) and W2 (W1 + exposure-preserving sampling), 5 seeds each, against the frozen DeepDAS Ensemble v1, under the pre-registered conditions C1–C9. |
-| **Data** | 314 new runs in training and val_A regions; 24 training and 8 validation vehicles per weak type, with matched controls. <b>Validation only.</b> These models were trained after the final test had been exposed. |
-| **Result** | Weak-type recall 0.35 → 0.71 (W1) and 0.74 (W2), and ROC-AUC 0.87 → 0.96. Normal-driving false alarms stay unchanged, but legitimate-stop alarms rise to 45 and 52 of 54, above the limit of 43 (condition C5). |
-| **Conclusion and limits** | The weak types are learnable from targeted data, but not within the legitimate-stop constraint. <b>Not adopted.</b> The final test cannot evaluate W1/W2, because a later model would need a new test set. |
-| **Reproduce** | With the data package: <code>python research/07_targeted_data_study/code/evaluate_selection_rule.py outputs/w_round</code> reproduces the 7 result files byte for byte. The W1/W2 checkpoints are in <code>models/</code> of this folder. |
+## Summary
+
+**What we wanted to find out.** Does diverse, realisation-checked training data for the six weak types raise their recall without losing any existing ability?
+
+**What was compared.**
+
+- **Three models:** the frozen DeepDAS Ensemble v1 against two new five-seed arms:
+  - a **targeted training-data expansion** (code `W1`);
+  - the **same data with controlled, exposure-preserving sampling** (code `W2`).
+- **Held constant:** the architecture, the splits, the seeds, the batch size and the training budget. Each model is thresholded at its own P99 on the threshold-region normals.
+- **The decision rule:** nine conditions, all fixed before training (codes `C1`–`C9`).
+
+**Data and its role.**
+
+- **The data:** 314 new runs in training and selection regions. For each weak type there are 24 training and 8 validation vehicles from wide parameter grids, with matched legal controls.
+- **Role:** validation only. No new test was run.
 
 <p align="center"><img src="../../figures/validation/png/V5_controlled_comparisons_3panel.png" width="95%"></p>
 
-Panel (c) belongs to this study: weak-type recall against false alarms on 54 legitimate stops for the frozen model (blue) and the W1/W2 arms; dashed: the pre-registered limit C5.
+*Figure, panel (c).*
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+- **Axes:** the mean recall over the six weak types against false alarms on 54 legitimate stops.
+- **Models:** the frozen model, the targeted data expansion, and the same data with controlled sampling.
+- **Markers:** per seed (small) and ensemble (large).
+- **Dashed line:** the pre-registered limit, at most 3 more legitimate-stop alarms than the frozen model.
+
+**Result** (frozen → targeted data / with controlled sampling):
+
+- **Gains:**
+  - mean weak-type recall 0.35 → 0.71 / 0.74, macro recall 0.54 → 0.80 / 0.83;
+  - ROC-AUC 0.87 → 0.96;
+  - false alarms on normal driving 1.13 % → 0.88 % / 1.05 %;
+  - alarms on tailgating controls 6/7 → 0/7 / 2/7.
+- **Cost:** legitimate-stop alarms rose from 40 to 45 and 52 of 54, past the limit of 43 (condition `C5`). Both arms passed the other eight conditions.
+
+**Decision.**
+
+- Neither arm is adopted, and DeepDAS Ensemble v1 remains the final model.
+- Development was closed after this round.
+
+**What this does not show.**
+
+- **Final-test performance.** These arms have no final-test number: the test had been exposed, and a later model needs a new test.
+- **Overweight.** It did not respond to the extra data.
+- **Precision of the gains.** With 9–10 validation vehicles per weak type, one detection moves recall by 0.1. The direction is still consistent across seeds.
+
+**Code, data and reproduction.**
+
+- **Evaluation and rule:** [`code/evaluate_selection_rule.py`](code/evaluate_selection_rule.py). With the data package, `python research/07_targeted_data_study/code/evaluate_selection_rule.py outputs/w_round` reproduces the seven result files of [`results/`](results/) byte for byte.
+- **Models:** `models/W1/`, `models/W2/`.
+- **Data:** `data/` (data package); the generator is `python -m deepdas.batches.targeted_data`.
+- **Training scripts:** in `code/as_run/`, exactly as run. They are not runnable from the repository.
+- **Records:** [`records/weak_types_W1W2_20261010_plan_PLAN_W1_W2_FROZEN.md`](records/weak_types_W1W2_20261010_plan_PLAN_W1_W2_FROZEN.md), [`records/weak_types_W1W2_20261010_results_RESULTS_W.md`](records/weak_types_W1W2_20261010_results_RESULTS_W.md).
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 
 ## Full record
+
+> *Documentation round v3 (2026-10-11): the statements marked † were reworded to separate what was measured from the explanation it supports. The text as first released is in `DeepDAS_Release_v1.0` and in the git history.*
 
 **Status:** completed. **Not adopted.** Neither arm met the pre-registered rule, so DeepDAS Ensemble v1 remains the final model. This was the last round of model development.
 
@@ -98,7 +143,7 @@ C3 counts detections per type on a few vehicles each. This makes it a conservati
 ## Conclusions
 1. **The weak types are learnable from targeted data.** Weak-type recall about doubles on validation, consistent with the diagnosis that the information is in the input and the encoder.
 2. **Overweight is the exception.** Its amplitude overlaps legal heavy vehicles, and more data did not move it.
-3. **The gain costs false alarms on legitimate stops, as predicted.** Learning sharp slow-downs and brakes to a near-stop pushes the model further toward short stops. More data alone does not resolve the trade-off documented in study 05.
+3. **† The gain came with more false alarms on legitimate stops, as the plan anticipated.** A plausible explanation: learning sharp slow-downs and brakes to a near-stop moves the model toward short stops. This was not tested separately. More data alone did not resolve the trade-off documented in study 05.
 4. **The pre-registered rule was applied as written.** DeepDAS Ensemble v1 remains the final model, and development closed.
 
 ## Contents

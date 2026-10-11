@@ -1,25 +1,56 @@
-# Study 01: Unsupervised convolutional autoencoder
+# Study 01: Unsupervised autoencoder — is reconstruction error enough?
 
-## At a glance
+> **Research question Q1** ([research index](../README.md)): why was reconstruction error not enough, and why did we move to supervised learning?
+>
+> **Status:** completed; superseded as a detector, its encoder is kept. **Data role:** development (archived values).
 
-| | |
-|---|---|
-| **Research question** | Does a model trained on normal driving only flag anomalous vehicles by reconstruction error, as the project proposal planned? |
-| **What was compared** | A 1-D convolutional autoencoder (13 channels, 6.4 s windows, 8-d bottleneck, P95 window error per track, P99 threshold) against the shipped SimStudio Z-score, on the same vehicles. |
-| **Data** | The normal corpus with a spatial split, and the nine anomaly types injected at three severities (91 injected vs 632 normal vehicles in the comparison). <b>Development only:</b> the “test” regions here are a split of the normal corpus, not the final test. |
-| **Result** | AUROC 0.598 [0.52, 0.67] vs 0.887 for the Z-score; 1 of 91 injected vehicles detected at a 1 % false-alarm rate. AUROC stays near 0.6 for every seed, window length and bottleneck width. |
-| **Conclusion and limits** | Reconstruction error measures within-window variation, which normal driving has as much as most injected events. The simulated anomalies lie inside the normal envelope of a 6.4 s window. The encoder still learned a useful representation and initialises every later model. |
-| **Reproduce** | Archived study: the numbers come from the original study report in <code>records/</code> and are not regenerated. The 14-channel encoder used later is retrained by <code>scripts/pretrain_autoencoder.py</code>. |
+## Summary
+
+**What we wanted to find out.** The proposal planned an unsupervised detector: a convolutional autoencoder trained on normal driving only, flagging vehicles whose track windows it reconstructs badly. Does this work on the simulator? Does a score on its latent codes work better?
+
+**What was compared.**
+
+- **Two scores of the proposed autoencoder,** against the shipped SimStudio Z-score on the same vehicles:
+  - the reconstruction error: 13 channels, 6.4 s windows, 8-d bottleneck, P95 window error per track, P99 threshold on the threshold-region normals;
+  - a latent max-z score on the codes of the same autoencoder.
+- **Held constant:** the input channels, the windows, the split and the threshold rule.
+- **Sensitivity runs:** each changes one setting (seed, window length 3.2–12.8 s, bottleneck width 4–32).
+
+**Data and its role.**
+
+- **The data:** the normal corpus with a spatial split; the original SimStudio scenarios; and a severity study of 81 runs (9 types × 3 severities × 3 seeds). In total, 91 injected and 632 normal vehicles.
+- **Role:** development. The "test" regions here are a split of the normal corpus, **not** the final test.
 
 <p align="center"><img src="../../figures/archived_stage1/png/S2_ae_severity_archived.png" width="60%"></p>
 
-Median reconstruction-error score per type and severity (log scale) against the operating threshold (dashed); grey band: median of normal vehicles. Only severe speeding and severe reckless driving come close to the threshold.
+*Figure.* Median reconstruction-error score per anomaly type and severity (log scale), against the operating threshold (dashed); grey band: normal vehicles. Only severe speeding and severe reckless driving come close to the threshold.
+
+**Result.**
+
+- **Reconstruction error:** AUROC 0.598 [0.52, 0.67], against 0.887 for the Z-score. At a 1 % false-alarm rate it detects 1 of 91 injected vehicles; the Z-score detects 44 %.
+- **Sensitivity:** AUROC stays near 0.6 for every seed, window length and bottleneck width.
+- **Latent score:** it detects 5 of the 9 original SimStudio scenarios at P99, two of them through a standstill. It detects none of the realised braking, straddling or tailgating cases.
+- **Scenario audit:** four original scenarios did not realise their anomaly. This led to the controlled development cases used from then on.
+
+**Decision.** Reconstruction error is dropped as the detection criterion. The encoder is kept and initialises every later model, retrained with the DAS amplitude as a 14th input.
+
+**What this does not show.**
+
+- Why the encoder helps later: that is shown by studies 02 and 06.
+- These numbers are taken from the archived study report; this repository does not regenerate them.
+
+**Code, data and reproduction.**
+
+- **Code:** `src/deepdas/model/conv_ae.py` (autoencoder), `src/deepdas/train/train.py` (training).
+- **Data:** `data/processed/normal_corpus/` (data package).
+- **Records:** [`records/unsup_REPORT.md`](records/unsup_REPORT.md) and [`records/unsup_release_primary_latent_maxZ_quality_P99_RELEASE_REPORT.md`](records/unsup_release_primary_latent_maxZ_quality_P99_RELEASE_REPORT.md).
+- **Reproduction:** archived, not regenerated. The 14-channel encoder used later is retrained by `scripts/pretrain_autoencoder.py`.
 
 <p align="center"><img src="../../figures/archived_stage1/png/stage1_autoencoder_vs_zscore_roc_pr_ARCHIVED.png" width="95%"></p>
 
-Archived original figure: ROC and precision–recall of the autoencoder against the Z-score.
+*Archived original figure:* ROC and precision–recall of the autoencoder against the Z-score.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 

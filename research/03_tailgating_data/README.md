@@ -1,21 +1,57 @@
-# Study 03: Tailgating data
+# Study 03: Varied tailgating training data
 
-## At a glance
+> **Research question Q2** ([research index](../README.md)): how did training stability and data diversity affect detection? It also feeds Q4: both arms include φ<sub>u</sub>.
+>
+> **Status:** completed and adopted. **Data role:** validation.
 
-| | |
-|---|---|
-| **Research question** | Is tailgating undetected because training lacks realised, varied examples, rather than information? |
-| **What was compared** | The same recipe (cleaning + φ<sub>u</sub>, 5 seeds) without (<code>C_old</code>) and with (<code>C_new</code>) the new tailgating sets. <b>Both arms include φ<sub>u</sub>.</b> |
-| **Data** | Geometry-verified tailgating sets: v3 on planned routes (36 realised) and v4 with matched controls (23 tailgaters + 24 controls); 59 verified training tailgaters in total. Validation regions only. |
-| **Result** | Validation tailgating recall 0.385 → 0.923 (ensemble). The development tailgating case went from 0/5 to 5/5 seeds. |
-| **Conclusion and limits** | Realised, varied examples made tailgating learnable. A model trained on this data <i>without</i> φ<sub>u</sub> was never trained, so the gain cannot be split between the data and the feature (see study 08). |
-| **Reproduce** | Archived study runs (<code>records/</code>). The data is in the data package (<code>data/processed/anomaly_sets/tailgating_*</code>), and the recipe is part of <code>scripts/train_ensemble.py</code>. |
+## Summary
+
+**What we wanted to find out.** Tailgating stayed undetected even with the tailgating fraction φ<sub>u</sub> in the head. Was the cause a lack of realised, varied training examples, rather than missing information?
+
+**What was compared.**
+
+- **The two arms:** the same recipe (artefact cleaning + φ<sub>u</sub>, five seeds) trained **without** and **with** the new tailgating sets.
+- **Held constant:**
+  - the model, including φ<sub>u</sub>;
+  - the recipe and the seeds;
+  - the validation set: 17 cross-region anomalies and 12 tailgaters;
+  - the threshold rule.
+
+  The selection rule was fixed before training.
+
+**Data and its role.** Two geometry-verified tailgating sets, 59 verified tailgaters in all (47 for training, 12 for validation):
+
+- **On planned routes:** 36 realised tailgaters, 24 for training and 12 for validation.
+- **With matched controls (training only):** 23 tailgaters and 24 controls that drive the same route at the default headway.
+- **Role:** validation; the selection used the selection regions. The development cases were reported as a diagnostic.
 
 <p align="center"><img src="../../figures/validation/png/V5_controlled_comparisons_3panel.png" width="95%"></p>
 
-Panel (a) belongs to this study: tailgating recall on validation without and with the varied tailgating data, per seed (open) and for the 5-seed ensemble (filled). Panels (b) and (c) belong to studies 04 and 07.
+*Figure, panel (a).* Tailgating recall on the 13 validation tailgaters for the same recipe trained without and with the varied tailgating data, per seed (open) and for the five-seed ensemble (bar). Panels (b) and (c) belong to studies 04 and 07.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+**Result.**
+
+- **Tailgating:** validation recall rose from 0.385 to 0.923 for the ensemble, and to 0.85–0.92 for every seed.
+- **Validation AP:** 0.449 → 0.766.
+- **False alarms** on the selection-region normals: 1.0 % → 1.1 %.
+- **The development tailgating case** went from no seed detecting it to all five.
+
+**Decision.** The tailgating sets and the recipe are adopted. This ensemble was the frozen candidate until study 04 replaced it.
+
+**What this does not show.**
+
+- **Data or feature?** Both arms include φ<sub>u</sub>. No model without φ<sub>u</sub> was trained **on this expanded, final training data**; early models without it exist only on the early data (study 02). So the gain cannot be split between the data and the feature ([study 08](../08_tailgating_feature_intervention/)).
+- **A new weakness.** The stalled development case was lost (→ study 04).
+- **A remaining cost.** Matched controls stay a false-alarm cost: 7 of 11 on the final test.
+
+**Code, data and reproduction.**
+
+- **Generators:** `src/deepdas/batches/tailgating_routes.py`, `tailgating_controls.py`.
+- **Data:** `data/processed/anomaly_sets/tailgating_routes/`, `tailgating_matched_controls/` (data package); plans in `data/simulation_plans/tailgating_*`.
+- **Records:** [`records/C_tailgating_data_20261008_RESULTS.md`](records/C_tailgating_data_20261008_RESULTS.md), [`records/C_tailgating_data_20261008_per_seed_and_ensemble.csv`](records/C_tailgating_data_20261008_per_seed_and_ensemble.csv).
+- **Reproduction:** the two arms are archived, not regenerated. The recipe is part of `scripts/train_ensemble.py`, which retrains the final model.
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 

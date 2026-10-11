@@ -1,6 +1,11 @@
 # Deep DAS: research overview
 
-> **Note for the repository.** This overview was written for the release folder. Its Z-score numbers refer to the Z-score's own decided set: macro recall 0.231, ROC-AUC 0.783, AUPRC 0.394. On the same vehicles as the deep models (the comparison used in the report and on the front page), the Z-score has 0.232 / 0.819 / 0.496. The φ<sub>u</sub> inference options and study 08 are described in [docs/INFERENCE_MODES.md](docs/INFERENCE_MODES.md).
+> **Note for the repository.**
+> - **Origin.** This overview was written for the release folder `DeepDAS_Release_v1.0`.
+> - **Comparisons.** In this repository copy, every comparison between detectors is given on the **common decided subset** (101 anomalies, 1,008 normal vehicles), as in the report and on the front page. The Z-score's values on its own larger decided set are stated separately.
+> - **Additions.** Study 08 has been added to §3.
+> - **Navigation.** The research is indexed by four questions in [research/README.md](research/README.md); the φ<sub>u</sub> inference options are explained in [docs/INFERENCE_MODES.md](docs/INFERENCE_MODES.md).
+> - **Corrections.** The edits are listed in [docs/CHANGES_DOCS_v3.md](docs/CHANGES_DOCS_v3.md).
 
 **Question.** Can a deep model detect anomalous driving behaviour from fused DAS (distributed acoustic sensing), camera and GPS vehicle
 tracks without using simulator ground truth at inference, and does it detect more than the hand-crafted Z-score model of the SimStudio
@@ -12,8 +17,8 @@ project?
 - **Independent test result.** On a test of new scenes that was planned, frozen and run once, it reached:
   - macro recall 0.568 [95 % CI 0.486–0.646] over nine anomaly types;
   - ROC-AUC 0.908 and AUPRC 0.742.
-- **Baselines on the same test:**
-  - SimStudio Z-score: macro recall 0.231, ROC-AUC 0.783, AUPRC 0.394.
+- **Baselines on the same test and the same vehicles** (common decided subset):
+  - SimStudio Z-score: macro recall 0.232, ROC-AUC 0.819, AUPRC 0.496. On its own larger decided set (105 anomalies, 1,574 normals): 0.231 / 0.783 / 0.394.
   - Single supervised model: macro recall 0.364, ROC-AUC 0.769, AUPRC 0.515.
 - **Significance:** the paired differences are significant (McNemar p < 0.001 against the Z-score, p = 0.0012 against the single model).
 - **Costs:** false alarms on legitimate short stops, false alarms on tailgating matched controls, and limited recall on four anomaly types.
@@ -47,6 +52,7 @@ track (0.1 s bins, burn-in removed)
 **Encoder initialisation.** The encoder comes from an autoencoder pre-trained to reconstruct normal windows. The 13-channel primary autoencoder of the unsupervised study was extended with the DAS log-amplitude as a 14th input and a 7th masked target.
 
 **Training recipe:**
+
 - **Data.** The normal corpus (train split) plus four simulated anomaly sets: a cross-region set with the nine types, two tailgating sets and a stall/stop set.
 - **Batches.** 48 normal + 16 anomalous vehicles per batch, uniform sampling with replacement.
 - **Optimisation.** AdamW, BCE loss, 120 steps × up to 25 epochs, early stopping on validation AP.
@@ -55,22 +61,24 @@ Details: `docs/ARCHITECTURE.md`, `models/deepdas_ensemble_v1/MODEL_CARD.md`.
 
 ## 3. Research path (`research/`)
 
-| # | Study | Hypothesis | Outcome |
-|---|---|---|---|
-| 01 | Unsupervised autoencoder | A model trained on normal driving only flags anomalies by reconstruction error or latent distance | Responds to severity, but most simulated anomalies lie inside the normal envelope. The latent max-z release detected 5 of 9 original causing vehicles (+ the collision target) at P99. **Its encoder is reused.** |
-| 02 | Supervised single model | Few labelled anomalies from other regions teach a head on top of the encoder | Detects more types (7/9 development cases); misses tailgating and lane weaving. Kept as the supervised baseline. |
-| 03 | Tailgating data | Tailgating fails for lack of realised, varied examples, not for lack of information | Geometry-verified tailgating sets with matched controls, plus lead-artefact cleaning and the tailgating fraction, make tailgating detectable. |
-| 04 | Stall diversity | Diverse stall modes generalise better than more of one mode | The diversity arm was selected → **DeepDAS Ensemble v1** |
-| 05 | Legitimate stops | False alarms on 1–10 s stops can be removed by exposure, a temporal branch or checkpoint choice | Not removed without breaking other conditions. **Documented as the main limitation.** |
-| 06 | Weak-type diagnosis | The weak types fail in the head, not in the representation | Confirmed: the information is present in the input and in the encoder (probe AUC 0.81–1.0). The head saw 4 examples per type. |
-| 07 | Targeted data (W1/W2) | Diverse targeted data for the six weak types improves them without losing other abilities | Weak-type recall about doubled (0.35 → 0.71 / 0.74 on validation), but legitimate-stop false alarms rose beyond the pre-registered limit (C5). **Not adopted.** |
+| # | Study | Research question | Hypothesis | Outcome |
+|---|---|---|---|---|
+| 01 | Unsupervised autoencoder | Q1 | A model trained on normal driving only flags anomalies by reconstruction error or latent distance | Responds to severity, but most simulated anomalies lie inside the normal envelope. The latent max-z release detected 5 of 9 original causing vehicles (+ the collision target) at P99. **Its encoder is reused.** |
+| 02 | Supervised single model | Q1, Q2 | Few labelled anomalies from other regions teach a head on top of the encoder | Detects more types (7/9 development cases); misses tailgating and lane weaving. Kept as the supervised baseline. |
+| 03 | Tailgating data | Q2 | Tailgating fails for lack of realised, varied examples, not for lack of information | Geometry-verified tailgating sets with matched controls raise validation tailgating recall from 0.385 to 0.923. Both arms use the same recipe (lead-artefact cleaning + the tailgating fraction), so the data is what changed. No model without the fraction was trained on this expanded, final training data; earlier models without it exist on the early data (study 08). |
+| 04 | Stall diversity | Q2 | Diverse stall modes generalise better than more of one mode | The diversity arm was selected → **DeepDAS Ensemble v1** |
+| 05 | Legitimate stops | Q3 | False alarms on 1–10 s stops can be removed by exposure, a temporal branch or checkpoint choice | Not removed without breaking other conditions. **Documented as the main limitation.** |
+| 06 | Weak-type diagnosis | Q3 | The weak types fail in the head, not in the representation | Supported, not proven: the information is present in the input and in the encoder (probe AUC 0.81–1.0), and the final score separates less. The head saw 4 examples per type. The probes were fitted on the exposed test and do not isolate a single cause. |
+| 07 | Targeted training data (W1/W2) | Q3 | Diverse targeted data for the six weak types improves them without losing other abilities | Weak-type recall about doubled (0.35 → 0.71 / 0.74 on validation), but legitimate-stop false alarms rose beyond the pre-registered limit (condition C5: at most 3 more than the frozen model). **Not adopted.** |
+| 08 | Tailgating-feature check (post hoc) | Q4 | A measurement, not a pre-registered hypothesis: how much does the frozen hybrid depend on its physical summary φ<sub>u</sub>? | With φ<sub>u</sub> neutralized at inference: development 7/9 instead of 8/9 (the tailgating case), validation tailgating 9/13 instead of 12/13, exposed final test 10/11 instead of 11/11. Not a model trained without φ<sub>u</sub>. |
 
-Each folder states the hypothesis, method, results and conclusion (`research/<study>/README.md`).
+Each folder starts with a summary (question, comparison, data role, figure, result, decision, limits, links) and keeps the full record below it (`research/<study>/README.md`). The questions Q1–Q4 are explained in `research/README.md`.
 
 ## 4. Results (kept strictly separate)
 
 ### 4.1 Development (used for design and selection; not independent)
 The nine development cases, one per anomaly type:
+
 - **DeepDAS Ensemble v1 detects 8 of 9.** Overweight is missed: score 1.865 against the threshold 1.973.
 - This is reproduced byte for byte by `scripts/reproduce_development_cases.py`.
 - Four of the nine original SimStudio anomaly scenarios did not realise their anomaly (§5). For those types, the development case is a controlled scenario that does.
@@ -92,18 +100,24 @@ Reproduced by `scripts/reproduce_validation.py`.
 ### 4.3 Independent final test (frozen plan, run once on 2026-10-09)
 
 **Setup.** 228 runs in the 8 test regions:
+
 - new scenes, new background traffic, new simulation seeds, and injection lanes never used before;
 - the plan, the models, the thresholds and the evaluation code were all frozen before simulation.
 
+**Common decided subset** (101 anomalies, 1,008 normal vehicles; every column on the same vehicles):
+
 | | DeepDAS Ensemble v1 | Supervised single model | SimStudio Z-score |
 |---|---|---|---|
-| Macro recall (9 types) | **0.568** [0.486–0.646] | 0.364 | 0.231 |
-| Precision / F1 | 0.74 / 0.64 | 0.88 / 0.52 | 0.64 / 0.33 |
-| ROC-AUC / AUPRC | **0.908 / 0.742** | 0.769 / 0.515 | 0.783 / 0.394 |
-| False alarms, normal driving | 20 / 1008 (2.0 %) | 5 / 1008 | 13 / 1574 |
-| False alarms, legitimate stops | 20 / 28 | 14 / 28 | 23 / 32 |
+| Macro recall (9 types) | **0.568** [0.486–0.646] | 0.364 | 0.232 |
+| Precision / F1 | 0.74 / 0.64 | 0.88 / 0.52 | 0.77 / 0.35 |
+| ROC-AUC / AUPRC | **0.908 / 0.742** | 0.769 / 0.515 | 0.819 / 0.496 |
+| False alarms, normal driving | 20 / 1008 (2.0 %) | 5 / 1008 (0.5 %) | 7 / 1008 (0.7 %) |
+| False alarms, legitimate stops | 20 / 28 | 14 / 28 | 22 / 28 |
+
+**The Z-score on its own decided set** (105 anomalies, 1,574 normal vehicles; not comparable column by column with the table above): macro recall 0.231, precision / F1 0.64 / 0.33, ROC-AUC / AUPRC 0.783 / 0.394, false alarms 13 / 1574 on normal driving and 23 / 32 on legitimate stops.
 
 **Per type (DeepDAS Ensemble v1):**
+
 - Stalled vehicle 12/12
 - Tailgating 11/11
 - Reckless driving 7/10
@@ -116,7 +130,7 @@ Reproduced by `scripts/reproduce_validation.py`.
 
 Reproduced byte for byte by `scripts/reproduce_final_test.py`; full tables are in `results/final_test/`.
 
-This test was later used for the weak-type diagnosis (study 06). From then on it counts as exposed data, and it is **not** used as evidence for any later variant.
+This test was later used for the weak-type diagnosis (study 06) and for the post-hoc φ<sub>u</sub> check (study 08). From then on it counts as exposed data, and it is **not** used as evidence for any later variant.
 
 ## 5. Methodological decisions worth knowing
 - **No ground truth in inference.** The model sees only exported tracks. The Z-score baseline is used as shipped; 13 of its 156 features use the truth position error. A truth-free sensitivity check gives the same macro recall (0.231).
@@ -129,9 +143,10 @@ This test was later used for the weak-type diagnosis (study 06). From then on it
 
 ## 6. Limitations
 See `docs/LIMITATIONS.md`. In short:
+
 1. False alarms on legitimate 1–10 s stops (final test 20/28).
 2. False alarms on tailgating matched controls that follow a slow leader (7/11 in the final test).
 3. Low recall on hard braking, speeding, overweight and lane straddling in the final test.
 4. Decision coverage: only 1008 of 1708 normal vehicles of the final test had a decided track.
 5. Mild speeding (×1.1–1.25) overlaps the simulator's normal speed envelope.
-6. All results are simulation-only.
+6. All results are simulation-only, except one real recording: the Klausner Street bus, which stands about 31 s, a stall by the project's rule. The final model detects it in both inference options (`models/deepdas_ensemble_v1/experiment_klausner/`). This is one case, not a recall estimate.

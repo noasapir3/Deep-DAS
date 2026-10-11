@@ -1,5 +1,10 @@
 # DeepDAS Release v1.0
 
+> **Historical page.** This is the front page of the original release folder, kept as it was. It is superseded in three ways:
+> - **The Z-score column** of its results table is on the Z-score's own decided set (105 anomalies, 1,574 normals). The deep models' columns are on the 1,008 normals they decide. For a comparison on the same vehicles, see the [repository front page](../README.md#results): Z-score 0.232 / 0.819 / 0.496.
+> - **The studies.** It lists seven studies; the repository has eight ([research/README.md](../research/README.md)).
+> - **Real data.** It predates the Klausner experiment.
+
 **DeepDAS Ensemble v1** is a supervised deep model that flags anomalous driving behaviour from vehicle tracks. The tracks fuse distributed acoustic sensing (DAS), cameras and GPS in the SimStudio North Tel Aviv simulation. The model uses no simulator ground truth at inference.
 
 This folder is the complete, self-contained release of the Deep DAS course project: the final model, its data in processed form, the code, the research record, and the reproduction of every reported result.

@@ -33,6 +33,7 @@ The gallery holds every scientific figure of the project, grouped by **the role 
 
 **Regenerating the figures** (from the repository root):
 ```bash
+python figures/scripts/make_main_performance_figures.py   # V6, V7  (results/ only; the three frozen detectors)
 python figures/scripts/make_report_figures.py      # V3, V5, S1, S2           (needs results/ and research records only)
 python figures/scripts/make_study_figures.py       # S02, S05, S06            (research records only)
 python research/08_tailgating_feature_intervention/code/make_figures.py   # G1-G4 (results/ and results_phi_neutralized/)
@@ -68,9 +69,17 @@ python figures/scripts/make_architecture_figure.py # G0                        (
 
 <img src="development/png/S02_seed_dependence.png" width="48%">
 
-**S02: Study 02, development cases detected per seed (single models, early data).**
+**S02: Development cases detected per seed, single models on early data (study 02; research question Q2).**
 
-- **The comparison.** The same recipe with seeds 0, 1 and 2 detects anywhere from 2 to 8 of the 9 cases. This seed dependence is why every later model is a 5-seed ensemble.
+- **What is compared.** Four recipes, each differing in one change:
+  - the original recipe;
+  - + artefact cleaning;
+  - + cleaning + a weaving feature;
+  - + cleaning + φ<sub>u</sub>.
+
+  Each recipe is trained with seeds 0, 1 and 2.
+- **Data and metric.** The 9 development cases; the number detected at each model's own P99 threshold.
+- **The finding.** Depending on the seed, the original recipe detects 7, 2 or 3 of the 9 cases (2–7). Across the four recipes and three seeds the range is 2–8. This seed dependence is why every later model is a 5-seed ensemble.
 - **Tailgating.** No arm detects the tailgating case, with or without φ<sub>u</sub>.
 
 [PDF](development/pdf/S02_seed_dependence.pdf) · [data](development/data/S02_seed_dependence.csv) · [script](scripts/make_study_figures.py) · [study 02](../research/02_supervised_single_model/)
@@ -80,51 +89,66 @@ python figures/scripts/make_architecture_figure.py # G0                        (
 
 <img src="validation/png/V5_controlled_comparisons_3panel.png" width="100%">
 
-**V5: Controlled comparisons. Each panel changes one factor and shows every seed.**
+**V5: Controlled comparisons on validation data. Each panel changes one factor and shows every seed and the five-seed ensemble.**
 
-- **(a) Study 03.** The same recipe (with φ<sub>u</sub>) without and with the varied tailgating data: validation tailgating recall 0.385 → 0.923.
-- **(b) Study 04.** 24 added stall slots, as one stop mode repeated three times or three different modes. Both ensembles reach 18/18, but one repeated-mode seed falls to 0.67.
-- **(c) Study 07, W1/W2.** Weak-type recall against false alarms on 54 legitimate stops. The targeted data roughly doubles weak-type recall, but both arms cross the pre-registered limit C5 (dashed).
-- **Why W1/W2 is included.** It shows that the weak types are learnable. Its status: validation only, trained after the final test had been exposed, and not adopted.
+- **(a) Tailgating data** (study 03, Q2).
+  - **Compared:** the same recipe (with φ<sub>u</sub>) without and with the varied tailgating data.
+  - **Data:** the 13 validation tailgaters.
+  - **Metric:** recall, 0.385 → 0.923.
+- **(b) Stop-mode diversity** (study 04, Q2).
+  - **Compared:** 24 added stall slots, as one stop mode repeated three times or as three different modes.
+  - **Data:** the 18 validation stalls.
+  - **Metric:** recall, the mean over the three modes. Both ensembles reach 18/18, but one repeated-mode seed falls to 0.67.
+- **(c) Targeted data for the six weak types** (study 07, Q3).
+  - **Compared:** the frozen model, a targeted training-data expansion, and the same data with controlled sampling.
+  - **Metrics:** the mean recall of the six weak types against false alarms on 54 legitimate stops.
+  - **The result:** both new arms roughly double weak-type recall, but cross the pre-registered limit of at most 3 more legitimate-stop alarms than the frozen model (dashed).
+  - **Status:** validation only, trained after the final test had been exposed, not adopted. It is included because it shows that the weak types are learnable.
 
 [PDF](validation/pdf/V5_controlled_comparisons_3panel.pdf) · [data](validation/data/V5_controlled_comparisons_3panel.csv) · [script](scripts/make_report_figures.py)
 
 <img src="validation/png/S05_legitimate_stop_remedies.png" width="48%">
 
-**S05: Study 05, three remedies for false alarms on legitimate stops < 10 s.**
+**S05: Remedies for false alarms on legitimate stops < 10 s (study 05, Q3).**
 
-- **The remedies.** Controlled exposure (F1), a temporal branch (F2), and checkpoint choice by a task rule (J). Each ensemble is at its own val_B P99.
-- **The outcome.** They reduce the alarms from 40 to as low as 21 of 54, but none reaches the pre-registered replacement rule while keeping the other conditions. This is the model's main limitation.
+- **What is compared.** The frozen model against three kinds of remedy:
+  - controlled exposure to legitimate stops;
+  - exposure + a temporal branch over the window sequence;
+  - for all three recipes, a checkpoint chosen by a task rule.
+- **Data and metric.** The 54 legitimate and 66 abnormal validation stops. Each ensemble is at its own threshold (P99 on the threshold-region normals).
+- **The outcome.** The remedies reduce the alarms from 40 to as low as 21 of 54, but none reaches the pre-registered replacement rule while keeping the other conditions. This is the model's main limitation.
 
 [PDF](validation/pdf/S05_legitimate_stop_remedies.pdf) · [data](validation/data/S05_legitimate_stop_remedies.csv) · [script](scripts/make_study_figures.py) · [study 05](../research/05_legitimate_stops/)
 
 ## 4. Final test
 *228 new scenes in 8 held-out regions, planned, frozen and run once.*
 
-- **Independent** for the hybrid (`active`), the single model and the Z-score.
+- **Independent** for the three detectors frozen before it: DeepDAS Ensemble v1 as trained and tested (`active`), the single model and the Z-score.
 - **Common decided subset:** 101 anomalies and 1,008 normal vehicles.
-- **The neutralized series (dashed, teal) is post hoc.**
+- **The post-hoc neutralized option** is not drawn here. Its four-configuration versions (G3, G4) are in §5.
 
-<img src="../research/08_tailgating_feature_intervention/figures/png/G4_roc_pr_four_configurations.png" width="100%">
+<img src="final_test/png/V6_roc_pr_frozen_detectors.png" width="100%">
 
-**G4: ROC and precision–recall from the saved scores.**
+**V6: ROC and precision–recall of the three detectors frozen before the test.**
 
-- **Operating points.** Open markers are the frozen operating points.
-- **The two options.** The hybrid ensemble lies above both baselines over almost the whole range, and the neutralized option almost coincides with it (ROC-AUC 0.908 vs 0.906).
-- **What not to read into it.** The curves rank vehicles. No threshold was chosen from them.
+- **Data.** The common decided subset: 101 anomalies and 1,008 normal vehicles.
+- **What is drawn.** The curves come from the saved scores. Open markers are the frozen operating points.
+- **The ranking.** The ensemble (ROC-AUC 0.908, AUPRC 0.742) lies above both baselines over almost the whole range.
+- **What not to read into it.** The curves rank vehicles; no threshold was chosen from them.
+- **The source of the values.** They are identical to those of G4 below; the post-hoc neutralized series is simply not drawn.
 
-[PDF](../research/08_tailgating_feature_intervention/figures/pdf/G4_roc_pr_four_configurations.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G4_roc_pr_four_configurations.csv) · [script](../research/08_tailgating_feature_intervention/code/make_figures.py)
+[PDF](final_test/pdf/V6_roc_pr_frozen_detectors.pdf) · [data](final_test/data/V6_roc_pr_frozen_detectors.csv) · [script](scripts/make_main_performance_figures.py)
 
-<img src="../research/08_tailgating_feature_intervention/figures/png/G3_detection_by_type_four_configurations.png" width="60%">
+<img src="final_test/png/V7_detection_by_type_frozen_detectors.png" width="60%">
 
-**G3: Recall per anomaly type at the frozen thresholds.**
+**V7: Recall per anomaly type at the frozen thresholds, three frozen detectors.**
 
-- **Intervals.** *n* is in brackets, with Wilson 95 % intervals.
-- **Where the deep models gain.** On tailgating and weaving.
-- **Weak for everyone.** Hard braking is weak for every detector (at most 1/11).
-- **The two options.** Speeding, collision and tailgating differ by one vehicle each.
+- **Data.** The common decided subset; *n* is in brackets, with Wilson 95 % intervals.
+- **Where the ensemble gains:** tailgating, weaving and reckless driving.
+- **Weak for everyone:** hard braking (at most 1/11).
+- **Where a baseline is better:** straddling (single model, 8/12) and collision (single model 9/10, Z-score 10/10).
 
-[PDF](../research/08_tailgating_feature_intervention/figures/pdf/G3_detection_by_type_four_configurations.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G3_detection_by_type_four_configurations.csv) · [script](../research/08_tailgating_feature_intervention/code/make_figures.py)
+[PDF](final_test/pdf/V7_detection_by_type_frozen_detectors.pdf) · [data](final_test/data/V7_detection_by_type_frozen_detectors.csv) · [script](scripts/make_main_performance_figures.py)
 
 <img src="final_test/png/V3_score_distributions.png" width="100%">
 
@@ -152,12 +176,33 @@ The panel titles give the counts above the frozen threshold. The legitimate stop
 
 G1: [PDF](../research/08_tailgating_feature_intervention/figures/pdf/G1_development_cases_phi_dependence.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G1_development_cases_phi_dependence.csv) · G2: [PDF](../research/08_tailgating_feature_intervention/figures/pdf/G2_tailgating_detection_two_options.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G2_tailgating_detection_two_options.csv) · [script](../research/08_tailgating_feature_intervention/code/make_figures.py) · [study 08](../research/08_tailgating_feature_intervention/)
 
+<img src="../research/08_tailgating_feature_intervention/figures/png/G4_roc_pr_four_configurations.png" width="100%">
+
+**G4 (post hoc): ROC and precision–recall with the neutralized option added, final test, common decided subset.**
+
+- **Operating points.** Open markers are the frozen operating points.
+- **The two options.** The hybrid ensemble lies above both baselines over almost the whole range, and the neutralized option almost coincides with it (ROC-AUC 0.908 vs 0.906).
+- **What not to read into it.** The curves rank vehicles. No threshold was chosen from them.
+
+[PDF](../research/08_tailgating_feature_intervention/figures/pdf/G4_roc_pr_four_configurations.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G4_roc_pr_four_configurations.csv) · [script](../research/08_tailgating_feature_intervention/code/make_figures.py)
+
+<img src="../research/08_tailgating_feature_intervention/figures/png/G3_detection_by_type_four_configurations.png" width="60%">
+
+**G3 (post hoc): recall per anomaly type with the neutralized option added.**
+
+- **Intervals.** *n* is in brackets, with Wilson 95 % intervals.
+- **Where the deep models gain.** On tailgating and weaving.
+- **Weak for everyone.** Hard braking is weak for every detector (at most 1/11).
+- **The two options.** Speeding, collision and tailgating differ by one vehicle each.
+
+[PDF](../research/08_tailgating_feature_intervention/figures/pdf/G3_detection_by_type_four_configurations.pdf) · [data](../research/08_tailgating_feature_intervention/figures/data/G3_detection_by_type_four_configurations.csv) · [script](../research/08_tailgating_feature_intervention/code/make_figures.py)
+
 <img src="post_hoc/png/S06_information_flow_weak_types.png" width="48%">
 
 **S06: Study 06, where the weak types are lost.**
 
 - **What is measured.** The AUC against normal tracks of three things: simple input statistics (logistic probe), the pooled encoder code (linear probe), and the frozen ensemble score.
-- **The finding.** The information is present in the input and survives the encoder. Most of it is lost in the head, which saw about four examples per type.
+- **The finding.** The information is present in the input and in the pooled encoder code, and the final score separates the weak types less. Together with about four training examples per type, this points to the head. The diagnosis does not isolate a single cause.
 - **Status.** This uses the exposed final-test tracks, so it is post-hoc diagnosis.
 
 [PDF](post_hoc/pdf/S06_information_flow_weak_types.pdf) · [data](post_hoc/data/S06_information_flow_weak_types.csv) · [script](scripts/make_study_figures.py) · [study 06](../research/06_weak_type_diagnosis/)

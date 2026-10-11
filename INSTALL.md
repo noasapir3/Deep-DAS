@@ -62,14 +62,14 @@ Every command below names the inference option explicitly. If `--phi-mode` is om
 
 **Development cases (9 vehicles, a few seconds):**
 ```bash
-python scripts/reproduce_development_cases.py outputs/dev_neutralized --phi-mode neutralized   # prints 7 / 9
 python scripts/reproduce_development_cases.py outputs/dev_active      --phi-mode active        # prints 8 / 9 (published result)
+python scripts/reproduce_development_cases.py outputs/dev_neutralized --phi-mode neutralized   # prints 7 / 9
 ```
 
 **Your own imported runs** (`scripts/import_runs.py` converts SimStudio run folders into the processed format):
 ```bash
-DEEPDAS_PHI_MODE=neutralized python scripts/score_tracks.py <processed_runs_dir> outputs/scores_neutralized.csv
 DEEPDAS_PHI_MODE=active      python scripts/score_tracks.py <processed_runs_dir> outputs/scores_active.csv
+DEEPDAS_PHI_MODE=neutralized python scripts/score_tracks.py <processed_runs_dir> outputs/scores_neutralized.csv
 ```
 `score_tracks.py` reads the option from the environment variable `DEEPDAS_PHI_MODE`; it does not take the flag.
 

@@ -10,12 +10,17 @@ A vehicle that brakes gently, stands 1–10 s and drives on is normal by the pro
 | Final test | **20 of 28**: 3 s 3/8, 5 s 8/11, 8 s 9/9 |
 | Validation | 40 of 54 |
 
-- **Cause** (study 05): mean/std pooling lets the share of stop windows decide the score. Legitimate stops had very low training exposure, and the tracker shortens stops in the input, so their duration is a weak signal.
-- **What did not fix it:** controlled exposure, a temporal branch, checkpoint choice and targeted data (studies 05 and 07). None removed it without breaking another condition.
+- **What was measured** (study 05):
+  - with the stop windows removed, the alarms disappear;
+  - legitimate stops had very low training exposure (about 105× fewer stop windows than stalls);
+  - the tracker shortens stops in the input.
+- **The explanation this supports:** with mean/std pooling, the share of stop windows drives the score and the stop's duration is a weak signal. It was not isolated as the only cause.
+- **What did not fix it:** controlled exposure to legitimate stops, a temporal branch, checkpoint choice by a task rule (study 05) and targeted training data (study 07). None removed it without breaking another condition.
 - **Consequence:** in a setting with many short legitimate stops (traffic lights, stop signs), alarms near stops need a second look. The simulator has no traffic lights, so the frequency of such stops in real traffic is not represented.
 
 ### 2. False alarms on tailgating matched controls
 These are vehicles following a slow, pinned leader at the default headway.
+
 - Final test: 7 of 11. Validation: 6 of 7.
 - Within each matched pair the tailgater always scores higher (11/11), so the ranking is right but the threshold does not separate them.
 - With these controls removed, the false-alarm rate on normal driving in the final test is 13/985 = 1.3 % instead of 2.0 %.
@@ -29,8 +34,8 @@ These are vehicles following a slow, pinned leader at the default headway.
 | Overweight | 4/12 |
 | Lane straddling | 5/12 |
 
-- **Cause** (study 06): the information is in the input and the encoder, but each type had only 4 homogeneous training examples.
-- Targeted data doubled their validation recall (study 07), but at the cost of more legitimate-stop alarms, so it was not adopted.
+- **Likely explanation** (study 06, post hoc): the information is in the input and the encoder, and the final score separates less. Each type had only 4 homogeneous training examples, which points to the head and its training data. The diagnosis does not isolate a single cause.
+- Targeted training data doubled their validation recall (study 07), but at the cost of more legitimate-stop alarms than the pre-registered limit allowed, so it was not adopted. That round was trained after the final test had been exposed and has no final-test number.
 
 ### 4. Decision coverage
 In the final test, 1,008 of 1,708 normal vehicles had a decided track. The others had:
@@ -52,7 +57,11 @@ Overweight (DC-07) scores 1.865 against the threshold 1.973.
 
 ### 7. Simulation only
 - Every result is on SimStudio North-TLV scenes with simulated DAS, cameras and GPS.
-- There is no real-world evaluation; the single real bus track of the SimStudio project was used only qualitatively in study 01.
+- There is no real-world evaluation set. The one real recording, a bus on Klausner Street that stands about 31 s (a stall by the project's rule), was scored qualitatively:
+  - by the stage-1 autoencoder in study 01, which missed it;
+  - by the final model, inference only, which detects it in both inference options ([Klausner experiment](../models/deepdas_ensemble_v1/experiment_klausner/)).
+
+  One case is not a recall or false-alarm estimate, and its label applies the simulation's stall rule to the measured DAS speed.
 - The exported tracks inherit truth in the tracker: oracle-aided association, truth-seeded initialisation, and noise-free camera/GPS velocity. Tracks are therefore cleaner than a real system would produce.
 
 ### 8. Truth-dependent unit in the validation and development tables

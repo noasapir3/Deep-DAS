@@ -1,21 +1,62 @@
-# Study 04: Stall diversity (the selection of DeepDAS Ensemble v1)
+# Study 04: Stop-mode diversity (the selection of DeepDAS Ensemble v1)
 
-## At a glance
+> **Research question Q2** ([research index](../README.md)): how did training stability and data diversity affect detection?
+>
+> **Status:** completed; the diversity arm was selected and frozen as **DeepDAS Ensemble v1**, the final model. **Data role:** validation.
 
-| | |
-|---|---|
-| **Research question** | The new tailgating data cost the stalled development case. Do diverse stop modes generalise better than more of one mode? |
-| **What was compared** | Two arms that add the same 24 stall slots: one stop mode repeated three times (<code>QUANT</code>) or three different modes (<code>DIV</code>), with identical controls and legitimate stops; 5 seeds each. |
-| **Data** | The stall and stop set; the stall validation set (18 stalls in 3 modes) and the original validation set. <b>Validation only.</b> |
-| **Result** | Both ensembles detect 18/18 validation stalls, but per seed repetition gives 0.93 ± 0.15 where diversity gives 1.00 ± 0.00; one repeated-mode seed falls to 0.67. Diversity also wins the tie-break on validation AP (0.781 vs 0.751). |
-| **Conclusion and limits** | The diversity arm was selected and frozen as <b>DeepDAS Ensemble v1</b>, the final model, before the final test. |
-| **Reproduce** | The frozen checkpoints are in <code>models/deepdas_ensemble_v1/</code>. <code>scripts/train_ensemble.py</code> retrains them bit-exactly on the build platform (<code>docs/REPRODUCIBILITY.md</code>), and <code>scripts/reproduce_validation.py</code> regenerates the validation scores. |
+## Summary
+
+**What we wanted to find out.** After the new tailgating data was added, the stalled development case was missed. We asked three things:
+
+- Was it a sampling problem, or an encoder problem?
+- Was a stop mode missing from training?
+- Do diverse stop modes generalise better than more copies of one mode?
+
+**What was compared.**
+
+1. **Two exposure experiments** on the recipe of study 03: type-balanced anomaly sampling, and a frozen encoder with head-only training.
+2. **Two arms** that add the same 24 stall slots (same regions, vehicles, routes, stop locations, sensing and speeds): one stop mode repeated three times, or three different stop modes. Each arm has five seeds.
+
+**Held constant:** everything except the stop mode, including the matched controls and the legitimate stops. The replacement rule was fixed before training.
+
+**Data and its role.**
+
+- **The stall and stop set:** training slots and a stall validation set in selection regions (18 stalls in 3 modes, 6 legitimate stops, 6 controls).
+- **Also used:** the original validation set.
+- **Role:** validation. The development cases were reported only after freezing.
 
 <p align="center"><img src="../../figures/validation/png/V5_controlled_comparisons_3panel.png" width="95%"></p>
 
-Panel (b) belongs to this study: recall on the 18 validation stalls for one mode × 3 and for three modes, per seed and for the ensemble.
+*Figure, panel (b).* Recall on the 18 validation stalls (mean over the three stop modes) when the 24 added stall slots repeat one stop mode or cover three, per seed (open) and for the five-seed ensemble (bar).
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+**Result.**
+
+- **Exposure experiments:** neither qualified. Macro recall on the original validation set was 0.603 with balanced sampling and 0.205 with the frozen encoder, against 0.714 for the reference; the frozen encoder also exceeded the false-alarm limit.
+- **Stop modes:**
+  - Both ensembles detect 18/18 validation stalls. Per seed, repetition gives 0.93 ± 0.15 and diversity 1.00 ± 0.00; one repeated-mode seed falls to 0.67.
+  - Both arms pass the four pre-registered conditions and tie on validation macro recall and stall recall, so validation AP decides: 0.781 against 0.751.
+
+**Decision.**
+
+- The diversity ensemble is selected and frozen as DeepDAS Ensemble v1, with τ = 1.9726181803233118, before the final test.
+- After freezing it detects 8 of the 9 development cases; overweight is missed at score 1.865.
+
+**What this does not show.**
+
+- **Legitimate stops.** The model flags them (4 of 6 here, 40 of 54 in study 05). The issue stays open.
+- **Independence.** All comparisons here are on validation data.
+
+**Code, data and reproduction.**
+
+- **Model:** [`models/deepdas_ensemble_v1/`](../../models/deepdas_ensemble_v1/) (frozen).
+- **Data:** `data/processed/anomaly_sets/stalls_and_stops/`, `data/simulation_plans/stalls_and_stops/` (data package).
+- **Records:** [`records/exp12_balanced_vs_frozen_20261008_RESULTS_EXP12.md`](records/exp12_balanced_vs_frozen_20261008_RESULTS_EXP12.md), [`records/stall_diversity_20261008_RESULTS_STALL.md`](records/stall_diversity_20261008_RESULTS_STALL.md), [`records/stall_diversity_20261008_per_seed_and_ensemble.csv`](records/stall_diversity_20261008_per_seed_and_ensemble.csv).
+- **Reproduction:**
+  - `scripts/train_ensemble.py` retrains the five checkpoints bit-exactly on the build platform (`docs/REPRODUCIBILITY.md`).
+  - `scripts/reproduce_validation.py` regenerates the validation scores of the final model.
+  - The quantity arm and the exposure experiments are archived.
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 

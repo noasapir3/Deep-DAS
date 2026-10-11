@@ -1,19 +1,22 @@
 # Evaluation protocol
 
-## 1. Three kinds of results, never mixed
+## 1. Kinds of results, never mixed
 
 | Kind | Data | Used for | Independent? | Folder |
 |---|---|---|---|---|
 | **Development** | the 9 development cases; the test-split normals of the corpus; the new-scene check | design decisions, diagnosis | **no** | `results/development/` |
 | **Validation** | val_A normals and validation anomalies; stallval; the legitimate-stop validation set; val_B (thresholds only) | checkpoint selection, model selection by pre-registered rules | **no** (they were used to select) | `results/validation/` |
 | **Final test** | 228 new runs in the 8 test regions, planned and frozen before simulation, run once | the single independent estimate of DeepDAS Ensemble v1 | **yes**, for DeepDAS Ensemble v1 and the two baselines | `results/final_test/` |
+| **Post hoc** | analyses defined after the final test had been exposed: the weak-type diagnosis (study 06), the targeted-data round on validation data (study 07), the φ<sub>u</sub>-neutralized option (study 08) | diagnosis; the targeted-data round applied its selection rule on validation data and adopted no model | **no** | `research/06–08`, `results_phi_neutralized/` |
 
 **Rules:**
+
 - No number of one kind is reported as if it were another kind.
 - The development 8/9 is a development result.
 - The validation macro recall (0.714) is a selection result.
 - Only the final-test numbers estimate generalisation.
-- After its single evaluation, the final test was used for a diagnosis (study 06). From then on it is **exposed** and is not used as evidence for any later model.
+- After its single evaluation, the final test was used for a diagnosis (study 06) and for the φ<sub>u</sub> check (study 08). From then on it is **exposed** and is not used as evidence for any later model.
+- **Comparisons between detectors** use the common decided subset (101 anomalies, 1,008 normal vehicles). A value on one detector's own decided set is labelled as such and never placed in the same table column as common-subset values.
 
 ## 2. Thresholds and decisions
 - **Thresholds come only from val_B normals.** A threshold is never copied between models.
@@ -34,6 +37,7 @@
 **Positives.** The realised injected vehicles of the 9 core types, 105 of 108. Each detector is scored on its decided ones; the **common** variant uses the anomalies decided by all three detectors.
 
 **Negatives:**
+
 - normal driving: the unaffected backgrounds and the normal-scene vehicles;
 - legitimate stops, 3 / 5 / 8 s;
 - tailgating matched controls.
@@ -41,6 +45,7 @@
 These three groups are reported separately.
 
 **Metrics:**
+
 - Macro recall over the 9 types, with a bootstrap 95 % CI over runs.
 - Pooled recall, precision and F1.
 - ROC-AUC and AUPRC (anomalies vs normal driving).
@@ -52,6 +57,7 @@ These three groups are reported separately.
 
 ## 4. Pre-registration
 Every comparison round (studies 03, 04, 05 and 07, and the final test) had a written plan before its simulations or training. The plan fixed:
+
 - the data and its realisation rules;
 - the arms and their single difference;
 - the selection or replacement rule.
@@ -76,6 +82,7 @@ Changes after a plan were made only as **versioned revisions or errata, written 
 
 ## 6. The E2 criterion (exact definition, version 1.1)
 For each of the nine development cases, the unit is the simulated vehicle, as in the shipped development table. The release code recomputes the following from the shipped processed data and the frozen models:
+
 1. the five seed logits and the single-model logit;
 2. the per-seed z, z_k = (logit_k − valB_mean_k) / valB_std_k, with the frozen constants;
 3. the ensemble score, the mean of the z_k;
@@ -96,6 +103,7 @@ For each of the nine development cases, the unit is the simulated vehicle, as in
 **The tolerance.** It covers float32 accumulation order: different window batching, and another CPU, BLAS or instruction set. A difference within the tolerance that changed any decision would still **fail** E2. No numerical tolerance applies to a decision, a count or a table cell.
 
 **History of the criterion (disclosed).**
+
 - **Version 1.0**, approved before the build, applied the same 1e-5 tolerance to the raw per-seed logits as well.
   - On the build platform (Linux x86-64) it passed: logits 6.7e-6, z 1.2e-6, ensemble 5.9e-7.
   - On the Linux aarch64 (ARM) environment of the clean-install check it **failed** on the raw logits (maximum 1.72e-5). The z (3.4e-6), the ensemble scores (1.6e-6), every decision and the development table were identical within tolerance.

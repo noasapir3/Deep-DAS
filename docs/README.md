@@ -2,6 +2,7 @@
 
 | Page | Read it for |
 |---|---|
+| [QUESTION_MAP.md](QUESTION_MAP.md) | **start here to check the report:** each research question and report section → study folder, figure and evidence files |
 | [BACKGROUND_SIMSTUDIO.md](BACKGROUND_SIMSTUDIO.md) | the earlier SimStudio fibre-sensing project and what DeepDAS adds |
 | [INFERENCE_MODES.md](INFERENCE_MODES.md) | the two inference options (`neutralized` / `active`) and their separate results |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | the 14 channels, the encoder, pooling, head and ensemble rule |
@@ -12,11 +13,12 @@
 | [LIMITATIONS.md](LIMITATIONS.md) | the known limitations of the final model |
 | [LEAKAGE_AUDIT.md](LEAKAGE_AUDIT.md) | how truth leakage and split leakage were ruled out |
 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [CROSS_PLATFORM.md](CROSS_PLATFORM.md) | exact reproduction, pinned versions, differences between CPU architectures |
-| [IDENTIFIERS.md](IDENTIFIERS.md) | internal identifiers (`E_DIV`, `CR_P99`, `C_new`, …) and their release names |
+| [IDENTIFIERS.md](IDENTIFIERS.md) | internal identifiers (`E_DIV`, `CR_P99`, `C_new`, `W1`, `C5`, `EXP1`, …) and the descriptive names used in the report |
 | [DEVELOPMENT_HISTORY.md](DEVELOPMENT_HISTORY.md) | the chronological development record |
 | [REPOSITORY_MAP.md](REPOSITORY_MAP.md) | how this repository maps to the frozen release package |
+| [CHANGES_DOCS_v3.md](CHANGES_DOCS_v3.md) | what the documentation round v3 changed, and which inconsistencies it corrected |
 | [RAW_DATA_PACKAGE.md](RAW_DATA_PACKAGE.md), [ARCHIVE_INDEX.md](ARCHIVE_INDEX.md), `BUILD_PROVENANCE.tsv`, `SIMSTUDIO_PROVENANCE.json` | provenance of every file of the release |
-| [RELEASE_README_v1.0.md](RELEASE_README_v1.0.md), [RELEASE_INSTALL_v1.0.md](RELEASE_INSTALL_v1.0.md) | the front page and install guide of the original release folder |
+| [RELEASE_README_v1.0.md](RELEASE_README_v1.0.md), [RELEASE_INSTALL_v1.0.md](RELEASE_INSTALL_v1.0.md) | the front page and install guide of the original release folder (historical; seven studies) |
 
 **A note on archived documents.** The release documents were written for the release folder `DeepDAS_Release_v1.0`. Two kinds of content in them are historical:
 

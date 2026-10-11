@@ -1,6 +1,6 @@
 # Development history
 
-The project's decisions in time order. Each row gives the step, what was decided, and where it is documented (`research/<study>/`).
+The project's decisions in time order. Each row gives the step, what was decided, and where it is documented (`research/<study>/`). The same studies grouped by research question (Q1–Q4) are in [research/README.md](../research/README.md).
 
 | Date (2026) | Step | Decision / outcome | Study |
 |---|---|---|---|
@@ -12,16 +12,20 @@ The project's decisions in time order. Each row gives the step, what was decided
 | 7 Oct | Experiments A–D (cleaning, `osc`, `tg`) and the seed study; new-scene check | cleaning + `tg` adopted; strong seed dependence → 5-seed ensembles | 02 |
 | 7–8 Oct | Tailgating data plans v1–v4 (each written before it ran) | realised tailgating sets with matched controls | 03 |
 | 8 Oct | Training with and without the new tailgating data (5 seeds each) | with the data: tailgating validation 0.39 → 0.92; selected (`C_new`) | 03 |
-| 8 Oct | Stalled-case regression diagnosed; EXP1 (balanced sampling) and EXP2 (frozen encoder) | neither qualifies | 04 |
-| 8 Oct | Stall diversity vs stall quantity | diversity selected → **DeepDAS Ensemble v1** frozen (threshold 1.9726181803233118) | 04 |
-| 9 Oct | Legitimate-stop diagnosis; stopval2; F1 (exposure) and F2 (temporal branch) | neither qualifies | 05 |
+| 8 Oct | Stalled-case regression diagnosed; type-balanced sampling (EXP1) and a frozen encoder (EXP2) | neither qualifies | 04 |
+| 8–9 Oct | Stall diversity vs stall quantity | diversity selected (8 Oct) → **DeepDAS Ensemble v1** frozen (freeze record dated 9 Oct; threshold 1.9726181803233118) | 04 |
+| 9 Oct | Legitimate-stop diagnosis; legitimate-stop validation set (stopval2); controlled exposure (F1) and a temporal branch (F2) | neither qualifies | 05 |
 | 9 Oct | Checkpoint selection by a task rule (replay of 15 runs) | no qualifying checkpoint; model unchanged | 05 |
 | 9 Oct | **Final test** planned, frozen and run once (228 runs) | macro recall 0.568, ROC-AUC 0.908, AUPRC 0.742 | `results/final_test/` |
 | 10 Oct | Weak-type diagnosis on the (now exposed) final-test data | information present in input and encoder; the head lacks varied examples | 06 |
 | 10 Oct | Frozen model fully backed up and restore-tested | all outputs reproduced | – |
-| 10 Oct | W1/W2 targeted-data round (314 runs, 10 models) | both fail C5 (legitimate stops) → not adopted | 07 |
+| 10 Oct | Targeted training data for the weak types: data expansion (W1) and the same with controlled sampling (W2); 314 runs, 10 models | both exceed the pre-registered limit on legitimate-stop alarms (C5) → not adopted | 07 |
 | 10 Oct | **Model development closed** | DeepDAS Ensemble v1 is final; no further training, recalibration or testing | – |
 | 10 Oct | This release built from the frozen backup and the study records | verification in `RELEASE_VERIFICATION.md` | – |
+| 10 Oct | Post-hoc check of the tailgating summary: the frozen model with φ<sub>u</sub> neutralized at inference; review copy `DeepDAS_Release_v1.1_review` with the `--phi-mode` option (default `active`) | dependence measured; nothing trained or re-calibrated | 08 |
+| 11 Oct | Klausner experiment: the final model on the one real recording, inference only | the stalled bus is detected in both options | `models/deepdas_ensemble_v1/experiment_klausner/` |
+| 11 Oct | Public repository and data package (`data-v1.0`); report v2.2 | same model, code and results | – |
+| 11 Oct | Documentation round v3: report reorganised by four research questions, descriptive names, study summaries | presentation only; no model, threshold, data or result changed | `docs/CHANGES_DOCS_v3.md`, `report/CHANGES_v3.md` |
 
 ## Principles kept throughout
 - **One change per experiment.** Each arm differed from its reference in one stated respect.

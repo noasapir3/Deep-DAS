@@ -1,6 +1,7 @@
 # Identifiers: internal names and release names
 
 **Two kinds of names.**
+
 - **Documentation and display reports** use professional names: DeepDAS Ensemble v1, Supervised single model, SimStudio Z-score, and the set names below.
 - **Data files, score tables and archived records** keep the identifiers of the study. Renaming them would change file contents and break the byte-for-byte reproduction against the original outputs. They are kept so that every number can be traced and reproduced.
 
@@ -17,6 +18,7 @@
 | Arms of studies 04, 05, 07 | `E_quantity`, `EXP1`, `EXP2`, `F1`, `F2`, `REF_J`, `F1_J`, `F2_J`, `W1`, `W2` | W1/W2 in `research/07_targeted_data_study/models/`; the others in records only |
 
 **Score-table columns.**
+
 - `E_DIV_s<k>_logit`: the seed logit.
 - `E_DIV_ens`: the ensemble score.
 - `E_DIV_decision`: ALARM / no alarm / no decision.
@@ -24,6 +26,40 @@
 - `Z_score`, `Z_alarm`.
 - `*_orac_*`: vehicle-unit (oracle-grouped) variant.
 - `Z_noGT_*`: Z-score without its truth-derived features (sensitivity check).
+
+## Experiments and conditions: display names
+
+The report, the figures and the entry pages describe each experiment by what it does. The records, score tables and code keep the study codes below, unchanged.
+
+| Code in records, tables and code | Display name | Study |
+|---|---|---|
+| `A`, `B`, `C`, `D` (arms of the follow-up experiments) | + artefact cleaning; + cleaning + weaving feature (`osc`); + cleaning + tailgating fraction (`tg` = φ<sub>u</sub>); + both features | [02](../research/02_supervised_single_model/) |
+| `Baseline`, `R0` | the original single-model recipe; its re-run on the release platform | [02](../research/02_supervised_single_model/) |
+| `C_old` / `C_new` | the same recipe without / with the varied tailgating data | [03](../research/03_tailgating_data/) |
+| `EXP1` | type-balanced anomaly sampling | [04](../research/04_stall_diversity/) |
+| `EXP2` | frozen encoder (head-only training) | [04](../research/04_stall_diversity/) |
+| `E_quantity`, `QUANT` | one stop mode repeated three times | [04](../research/04_stall_diversity/) |
+| `E_diversity`, `DIV` | three stop modes (selected: DeepDAS Ensemble v1) | [04](../research/04_stall_diversity/) |
+| `stallval` | stall validation set (18 stalls in 3 modes, 6 legitimate stops, 6 controls) | [04](../research/04_stall_diversity/) |
+| `F1` | controlled exposure to legitimate stops | [05](../research/05_legitimate_stops/) |
+| `F2` | controlled exposure + temporal branch | [05](../research/05_legitimate_stops/) |
+| `J`; `REF_J`, `F1_J`, `F2_J` | checkpoint (epoch) chosen by a task rule; applied to the frozen recipe, to F1 and to F2 | [05](../research/05_legitimate_stops/) |
+| `stopval2` | legitimate-stop validation set | [05](../research/05_legitimate_stops/) |
+| `W1` | targeted training-data expansion | [07](../research/07_targeted_data_study/) |
+| `W2` | targeted data with controlled (exposure-preserving) sampling | [07](../research/07_targeted_data_study/) |
+| `C1`–`C9` of study 07 | the nine pre-registered conditions of the targeted-data round | [07](../research/07_targeted_data_study/) |
+| `C5` | the limit on false alarms during legitimate stops: at most 3 more than the frozen model | [07](../research/07_targeted_data_study/) |
+| `Weak6` | mean recall of the six weak types (hard braking, speeding, overweight, straddling, collision, weaving) | [06](../research/06_weak_type_diagnosis/), [07](../research/07_targeted_data_study/) |
+| `macro9` | macro recall over the nine types (validation) | 04, 05, 07 |
+| `active` / `neutralized` (`--phi-mode`) | the model as trained and tested / the same weights with the 17th head input held at 0 (post hoc) | [08](../research/08_tailgating_feature_intervention/) |
+| `val_A`, `val_B` | selection regions (model selection) / threshold regions (thresholds only) | all |
+
+**Two different "C" series.**
+
+- **C1–C4** are the controlled **development cases** of study 01: realised hard braking, straddling, tailgating and a contact collision (development cases DC-02, DC-08, DC-09, DC-04 below).
+- **C1–C9** are the **selection conditions** of study 07.
+
+Never read one as the other.
 
 ## Data sets
 

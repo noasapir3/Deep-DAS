@@ -1,25 +1,63 @@
-# Study 06: Diagnosis of the weak anomaly types
+# Study 06: Where are the weak anomaly types lost? (post-hoc diagnosis)
 
-## At a glance
+> **Research question Q3** ([research index](../README.md)): why do more detections not necessarily justify replacing the model? This diagnosis motivated the targeted-data round of study 07.
+>
+> **Status:** completed; read-only, nothing trained or changed. **Data role:** exposed final-test data (post hoc).
 
-| | |
-|---|---|
-| **Research question** | Where is the information about the six weak types lost: in the input, in the encoder, or in the head? |
-| **What was compared** | For each weak type: the AUC against normal tracks of simple input statistics (logistic probe), of the pooled encoder code (linear probe), and of the frozen ensemble score. |
-| **Data** | The final-test tracks <b>after</b> the single final-test evaluation, used as exposed development data. Read-only: nothing was trained or changed. |
-| **Result** | Simple input statistics separate the weak types from normal tracks (probe AUC 0.86–1.0), and the pooled encoder code keeps most of this (0.81–1.0). The ensemble score is lower (0.78–0.99). The head was trained on about four examples per type. |
-| **Conclusion and limits** | The loss is after the encoder, in the head and its few training examples. This motivated study 07. As post-hoc diagnosis on exposed data, it is not evidence for any model's performance. |
-| **Reproduce** | Read-only diagnosis; its tables are in <code>records/</code>. The figure is redrawn from <code>records/weak_types_diag_20261010_results_information_flow_by_type.csv</code> by <code>figures/scripts/make_study_figures.py</code>. |
+## Summary
+
+**What we wanted to find out.** Six anomaly types were weak in the final test: hard braking, speeding, overweight, straddling, collision and weaving. Is their information missing from the input, lost in the encoder, or lost in the head?
+
+**What was compared.**
+
+- **For each weak type,** the AUC against normal tracks at three stages:
+  - simple statistics of the input channels (logistic probe);
+  - the pooled encoder code (linear probe);
+  - the frozen ensemble score.
+- **Also checked:** the training examples per type, an event-crop check for dilution by pooling, and a collision check without the post-impact part.
+- **Held constant:** the frozen models; nothing was trained.
+
+**Data and its role.**
+
+- **The data:** the final-test tracks, used after the single final-test evaluation.
+- **Role:** post-hoc diagnosis. It is not evidence for the performance of any model.
 
 <p align="center"><img src="../../figures/post_hoc/png/S06_information_flow_weak_types.png" width="60%"></p>
 
-AUC against normal tracks at three stages, per weak type; in brackets, the final-test recall at the frozen threshold.
+*Figure.* AUC against normal tracks at the three stages, for each weak type; in brackets, the final-test recall at the frozen threshold.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+**Result.**
+
+- **Input:** the probes separate the weak types well (AUC 0.86–1.0).
+- **Encoder:** the pooled code keeps most of this (0.81–1.0).
+- **Final score:** lower (0.78–0.985).
+- **Training data:** each weak type had 4 training vehicles from a single design.
+- **Hard braking:** the injected brake lies within the range of the tracker's acceleration on normal tracks.
+- **Mild speeding** overlaps the simulator's own normal speeds.
+
+**What these measurements support.** For these types the information is present in the input and in the pooled code, and the final score separates less. This points to the head and its few, homogeneous training examples, plus a small threshold margin for some types, rather than to the encoder. It does not isolate a single cause.
+
+**Decision.** Targeted, diverse training data with matched normal controls and a strict no-regression rule was proposed (→ study 07).
+
+**What this does not show.**
+
+- **Achievable scores.** The probes are cross-validated on the same exposed data, with 10–12 positives per type. They are indications, not achievable scores.
+- **Any later model's performance.** The final test is exposed from here on.
+
+**Code, data and reproduction.**
+
+- **Tables:** in [`records/`](records/). The main one is [`records/weak_types_diag_20261010_results_information_flow_by_type.csv`](records/weak_types_diag_20261010_results_information_flow_by_type.csv).
+- **Figure:** redrawn from that table by `figures/scripts/make_study_figures.py`.
+- **Final-test scores used:** `results/final_test/scores_dl_tracks.csv`.
+- **Reproduction:** read-only diagnosis, archived.
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 
 ## Full record
+
+> *Documentation round v3 (2026-10-11): the statements marked † were reworded to separate what was measured from the explanation it supports. The text as first released is in `DeepDAS_Release_v1.0` and in the git history.*
 
 **Status:** completed. This was a read-only diagnosis: nothing was trained, simulated, re-thresholded or changed. It motivated study 07.
 
@@ -90,7 +128,7 @@ Five measurements per type, following the flow of information:
 - Collision: part of the signal is the long stop after impact. With the track cut 2 s after impact, 5/10 stay above threshold, against 6/10 on the full track.
 
 ## Conclusions
-1. **The hypothesis holds.** For all six types the information is in the input and reaches the encoder (probe AUC ≥ 0.81, ≥ 0.91 for five of six). The loss happens after the encoder: too few homogeneous head-training examples and a small threshold margin.
+1. **† The measurements support the hypothesis.** For all six types the information is in the input and reaches the encoder (probe AUC ≥ 0.81, ≥ 0.91 for five of six), while the final score separates less. This points to a loss after the encoder: too few homogeneous head-training examples, and a small threshold margin for some types. The probes do not isolate a single cause.
 2. **The types differ in how much data alone could help:**
    - Overweight, straddling, weaving and collision are good candidates for targeted data.
    - Speeding is partly limited by the overlap of mild speeding with the simulator's normal speed tail.

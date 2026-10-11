@@ -44,7 +44,8 @@ def fig_seed_dependence():
         if len(c) > 5 and c[0] in ("Baseline", "A", "B", "C") and c[1].isdigit():
             rows.append(dict(arm=c[0], seed=int(c[1]), detected9=int(c[4]), tailgating_case_detected="C3 tailgating" not in c[5], source="research/02/records/seedstudy_20261007_SEED_SUMMARY.md (P99)"))
     D = pd.DataFrame(rows); assert len(D) == 12 and not D.tailgating_case_detected.any()
-    lab = {"Baseline": "Baseline\n(no cleaning,\nno $\\phi_u$)", "A": "A\n(cleaning,\nno $\\phi_u$)", "B": "B\n(cleaning\n+ osc)", "C": "C\n(cleaning\n+ $\\phi_u$)"}
+    # display labels only; the data CSV keeps the study's arm codes (Baseline, A, B, C; docs/IDENTIFIERS.md)
+    lab = {"Baseline": "original\nrecipe", "A": "+ artefact\ncleaning", "B": "+ cleaning\n+ weaving\nfeature", "C": "+ cleaning\n+ $\\phi_u$"}
     fig, ax = plt.subplots(figsize=(COL_W, 2.1)); x = np.arange(4)
     for i, a in enumerate(["Baseline", "A", "B", "C"]):
         v = D[D.arm == a].sort_values("seed").detected9.to_numpy()
@@ -77,7 +78,12 @@ def fig_legit_stop_remedies():
     ax.axvline(54 * 0.2, color=RED, ls="--", lw=0.9, zorder=3)
     ax.text(54 * 0.2 + 0.6, -0.95, "replacement rule: $\\leq$20 % of 54 (and $\\leq$ half of the reference)", color=RED, fontsize=6.0, va="center")
     ax.set_ylim(-1.3, len(D) - 0.5)
-    ax.set_yticks(y); ax.set_yticklabels(D.variant.str.replace("DeepDAS Ensemble v1", "Ensemble v1 (frozen)"), fontsize=6.6)
+    # display labels only; the data CSV keeps the study's variant codes (F1, F2, epoch by J; docs/IDENTIFIERS.md)
+    disp = {"DeepDAS Ensemble v1": "Ensemble v1 (frozen)", "F1": "controlled exposure", "F2": "exposure + temporal branch",
+            "Reference, epoch by J": "frozen recipe, task-rule epoch", "F1, epoch by J": "exposure, task-rule epoch",
+            "F2, epoch by J": "temporal branch, task-rule epoch"}
+    assert set(D.variant) == set(disp), D.variant.tolist()
+    ax.set_yticks(y); ax.set_yticklabels([disp[v] for v in D.variant], fontsize=6.6)
     ax.set_xlim(0, 75); ax.set_xlabel("Legitimate stops < 10 s flagged (false alarms, of 54)")
     ax.xaxis.grid(True); ax.set_axisbelow(True)
     save(fig, "validation", "S05_legitimate_stop_remedies", D)

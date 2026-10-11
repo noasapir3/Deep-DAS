@@ -1,25 +1,63 @@
-# Study 08: Dependence of the frozen detector on the tailgating summary feature φ_u
+# Study 08: The tailgating summary φ<sub>u</sub> — active vs neutralized at inference (post hoc)
 
-## At a glance
+> **Research question Q4** ([research index](../README.md)): what does the tailgating summary add beyond the learned representation?
+>
+> **Status:** post-hoc diagnostic analysis (2026-10-10); nothing was trained, re-calibrated or re-standardised. **Data role:** development, validation, and the exposed final test (post hoc).
 
-| | |
-|---|---|
-| **Research question** | How much does the frozen hybrid model depend on its one explicit physical summary, the tailgating fraction φ<sub>u</sub>? |
-| **What was compared** | The frozen DeepDAS Ensemble v1 with φ<sub>u</sub> <b>active</b> (as trained and tested) against the same weights with φ<sub>u</sub> <b>neutralized</b> (17th head input held at 0), using the frozen statistics and τ. |
-| **Data** | The 9 development cases, the validation sets, and the final test. The final test had already been exposed, so its rows are <b>post hoc</b>. |
-| **Result** | Development 7/9 vs 8/9 (only the tailgating case changes); validation tailgating 9/13 vs 12/13; final-test tailgating 10/11 vs 11/11; macro recall 0.560 vs 0.568. |
-| **Conclusion and limits** | With φ<sub>u</sub> active the frozen model detects one more development case. Most test tailgaters stay detected without it, so the learned representation carries most of their signal. This measures the dependence of the trained model, not the performance of a model trained without φ<sub>u</sub>, which was never trained on the final data. |
-| **Reproduce** | <code>python scripts/verify_phi_modes.py</code> (with the data package); tables: <code>code/make_tables.py</code>; figures: <code>code/make_figures.py</code>; report numbers: <code>code/number_sources.py</code>. |
+## Summary
+
+**What we wanted to find out.** DeepDAS Ensemble v1 is a hybrid: its head receives 16 learned features plus one physical summary, the tailgating fraction φ<sub>u</sub>. How much does the trained model depend on that one input?
+
+**What was compared.**
+
+- **Active:** the frozen model with φ<sub>u</sub> active, as trained, selected and tested.
+- **Neutralized:** the **same weights** with the 17th head input held at 0.
+- **Held constant:** the weights, μ<sub>k</sub>, σ<sub>k</sub>, the threshold τ and the data.
+
+**Data and its role.**
+
+- **The data:** the 9 development cases, the validation sets and the final test.
+- **Role:** the final test had already been exposed, so its rows are **post hoc**.
 
 <p align="center"><img src="figures/png/G1_development_cases_phi_dependence.png" width="60%"></p>
 
-Ensemble score of each development case with φ<sub>u</sub> active (filled) and neutralized (open); dashed: the frozen τ. Only the tailgating case crosses.
+*Figure.* Ensemble score of each development case with φ<sub>u</sub> active (filled) and neutralized (open); dashed: the frozen τ. Only the tailgating case crosses the threshold.
+
+**Result.**
+
+| Check | φ<sub>u</sub> active (as tested) | φ<sub>u</sub> neutralized |
+|---|---|---|
+| Development cases (9) | 8/9 | 7/9 |
+| Tailgating, validation | 12/13 | 9/13 |
+| Tailgating, exposed final test (post hoc) | 11/11 | 10/11 |
+| Macro recall, exposed final test (post hoc) | 0.568 | 0.560 |
+
+- **Development cases.** Only the tailgating case changes decision: its score goes from 3.73 to −0.08.
+- **Final test (post hoc).** ROC-AUC 0.908 → 0.906.
+
+**Decision.** The model is unchanged.
+
+- The hybrid (`active`) stays the reference for every published result.
+- The neutralized option remains available as an explicit flag (`--phi-mode neutralized`) for this analysis.
+
+**What this does not show.**
+
+- **A model trained without φ<sub>u</sub> on the final training data.** No such model was trained. Early single models without φ<sub>u</sub> exist (study 02, early data); see §2.
+- **Data or feature?** It therefore cannot tell whether the tailgating gain came from φ<sub>u</sub>, from the data or from both (§2 and §6 below).
+
+**Code, data and reproduction.**
+
+- **All checks:** `python scripts/verify_phi_modes.py` (with the data package).
+- **Tables:** [`code/make_tables.py`](code/make_tables.py) → [`tables/`](tables/).
+- **Figures:** [`code/make_figures.py`](code/make_figures.py) → [`figures/`](figures/).
+- **Report numbers:** [`code/number_sources.py`](code/number_sources.py).
+- **Neutralized outputs:** [`results_phi_neutralized/`](../../results_phi_neutralized/).
 
 <p align="center"><img src="figures/png/G2_tailgating_detection_two_options.png" width="60%"></p>
 
-Tailgating recall in the two options on validation and on the exposed final test (post hoc), with Wilson 95 % intervals and exact counts.
+*Figure.* Tailgating recall in the two options, on validation and on the exposed final test (post hoc), with Wilson 95 % intervals and exact counts.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 

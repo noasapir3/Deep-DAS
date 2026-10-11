@@ -1,25 +1,69 @@
-# Study 05: Legitimate stops (diagnosis, F1/F2, checkpoint selection)
+# Study 05: False alarms on legitimate stops
 
-## At a glance
+> **Research question Q3** ([research index](../README.md)): why do more detections not necessarily justify replacing the model?
+>
+> **Status:** completed; no candidate replaced DeepDAS Ensemble v1, and this is its main documented limitation. **Data role:** validation. From the checkpoint-selection step on, these sets also took part in selection.
 
-| | |
-|---|---|
-| **Research question** | Can the false alarms on legitimate stops shorter than 10 s be removed without breaking the other conditions? |
-| **What was compared** | A diagnosis (window counterfactual, stop visibility, training exposure) and three remedies on the same data and seeds: controlled exposure (F1), a temporal branch (F2), and checkpoint choice by a task rule (J). |
-| **Data** | The legitimate-stop validation set pooled with the stall validation set: 54 legitimate stops and 66 abnormal stops. <b>Validation only</b>; from the checkpoint-selection step on, these sets also took part in selection. |
-| **Result** | The stop windows decide the alarm, and the tracker compresses stop duration (a 30 s stop shows about 9 s). Training saw about 105× fewer legitimate-stop windows than stall windows. The remedies reduce alarms from 40 to 37, 27 and down to 21 of 54, but none meets the replacement rule within the other conditions. |
-| **Conclusion and limits** | No candidate replaced the final model. The false alarms on short stops are its main limitation, confirmed on the final test (20/28). |
-| **Reproduce** | <code>scripts/reproduce_validation.py</code> regenerates the final model's scores on these sets (<code>results/validation/ensemble_scores_legitimate_stop_set.csv</code>). The remedy runs are archived in <code>records/</code>. |
+## Summary
+
+**What we wanted to find out.** The final model flags most *legitimate* stops: gentle braking (< 4 m/s²), standing 1–10 s, driving on. By definition these are normal. Why does it flag them, and can that be fixed without breaking the other conditions?
+
+**What was compared.**
+
+1. **A read-only diagnosis** of the frozen model.
+2. **A new validation set** that separates stop duration, stop share and approach.
+3. **Two pre-registered remedies** on the same data, recipe and seeds: controlled exposure to legitimate stops, and exposure plus a temporal branch over the window sequence.
+4. **Checkpoint choice by a task rule,** for the frozen recipe and for both remedies.
+
+**Held constant:** the data, the recipe, the seeds and the threshold rule (each model at its own P99 on the threshold-region normals). The replacement rule was fixed before training.
+
+**Data and its role.**
+
+- **The pool:** the legitimate-stop validation set together with the stall validation set, 54 legitimate stops and 66 abnormal stops.
+- **Role:** validation only.
 
 <p align="center"><img src="../../figures/validation/png/S05_legitimate_stop_remedies.png" width="60%"></p>
 
-Legitimate stops flagged (of 54) by the frozen model and each remedy, each at its own val_B P99, with the abnormal stops still detected. Dashed: the pre-registered replacement rule.
+*Figure.* Legitimate stops flagged (false alarms, of 54) by the frozen model and by each remedy, each at its own threshold, with the abnormal stops still detected; dashed: the pre-registered replacement rule.
 
-More figures: [figure gallery](../../figures/) · All studies: [research index](../)
+**Result.**
+
+- **Diagnosis, what was measured:**
+  - **Stop windows:** with the windows that overlap the truth stop removed, no stop vehicle alarms.
+  - **The tracker shortens stops:** a 30 s truth stop shows about 9 s.
+  - **Training exposure:** training saw about 105× fewer legitimate-stop windows than stall windows.
+- **The explanation these measurements support** (not proven as the only cause): the stop windows drive the score, and with mean/std pooling their *share* of the track matters more than the stop's duration. Legitimate stops were rarely seen in training, and their duration is weak in the tracked input.
+- **Remedies:**
+  - Alarms fell from 40 to 37 (exposure), 27 (temporal branch) and as low as 21 of 54 (temporal branch with a task-rule epoch).
+  - None met the rule (at most 20 % of the stops and at most half of the reference) while keeping the other conditions. The temporal branch lost detections of other types.
+  - The 8 s stops stayed almost always flagged in every variant (19–22 of 24).
+
+**Decision.**
+
+- DeepDAS Ensemble v1 stays the model, and the false alarms are documented as its main limitation.
+- The final test showed the same problem: 20 of 28 legitimate stops flagged.
+
+**What this does not show.** The following were not tried, because development was closed:
+
+- a duration-aware feature computed from the track;
+- a stop-specific post-filter;
+- a tracker that preserves stop duration.
+
+**Code, data and reproduction.**
+
+- **Data:** `data/processed/anomaly_sets/legitimate_stop_validation/` (data package).
+- **Records:** [`records/legit_stop_diag_20261009_README.md`](records/legit_stop_diag_20261009_README.md), [`records/stop_discrimination_20261009_RESULTS_F.md`](records/stop_discrimination_20261009_RESULTS_F.md), [`records/ckpt_selection_20261009_RESULTS_CKPT.md`](records/ckpt_selection_20261009_RESULTS_CKPT.md).
+- **Reproduction:**
+  - `scripts/reproduce_validation.py` regenerates the final model's scores on these sets (`results/validation/ensemble_scores_legitimate_stop_set.csv`).
+  - The remedy runs are archived, not regenerated.
+
+More figures: [figure gallery](../../figures/README.md) · All studies: [research index](../README.md) · Report map: [docs/QUESTION_MAP.md](../../docs/QUESTION_MAP.md)
 
 ---
 
 ## Full record
+
+> *Documentation round v3 (2026-10-11): the statements marked † were reworded to separate what was measured from the explanation it supports. The text as first released is in `DeepDAS_Release_v1.0` and in the git history.*
 
 **Status:** completed. **No candidate replaced DeepDAS Ensemble v1.** The false alarms on legitimate stops are documented as the model's main limitation.
 
@@ -35,12 +79,12 @@ No model, threshold or label was changed. The frozen checkpoints were only loade
 
 | Question | Measurement | Finding |
 |---|---|---|
-| Is the alarm caused by the stop itself? | Score each stallval vehicle with and without the windows that overlap the truth stop | With all windows, 4/6 legitimate stops and 18/18 abnormal stops alarm. Without the stop windows **none** alarms (a vehicle standing from the start has no windows left). The stop windows decide. |
+| Is the alarm caused by the stop itself? | Score each stallval vehicle with and without the windows that overlap the truth stop | With all windows, 4/6 legitimate stops and 18/18 abnormal stops alarm. Without the stop windows **none** alarms (a vehicle standing from the start has no windows left). † The alarms depend on the stop windows. |
 | What does the input show of the stop? | Truth stop duration vs the stop visible in the tracked speed | The tracker shortens stops strongly: a 30 s truth stop shows about 9 s; a 120 s standstill shows about 15 s. Duration is a weak signal in the input. |
 | How much did training see legitimate stops? | Exact replay of the training draws (matches the run logs in 107/107 epochs) | Each training legitimate stop (23) was drawn about 21× less often than each training stall (24), and the model saw about **105× fewer stop windows** from legitimate stops than from stalls (seed 0: 1,183 vs 125,095). |
 | Does the model even fit them? | In-sample alarms on the 23 training legitimate stops | 7/23 flagged in-sample. |
 
-**Mechanism.** Mean/std pooling over all windows makes the **share** of stop windows decide the score. A short track with a 5 s stop has a stop share similar to a long track with a 30 s stall.
+**Proposed mechanism (†).** With mean/std pooling over all windows, the **share** of stop windows can drive the score more than the stop's duration. A short track with a 5 s stop has a stop share similar to a long track with a 30 s stall. The counterfactual above is consistent with this, but does not prove it to be the only cause.
 
 ## Step 2: an expanded validation set that separates the factors (`stopval2`)
 **Why it was needed.** An audit of the existing stops showed that duration, stop share and approach were confounded:
@@ -104,7 +148,7 @@ Both use the same data, recipe and seeds as DeepDAS Ensemble v1.
 - **The 8 s legitimate stops stayed almost always flagged** in every variant: 19–22 of 24.
 
 ## Conclusions
-1. **The cause is understood.** Pooled stop-window share plus very low training exposure to legitimate stops. Stop duration, the physical difference, is strongly shortened in the tracked input.
+1. **† The measurements support one explanation.** It combines the pooled stop-window share with very low training exposure to legitimate stops. Stop duration, the physical difference, is strongly shortened in the tracked input. It was not isolated as the single cause.
 2. **Neither exposure (F1), a temporal branch (F2) nor epoch choice removes the problem** without breaking another condition. DeepDAS Ensemble v1 stays the model.
 3. **The final test confirmed the limitation:** 20 of 28 legitimate stops flagged; 3 s 3/8, 5 s 8/11, 8 s 9/9. It is the first item of `docs/LIMITATIONS.md`.
 4. **Not tried, by decision to close development:**
