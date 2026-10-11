@@ -5,7 +5,7 @@ The frozen models of the project, each with its checksum. **Nothing in this fold
 | Folder | Model | Head inputs | Role |
 |---|---|---|---|
 | [`deepdas_ensemble_v1/`](deepdas_ensemble_v1/) | **DeepDAS Ensemble v1** (internal id `E_stall_diversity_ENSEMBLE` / `E_DIV`): five networks, frozen 2026-10-09, threshold τ = 1.9726181803233118 | 16 learned + φ<sub>u</sub> = 17 | the final model; [model card](deepdas_ensemble_v1/MODEL_CARD.md) |
-| [`deepdas_ensemble_v1/experiment_klausner/`](deepdas_ensemble_v1/experiment_klausner/) | the final model on the real Klausner recording (inference only) | – | qualitative observation |
+| [`deepdas_ensemble_v1/experiment_klausner/`](deepdas_ensemble_v1/experiment_klausner/) | the final model on the real Klausner recording (inference only) | – | one real stalled bus (detected) |
 | [`baselines/supervised_single_p99/`](baselines/supervised_single_p99/) | supervised single model (`CR_P99`): one seed, early data, no artefact cleaning, own val_B P99 = −5.523 | 16 | frozen baseline |
 | [`baselines/zscore/`](baselines/zscore/) | SimStudio Z-score model (`model_live.pkl`): 156 features, threshold 15.39 σ, never refitted | – | frozen baseline |
 

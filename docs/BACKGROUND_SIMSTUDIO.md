@@ -78,7 +78,7 @@ In DeepDAS this model is the frozen comparison baseline, with its threshold of 1
 
 **The recording.** SimStudio recorded one real event with a DAS channel on an existing telecom fibre and a camera on Klausner Street, next to the TAU campus.
 
-- **Event.** A city bus slows down, stands at a bus stop and pulls away.
+- **Event.** A 12 t city bus drives in, stands for about 31 s (measured DAS speed), and pulls away.
 - **Processing.** The recording was replayed through the unchanged pipeline on the true street geometry.
 - **Tracking accuracy (as reported in the presentation):**
   - fused track RMSE 1.17 m;
@@ -109,27 +109,27 @@ The real DAS-derived kinematics are much noisier than the simulated ones.
 | Main cost | – | false alarms on legitimate stops < 10 s |
 
 ## The Klausner recording with the DeepDAS models
-The same real track was run through the DeepDAS models:
+**The label.** The bus stands for about 31 s: its measured DAS speed stays below 2 m/s from 7.4 s to 38.8 s, and below 0.5 m/s for 23.6 s without interruption. By the project's rule a stop of 10 s or more is a **stall**, so the recording is an anomaly (stalled vehicle).
 
+The same real track was run through the DeepDAS models:
 - the stage-1 autoencoder of study 01 (archived);
 - the final ensemble, inference only, in both options ([experiment](../models/deepdas_ensemble_v1/experiment_klausner/)).
 
-| Detector | Decision on the real bus |
+| Detector | Stalled bus |
 |---|---|
-| SimStudio Z-score | flagged (max \|z\| = 27.5 > 15.39) |
-| DeepDAS stage-1 autoencoder (study 01) | not flagged (track score 2.15 < 5.20) |
-| **DeepDAS Ensemble v1, φ<sub>u</sub> active / neutralized** | **ALARM** (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973) |
+| SimStudio Z-score | detected (max \|z\| = 27.5 > 15.39) |
+| DeepDAS stage-1 autoencoder (study 01) | missed (track score 2.15 < 5.20) |
+| **DeepDAS Ensemble v1, φ<sub>u</sub> active / neutralized** | **detected** (s<sub>u</sub> = 4.53 / 4.55 > τ = 1.973) |
 
 <p align="center"><img src="../models/deepdas_ensemble_v1/experiment_klausner/figures/klausner_experiment.png" alt="DeepDAS Ensemble v1 on the Klausner bus" width="95%"></p>
 
 **What the figure shows.**
-
-- **Left:** the tracked speed, acceleration and DAS measurements of the real bus.
-  - The tracked speed stays below 1 m/s for 17.5 s, but with brief interruptions: the longest continuous stop below 0.5 m/s is 7.9 s, in 6 stop events.
-  - The noise around arrival and departure is much larger than in the simulation.
+- **Left:**
+  - the tracked speed (line) and the measured DAS speed (dots) of the real bus;
+  - the stop of about 31 s (shaded);
+  - the tracked acceleration and the DAS-measurement indicator.
 - **Right:** the final model's ensemble score against the frozen threshold, in both options.
 
-**How far this result goes.** This is one **unlabelled** track, so the result is an observation, not an evaluation. A bus stopping at a bus stop is ordinary traffic, so this alarm cannot be called correct or incorrect. One track also cannot tell whether the score is driven by:
+**How the tracker shows the stop.** The tracked speed shows the stop with brief interruptions, so SimStudio features computed from it report a fragmented stop: longest continuous stop 7.9 s, in 6 stop events. The DAS measurements show one long stop.
 
-- the long, repeated stopping, which resembles the stop patterns the model learned (stalls are stops of 10 s or more in the simulation's labels);
-- or the real sensor noise, which lies outside the training distribution.
+**How far this result goes.** This is one real case, not a recall or false-alarm estimate on real data. The label applies the simulation's stall rule to the measured speed, because no independent ground truth exists. The real kinematics are also much noisier than the simulated ones.

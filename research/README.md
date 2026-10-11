@@ -19,7 +19,7 @@ The studies that led to DeepDAS Ensemble v1, in the order they were run, followe
 | 07 | [Targeted data (W1/W2)](07_targeted_data_study/) | Does targeted data fix the weak types? | Weak6 0.35 → 0.71 / 0.74, but fails the legitimate-stop condition → not adopted | validation (after the test was exposed) | [V5c](../figures/README.md#3-validation-data) |
 | 08 | [Tailgating-feature intervention](08_tailgating_feature_intervention/) | How much does the frozen model depend on φ<sub>u</sub>? | One development case; most test tailgaters stay detected without it | development, validation, exposed final test (post hoc) | [G1–G4](../figures/README.md#5-post-hoc-analyses) |
 
-**Also related:** the final model's [Klausner experiment](../models/deepdas_ensemble_v1/experiment_klausner/), a qualitative run on one real, unlabelled recording.
+**Also related:** the final model's [Klausner experiment](../models/deepdas_ensemble_v1/experiment_klausner/), inference on the one real recording, a stalled bus (detected).
 
 ## Reading the records
 
