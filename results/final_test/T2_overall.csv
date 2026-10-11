@@ -1,0 +1,4 @@
+detector,macro_recall_own,macro_recall_common,pooled_recall,FA_normal_driving,FA_normal_common,FA_legit_stops,FA_legit_common,precision,F1,ROC_AUC,AUPRC,coverage_anomalies,coverage_normals,coverage_legit
+E_DIV,0.568,0.568,0.564,20/1008 = 0.0198,20/1008 = 0.0198,20/28,20/28,0.74,0.64,0.908,0.742,101/105,1008/1708,28/32
+CR_P99,0.364,0.364,0.366,5/1008 = 0.0050,5/1008 = 0.0050,14/28,14/28,0.881,0.517,0.769,0.515,101/105,1008/1708,28/32
+Z,0.231,0.232,0.219,13/1574 = 0.0083,7/1008 = 0.0069,23/32,22/28,0.639,0.326,0.783,0.394,105/105,1574/1708,32/32

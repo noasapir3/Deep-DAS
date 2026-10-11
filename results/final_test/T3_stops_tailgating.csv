@@ -1,0 +1,14 @@
+group,n,E_DIV,CR_P99,Z
+LEGIT 3 s (false alarm),9,3/8,3/8,4/9
+LEGIT 5 s (false alarm),12,8/11,4/11,9/12
+LEGIT 8 s (false alarm),11,9/9,7/9,10/11
+GENTLE 15 s stop study (detection),11,9/10,8/10,10/11
+stop-study CONTROL (false alarm),12,0/12,0/12,0/12
+stalled START (detection),3,3/3,3/3,3/3
+stalled STOP_END (detection),3,3/3,3/3,3/3
+stalled MSM (detection),3,3/3,3/3,3/3
+stalled GENTLE_STALL (detection),3,3/3,3/3,3/3
+tailgating v6 D8 (detection),4,3/3,0/3,0/4
+tailgating v6 D15 (detection),4,4/4,0/4,0/4
+tailgating v9 D8 (detection),4,4/4,0/4,1/4
+tailgating controls (false alarm),12,7/11,0/11,0/12

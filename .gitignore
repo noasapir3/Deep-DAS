@@ -1,0 +1,51 @@
+# Python environments, caches and build products
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data package (distributed separately: docs/DATA_PACKAGE.md)
+/data/processed/
+/data/scenarios/
+/data/simstudio_inputs/
+/research/07_targeted_data_study/data/
+/DATA_PACKAGE_SHA256.txt
+DeepDAS_data_*.zip
+DeepDAS_RawData*/
+
+# Local run outputs (the published results live in results/ and results_phi_neutralized/)
+/outputs/
+/sims/
+
+# Archives, backups and transfer folders
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*_backup*/
+*BACKUP*/
+_transfer*/
+_release_build_staging/
+
+# Secrets and private settings
+.env
+.env.*
+*.pem
+*.key
+*token*
+*secret*
+.netrc
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+~$*

@@ -1,0 +1,18 @@
+population,metric,phi active (original hybrid),phi neutralized (inference-time intervention)
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",macro recall (common),0.568,0.56
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",ROC-AUC,0.908,0.906
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",AUPRC,0.742,0.737
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",precision,0.74,0.737
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",F1,0.64,0.633
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)","false alarms, normal driving",20/1008 = 0.0198,20/1008 = 0.0198
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)","false alarms, legitimate stops",20/28,19/28
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",tailgating matched controls,7/11,7/11
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: speeding (of 12),4/12,3/12
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: reckless_driver (of 10),7/10,7/10
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: hard_braking (of 11),1/11,1/11
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: stalled_vehicle (of 12),12/12,12/12
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: lane_weaving (of 11),7/11,7/11
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: lane_straddling (of 12),5/12,5/12
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: collision (of 10),6/10,7/10
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: overweight_vehicle (of 12),4/12,4/12
+"final test, common decided subset (101 anomalies, 1,008 normal vehicles); exposed before this analysis (post hoc)",detected: tailgating (of 11),11/11,10/11

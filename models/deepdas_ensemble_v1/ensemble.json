@@ -1,0 +1,71 @@
+{
+ "name": "DeepDAS Ensemble v1",
+ "development_id": "E_stall_diversity_ENSEMBLE",
+ "frozen_on": "2026-10-09",
+ "input_normalization": "input_normalization.json",
+ "window": {
+  "T": 64,
+  "stride": 8,
+  "bin_s": 0.1
+ },
+ "artifact_cleaning": true,
+ "extra_features": [
+  "tailgating_fraction"
+ ],
+ "decision": {
+  "min_windows": 3,
+  "rule": "ALARM if ensemble score > threshold; fewer than 3 windows -> no decision",
+  "threshold": 1.9726181803233118,
+  "threshold_name": "P99 of the ensemble score on the val_B normal vehicles"
+ },
+ "ensemble_rule": "score = mean over the 5 seeds of (logit - valB_mean) / valB_std",
+ "alternative_threshold_P95": 1.246164896208973,
+ "n_valB_sufficient": 1242,
+ "seeds": [
+  {
+   "seed": 0,
+   "checkpoint": "seed_0/checkpoint.pt",
+   "thresholds": "seed_0/thresholds.json",
+   "checkpoint_sha256": "c382ea351429cb3a7c5775cece298421339d7698e3d54c9a77493de9bdc8fe39",
+   "valB_mean": -12.915836251012369,
+   "valB_std_ddof0": 4.1385520705352565,
+   "best_epoch": 10
+  },
+  {
+   "seed": 1,
+   "checkpoint": "seed_1/checkpoint.pt",
+   "thresholds": "seed_1/thresholds.json",
+   "checkpoint_sha256": "1c7d53d027d0a2739bdfd45c950e0aef023e5ffdbd8fc107798d137d0ae9b2ed",
+   "valB_mean": -15.576881359836714,
+   "valB_std_ddof0": 5.6950409641261865,
+   "best_epoch": 21
+  },
+  {
+   "seed": 2,
+   "checkpoint": "seed_2/checkpoint.pt",
+   "thresholds": "seed_2/thresholds.json",
+   "checkpoint_sha256": "1d85b5a0bc176a39c92a2261e89f2dd46b01dff8d2e0aa175b209305c5058412",
+   "valB_mean": -8.841653166383793,
+   "valB_std_ddof0": 2.775754235247946,
+   "best_epoch": 8
+  },
+  {
+   "seed": 3,
+   "checkpoint": "seed_3/checkpoint.pt",
+   "thresholds": "seed_3/thresholds.json",
+   "checkpoint_sha256": "2d26505128466f00d23687f5c1f07ab47fc6435eb2182bc515471d62605c0dcc",
+   "valB_mean": -15.448582680305037,
+   "valB_std_ddof0": 5.435913180874668,
+   "best_epoch": 23
+  },
+  {
+   "seed": 4,
+   "checkpoint": "seed_4/checkpoint.pt",
+   "thresholds": "seed_4/thresholds.json",
+   "checkpoint_sha256": "923181071e4cd97ea78fb8f7742bd4b59cc4dbd96ef1b661ad87f9ac6cc829a2",
+   "valB_mean": -18.86246744496523,
+   "valB_std_ddof0": 6.745917776285742,
+   "best_epoch": 22
+  }
+ ]
+}

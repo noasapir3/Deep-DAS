@@ -1,0 +1,7 @@
+variant,legit_stops_flagged_of_54,abnormal_stops_detected_of_66,passes_replacement_rule,source
+DeepDAS Ensemble v1,40,65,—,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"
+F1,37,65,no,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"
+F2,27,66,no,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"
+"Reference, epoch by J",41,66,no,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"
+"F1, epoch by J",35,65,no,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"
+"F2, epoch by J",21,66,no,"research/05_legitimate_stops/README.md, results table (validation pool, each ensemble at its own val_B P99)"

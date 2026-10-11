@@ -1,0 +1,10 @@
+case,n_tracks,n_windows,E_DIV_ens_saved,E_DIV_ens_reproduced,E_DIV_alarm_original_units,E_DIV_alarm_track_units,CR_P99_logit,CR_P99_alarm_original_units,CR_P99_alarm_track_units
+speeding,1,14,3.1015,3.1015,True,True,-3.641,True,True
+C1 real braking,1,18,2.2353,2.2353,True,True,0.286,True,True
+stalled,1,142,4.3865,4.3865,True,True,7.068,True,True
+C4 collision striker,1,142,2.0366,2.0366,True,True,2.705,True,True
+reckless,1,8,3.739,3.739,True,True,-4.807,True,True
+weaving,1,8,2.0013,2.0013,True,True,-8.687,False,False
+overweight,1,5,1.865,1.865,False,False,8.483,True,True
+C2 straddling,1,10,2.3961,2.3961,True,True,-1.339,True,True
+C3 tailgating,1,14,3.7317,3.7317,True,True,-14.784,False,False

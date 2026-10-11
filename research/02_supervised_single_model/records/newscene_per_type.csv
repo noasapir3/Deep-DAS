@@ -1,0 +1,11 @@
+type,injected,realized,realized_with_usable_track,sufficient_evidence(>=3 win),Baseline,A,B,C
+collision,8,7,7,7,7,7,7,7
+hard_braking,8,7,7,6,2,2,3,3
+lane_straddling,8,8,8,5,3,3,3,3
+lane_weaving,8,8,8,5,1,1,3,2
+overweight_vehicle,8,8,8,5,2,2,2,2
+reckless_driver,8,8,6,5,3,3,3,3
+speeding,8,8,6,5,2,2,2,2
+stalled_vehicle,8,8,8,8,8,7,8,8
+tailgating,8,1,1,1,0,1,1,1
+TOTAL,72,63,59,47,28,28,32,31

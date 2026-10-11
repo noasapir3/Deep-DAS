@@ -1,0 +1,14 @@
+phi_mode,group,n,E_DIV,CR_P99,Z
+neutralized,LEGIT 3 s (false alarm),9,3/8,3/8,4/9
+neutralized,LEGIT 5 s (false alarm),12,7/11,4/11,9/12
+neutralized,LEGIT 8 s (false alarm),11,9/9,7/9,10/11
+neutralized,GENTLE 15 s stop study (detection),11,9/10,8/10,10/11
+neutralized,stop-study CONTROL (false alarm),12,0/12,0/12,0/12
+neutralized,stalled START (detection),3,3/3,3/3,3/3
+neutralized,stalled STOP_END (detection),3,3/3,3/3,3/3
+neutralized,stalled MSM (detection),3,3/3,3/3,3/3
+neutralized,stalled GENTLE_STALL (detection),3,3/3,3/3,3/3
+neutralized,tailgating v6 D8 (detection),4,3/3,0/3,0/4
+neutralized,tailgating v6 D15 (detection),4,4/4,0/4,0/4
+neutralized,tailgating v9 D8 (detection),4,3/4,0/4,1/4
+neutralized,tailgating controls (false alarm),12,7/11,0/11,0/12

@@ -1,0 +1,62 @@
+{
+ "tracks_in_export": 1,
+ "usable_tracks": 1,
+ "frozen_tau": 1.9726181803233118,
+ "deepdas": [
+  {
+   "unit": "klausner/bus_real|T000001",
+   "phi_mode": "active",
+   "n_windows": 15,
+   "E_DIV_s0_logit": 6.574711799621582,
+   "E_DIV_s1_logit": 7.77247953414917,
+   "E_DIV_s2_logit": 7.7070088386535645,
+   "E_DIV_s3_logit": 9.338052749633789,
+   "E_DIV_s4_logit": 3.549649715423584,
+   "E_DIV_ens": 4.530686341319842,
+   "E_DIV_decision": "ALARM",
+   "phi_u": 0.0,
+   "frozen_tau": 1.9726181803233118
+  },
+  {
+   "unit": "klausner/bus_real|T000001",
+   "phi_mode": "neutralized",
+   "n_windows": 15,
+   "E_DIV_s0_logit": 6.67827033996582,
+   "E_DIV_s1_logit": 7.864574909210205,
+   "E_DIV_s2_logit": 7.747325420379639,
+   "E_DIV_s3_logit": 9.387324333190918,
+   "E_DIV_s4_logit": 3.6366074085235596,
+   "E_DIV_ens": 4.546220960733919,
+   "E_DIV_decision": "ALARM",
+   "phi_u": 0.0,
+   "frozen_tau": 1.9726181803233118
+  }
+ ],
+ "supervised_single_model": [
+  {
+   "unit": "klausner/bus_real|T000001",
+   "CR_P99_logit": 18.84168243408203,
+   "CR_P99_decision": "ALARM"
+  }
+ ],
+ "zscore_shipped": [
+  {
+   "track_id": "T000001",
+   "z_score_max": 27.534,
+   "flagged": true,
+   "top_feature": "kin_jerk_mean_abs_mps3"
+  }
+ ],
+ "stage1_autoencoder_archived": {
+  "track_score_p95_window_error": 2.15,
+  "threshold_p99": 5.2,
+  "flagged": false,
+  "source": "research/01_unsupervised_autoencoder/records/unsup_REPORT.md, section 4.6 (archived, not regenerated)"
+ },
+ "track_facts": {
+  "duration_s": 41.79000000000087,
+  "valid_bins": 175,
+  "longest_span_below_1_mps_s": 17.5
+ },
+ "status": "qualitative observation on one real, unlabelled track; not an evaluation"
+}

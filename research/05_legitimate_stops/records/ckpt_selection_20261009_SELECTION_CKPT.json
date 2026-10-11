@@ -1,0 +1,165 @@
+{
+ "rule": "plan/PLAN_PREREGISTERED.md (replacement = the unchanged F-round rule vs REF_AP)",
+ "checks": {
+  "REF_J": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": true,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": true,
+   "4_FA_valA_le_1.5pct": false,
+   "qualifies": false
+  },
+  "F1_J": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": false,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": false,
+   "4_FA_valA_le_1.5pct": true,
+   "qualifies": false
+  },
+  "F2_J": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": false,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": false,
+   "4_FA_valA_le_1.5pct": true,
+   "qualifies": false
+  },
+  "F1_AP": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": true,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": true,
+   "4_FA_valA_le_1.5pct": true,
+   "qualifies": false
+  },
+  "F2_AP": {
+   "1_legit_alarms_le_half_REF": false,
+   "1b_legit_rate_le_20pct": false,
+   "2_abn_hits_ge_REF_minus2": true,
+   "2b_gentle_ge_REF_minus2": true,
+   "3_nonstall_ge_REF_minus1": false,
+   "3b_tailgating_ge_12": true,
+   "3c_macro9_ge_REF_minus_0.03": false,
+   "4_FA_valA_le_1.5pct": false,
+   "qualifies": false
+  }
+ },
+ "candidate": "E_stall_diversity_ENSEMBLE (unchanged)",
+ "legit_alarms": {
+  "REF_AP": 40,
+  "REF_J": 41,
+  "F1_AP": 37,
+  "F1_J": 35,
+  "F2_AP": 27,
+  "F2_J": 21
+ },
+ "legit_rate": {
+  "REF_AP": 0.7407407407407407,
+  "REF_J": 0.7592592592592593,
+  "F1_AP": 0.6851851851851852,
+  "F1_J": 0.6481481481481481,
+  "F2_AP": 0.5,
+  "F2_J": 0.3888888888888889
+ },
+ "legit3": {
+  "REF_AP": "14/24",
+  "REF_J": "15/24",
+  "F1_AP": "14/24",
+  "F1_J": "12/24",
+  "F2_AP": "4/24",
+  "F2_J": "2/24"
+ },
+ "legit5": {
+  "REF_AP": "4/6",
+  "REF_J": "4/6",
+  "F1_AP": "3/6",
+  "F1_J": "3/6",
+  "F2_AP": "2/6",
+  "F2_J": "0/6"
+ },
+ "legit8": {
+  "REF_AP": "22/24",
+  "REF_J": "22/24",
+  "F1_AP": "20/24",
+  "F1_J": "20/24",
+  "F2_AP": "21/24",
+  "F2_J": "19/24"
+ },
+ "abn_hits": {
+  "REF_AP": 65,
+  "REF_J": 66,
+  "F1_AP": 65,
+  "F1_J": 65,
+  "F2_AP": 66,
+  "F2_J": 66
+ },
+ "GENTLE15": {
+  "REF_AP": "23/24",
+  "REF_J": "24/24",
+  "F1_AP": "23/24",
+  "F1_J": "23/24",
+  "F2_AP": "24/24",
+  "F2_J": "24/24"
+ },
+ "nonstall_detected": {
+  "REF_AP": 21,
+  "REF_J": 22,
+  "F1_AP": 21,
+  "F1_J": 19,
+  "F2_AP": 18,
+  "F2_J": 18
+ },
+ "val_tailgating_n": {
+  "REF_AP": "12/13",
+  "REF_J": "13/13",
+  "F1_AP": "12/13",
+  "F1_J": "12/13",
+  "F2_AP": "13/13",
+  "F2_J": "13/13"
+ },
+ "macro9": {
+  "REF_AP": 0.7120412267471091,
+  "REF_J": 0.7222222222222222,
+  "F1_AP": 0.7120412267471091,
+  "F1_J": 0.6009301156359981,
+  "F2_AP": 0.5,
+  "F2_J": 0.5
+ },
+ "FA_valA_rate": {
+  "REF_AP": 0.010662604722010662,
+  "REF_J": 0.015993907083015995,
+  "F1_AP": 0.014470677837014471,
+  "F1_J": 0.014470677837014471,
+  "F2_AP": 0.016755521706016754,
+  "F2_J": 0.012947448591012947
+ },
+ "FA_test": {
+  "REF_AP": 6,
+  "REF_J": 9,
+  "F1_AP": 11,
+  "F1_J": 9,
+  "F2_AP": 7,
+  "F2_J": 6
+ },
+ "val_AP": {
+  "REF_AP": 0.7811187304490997,
+  "REF_J": 0.7665963984506214,
+  "F1_AP": 0.7665727791588228,
+  "F1_J": 0.7517218417015713,
+  "F2_AP": 0.7002582074216558,
+  "F2_J": 0.6952328983463025
+ }
+}

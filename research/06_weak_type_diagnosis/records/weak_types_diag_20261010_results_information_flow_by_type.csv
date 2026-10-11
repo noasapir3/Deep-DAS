@@ -1,0 +1,10 @@
+type,n_anomaly_tracks,n_normal_tracks,input_AUC[a_lon_min],input_AUC[a_lon_p01],input_AUC[n_bins_a_below_-4],input_probe_AUC(13 stats),"encoder_probe_AUC(E_DIV seeds, mean)",encoder_probe_AUC(initial AE),model_score_AUC(E_DIV ens),recall_at_frozen_thr,anomaly_score_median,normal_score_p99,input_AUC[speed_ratio_p90],input_AUC[speed_ratio_max],input_AUC[v_p90],input_AUC[amp_p90],input_AUC[amp_mean],input_AUC[abs_dlat_median],input_AUC[dlat_std],input_AUC[longest_slow_s],input_AUC[vlat_std],input_AUC[osc_ratio]
+hard_braking,11,1018,0.698,0.901,0.933,0.997,0.912,0.893,0.803,1/11,0.99,2.28,,,,,,,,,,
+speeding,12,1018,,,,0.863,0.808,0.697,0.775,4/12,0.98,2.28,0.866,0.901,0.741,,,,,,,
+overweight_vehicle,12,1018,,,,0.871,0.961,0.963,0.832,4/12,1.44,2.28,,,,0.945,0.946,,,,,
+lane_straddling,12,1018,,,,0.999,0.954,0.834,0.929,5/12,1.83,2.28,,,,,,0.998,0.831,,,
+collision,10,1018,0.723,,,1.0,1.0,1.0,0.985,6/10,2.11,2.28,0.985,,,,,,,1.0,,
+lane_weaving,11,1018,,,,0.999,0.943,0.794,0.896,7/11,2.37,2.28,,,,,,,0.96,,0.984,1.0
+tailgating,11,1018,,,,0.905,1.0,0.998,1.0,11/11,4.9,2.28,,,0.827,,,,,,,
+stalled_vehicle,14,1018,,,,0.915,0.925,0.968,0.969,12/14,4.99,2.28,,,,,,,,0.952,,
+reckless_driver,10,1018,,,,0.999,0.971,0.858,0.972,7/10,2.64,2.28,0.95,,,,,,0.959,,,

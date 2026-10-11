@@ -1,0 +1,2696 @@
+{
+ "description": "Files copied verbatim from the SimStudio Final Project (code of the simulator, tracker and Z-score model, and reference data). source = path in the SimStudio project; dest = path in this release; sha256 of the (decompressed) content.",
+ "source_project": "SimStudio Final Project",
+ "created_utc": "2026-09-23T13:06:09Z",
+ "n_files": 336,
+ "files": [
+  {
+   "kind": "code",
+   "source": "src/simstudio/__init__.py",
+   "dest": "src/deepdas/fp/__init__.py",
+   "sha256": "61eace2b98167719b04f8f14f5749e043ce1422b22395f75c6c0e6ff65ff0b55",
+   "bytes": 18,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/models.py",
+   "dest": "src/deepdas/fp/models.py",
+   "sha256": "d0532b868bd07a5557e26f5146d1b4b9b72e694e8cefc140ca09040dce41f724",
+   "bytes": 11865,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/constants.py",
+   "dest": "src/deepdas/fp/constants.py",
+   "sha256": "402dd384587328e5d35020b30268a4a918f5c3a091dac725103882c49e01aee6",
+   "bytes": 4178,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/utils.py",
+   "dest": "src/deepdas/fp/utils.py",
+   "sha256": "3d2a23fd75262905641440192dbf4d09aeb39de80c8b3362566706ff7e7eaa79",
+   "bytes": 4129,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/geometry.py",
+   "dest": "src/deepdas/fp/geometry.py",
+   "sha256": "39807c4b8bfa0b053e94c8cbe1142f2b8dc231ec71512257eca0586b721029ac",
+   "bytes": 8072,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/bus.py",
+   "dest": "src/deepdas/fp/bus.py",
+   "sha256": "53158c3f5a5189cc539e5e66c8dc064b425159a9b7b08a5f308f8844aee5e148",
+   "bytes": 605,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/project_io.py",
+   "dest": "src/deepdas/fp/project_io.py",
+   "sha256": "380fc82daf8cbc7940d1a2aec883011794b9e9b9db809449ea867821ba3c0581",
+   "bytes": 2863,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/sim_core.py",
+   "dest": "src/deepdas/fp/sim_core.py",
+   "sha256": "68c3bf8ac22e5c3fdf481a03e118360b03339f5d46f9ea69d4a785df93e58260",
+   "bytes": 99722,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/tracking.py",
+   "dest": "src/deepdas/fp/tracking.py",
+   "sha256": "7d801e81cfd09c7b08513526242ec7798cd315bdb8f745a1658aec569ffcb55b",
+   "bytes": 34077,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/kalman.py",
+   "dest": "src/deepdas/fp/kalman.py",
+   "sha256": "17c347f658eb00a95f954b4a152db25916d7f403367ced5920a118cbcf474776",
+   "bytes": 44374,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "src/simstudio/audit.py",
+   "dest": "src/deepdas/fp/audit.py",
+   "sha256": "c0c886eba911d5833f0bab9493c4bda031bc036253ff9633671e18c796186b6a",
+   "bytes": 171759,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "anomaly_model/scripts/feature_extractor.py",
+   "dest": "src/deepdas/fp_anomaly_model/feature_extractor.py",
+   "sha256": "cf1fc0dd63d637f6d9490feda35e553981087748ce26d22c6b1c801f72c0dbb1",
+   "bytes": 144497,
+   "encoding": "identity"
+  },
+  {
+   "kind": "code",
+   "source": "anomaly_model/scripts/scenario_scorer.py",
+   "dest": "src/deepdas/fp_anomaly_model/scenario_scorer.py",
+   "sha256": "bb6ac5739858afdabd7f590e7db3232006d091c60afa7f265969e64504f9135b",
+   "bytes": 5612,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/outputs/model_live.pkl",
+   "dest": "data/simstudio_inputs/zscore/model_live.pkl",
+   "sha256": "0acc8803319eab7989335d1a176ddab60ea95b4a16122eeaa1528a15b29d0270",
+   "bytes": 7901,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/outputs/model_live.json",
+   "dest": "data/simstudio_inputs/zscore/model_live.json",
+   "sha256": "31fe9b9e9e822fcc6722cc212a2332add45a2e134b05f25c786229db4d51c0e2",
+   "bytes": 250,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/outputs/features_anomaly.csv",
+   "dest": "data/simstudio_inputs/zscore/features_anomaly.csv",
+   "sha256": "a936bd41557a940c40ea24ae80d60e22228c3d87dbc6d9b00c8c0f5a6ac616cc",
+   "bytes": 87499,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/outputs/scores_features_anomaly.csv",
+   "dest": "data/simstudio_inputs/zscore/scores_features_anomaly.csv",
+   "sha256": "2b6aa74e63726bc09546561c7a1b0c4aab9d2452c4f9befd731f81b90e84060c",
+   "bytes": 89788,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/klausner/bus stops/tracking_audit.xlsx",
+   "dest": "data/simstudio_inputs/klausner/tracking_audit.xlsx",
+   "sha256": "7d3c929ee69c2dee3ab4d8dc88578d84af004570196c6dbfe3b06167b483df63",
+   "bytes": 51727,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/klausner/bus stops/kalman_measurement_audit.xlsx",
+   "dest": "data/simstudio_inputs/klausner/kalman_measurement_audit.xlsx",
+   "sha256": "b0a2698e592d22b9d762a0912aa3caa8581ebad1315444a3579ee556335246b2",
+   "bytes": 18934,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/klausner/bus stops/coverage_summary.xlsx",
+   "dest": "data/simstudio_inputs/klausner/coverage_summary.xlsx",
+   "sha256": "ef44aa899455e4b08b36dfcba3a41838889c5b99839729b8ea1aea1b7fb99f2b",
+   "bytes": 5296,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/klausner/bus stops/klausner_bus_real.sim.json",
+   "dest": "data/simstudio_inputs/klausner/klausner_bus_real.sim.json",
+   "sha256": "8886992b72b923ac72a5fd9e8168b0fafe8acd14cb58c3c15e8591c91665b464",
+   "bytes": 1415,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/klausner/bus stops/klausner_real_features.csv",
+   "dest": "data/simstudio_inputs/klausner/klausner_real_features.csv",
+   "sha256": "9d69bff140da312e2b32013ade35821deea0494dc3c51eee0fae2ec8957578ef",
+   "bytes": 5232,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/outputs/features_normal.csv",
+   "dest": "data/simstudio_inputs/zscore/features_normal.csv.gz",
+   "sha256": "5a71a3e7a822ebd02a152595fad2a882befd7c067f2a62f59eeea67a0e56f24d",
+   "bytes": 32597629,
+   "encoding": "gzip (sha256 is of the uncompressed content)"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/region_001_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/001/region_001_sensors.sim.json",
+   "sha256": "e3cbe89da73a413278946f56c52b9b4f4772735765274dfbe5a67e964c034d89",
+   "bytes": 28679,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/region_info.json",
+   "dest": "data/simstudio_inputs/regions/001/region_info.json",
+   "sha256": "4a206cc385864f7df5f2d98c84a08bfafeda6a063997ffc213645dfcb0686ea3",
+   "bytes": 3107,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/002/region_002_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/002/region_002_sensors.sim.json",
+   "sha256": "df9e6cdfe967faf2f9b33f56d38d021eb59955952069df4cbc4cbfd722ab3970",
+   "bytes": 37224,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/002/region_info.json",
+   "dest": "data/simstudio_inputs/regions/002/region_info.json",
+   "sha256": "9d19e3bf2a9641d37368bc9c690eacfe655094d4d2a4162b9ff6852682034a3a",
+   "bytes": 2179,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/003/region_003_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/003/region_003_sensors.sim.json",
+   "sha256": "999a8310afe25db694a4c0720e92496dc1ebe56203696380648a618680d7af19",
+   "bytes": 24466,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/003/region_info.json",
+   "dest": "data/simstudio_inputs/regions/003/region_info.json",
+   "sha256": "9097f329022abf6297daa3f12e9bac8d7ec586668ecf7168fa17dd2b5a066c1b",
+   "bytes": 2145,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/004/region_004_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/004/region_004_sensors.sim.json",
+   "sha256": "782dca8666e23255a09c35e1654212905e8632a7f6b249b3565ce3cf2cf25bcd",
+   "bytes": 25023,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/004/region_info.json",
+   "dest": "data/simstudio_inputs/regions/004/region_info.json",
+   "sha256": "730c7d97f74f3c86dadbac00ba1760579c7de98cdc3090879ca2121ad2197006",
+   "bytes": 2035,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/005/region_005_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/005/region_005_sensors.sim.json",
+   "sha256": "9aaaea59209cfddf81590149a044ea13e531463e72406e8f3f9b13f5f450af42",
+   "bytes": 25562,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/005/region_info.json",
+   "dest": "data/simstudio_inputs/regions/005/region_info.json",
+   "sha256": "64cbd65d69be2d5d45c8e99056c115bc4b71abf2340d292cb036bc15d3cb64ca",
+   "bytes": 2588,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/006/region_006_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/006/region_006_sensors.sim.json",
+   "sha256": "280738b13b06116de15de065fee060530ec08d711480f3ffa3439fccbd4b8937",
+   "bytes": 28911,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/006/region_info.json",
+   "dest": "data/simstudio_inputs/regions/006/region_info.json",
+   "sha256": "248be62c7a9f2c5d8a7b229e975a6dcf57f4d440b51c188771e9fc3969e5edde",
+   "bytes": 2784,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/007/region_007_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/007/region_007_sensors.sim.json",
+   "sha256": "e1f2ed98383490012a82cfeb14f41e034e3b05cf2c826f5d8f9c58ee75581ae8",
+   "bytes": 23722,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/007/region_info.json",
+   "dest": "data/simstudio_inputs/regions/007/region_info.json",
+   "sha256": "806a555afd2292b36b031d18ee51dcd01700265a0d93a30ef041e850dbe374b2",
+   "bytes": 2285,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/008/region_008_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/008/region_008_sensors.sim.json",
+   "sha256": "3680d06265f0e803ed9728893f326d3a23580f714eba219e5fcc2df569b62f18",
+   "bytes": 25244,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/008/region_info.json",
+   "dest": "data/simstudio_inputs/regions/008/region_info.json",
+   "sha256": "89e91441f422bd644c015ad2e44a08b567d8cbaf0d8bfec5b820f21d73f783d7",
+   "bytes": 2710,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/009/region_009_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/009/region_009_sensors.sim.json",
+   "sha256": "74afe6d80141875a32560a1056ab17bdad76b9fec67a69d1269d298300ce24cd",
+   "bytes": 22767,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/009/region_info.json",
+   "dest": "data/simstudio_inputs/regions/009/region_info.json",
+   "sha256": "7fe001b8cc14b92448356c9d9fd499b766b84cd470f59b2b86ad1d404c4ca9f6",
+   "bytes": 2013,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/010/region_010_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/010/region_010_sensors.sim.json",
+   "sha256": "8ada06ab1623aeb5477469042b85aab78d0a52ecb7452e27b8211b4f319fe4b9",
+   "bytes": 24566,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/010/region_info.json",
+   "dest": "data/simstudio_inputs/regions/010/region_info.json",
+   "sha256": "46f05c5a9949eec7b690a0c08b279b0fe5a83f7242173ae8e8632c5e393896fa",
+   "bytes": 2151,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/011/region_011_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/011/region_011_sensors.sim.json",
+   "sha256": "ccfde6dfc055e5645a2e59151957c9e3600b27f8ccb345e3a81eb34619862953",
+   "bytes": 22613,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/011/region_info.json",
+   "dest": "data/simstudio_inputs/regions/011/region_info.json",
+   "sha256": "86bd07759002adaed585bedc1f12333bb50c515a08bd24c62f6289d434e48755",
+   "bytes": 2320,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/012/region_012_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/012/region_012_sensors.sim.json",
+   "sha256": "81fb234e08d58a7d9bddd3c3ce7951d1be99587f82dc32fce932f0e545d7c2c4",
+   "bytes": 25728,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/012/region_info.json",
+   "dest": "data/simstudio_inputs/regions/012/region_info.json",
+   "sha256": "7ac910028ef04c2eb6a94e25a6a6b1544bb0dea595c12e7a22864b84e3606f7b",
+   "bytes": 2517,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/013/region_013_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/013/region_013_sensors.sim.json",
+   "sha256": "f3613d6465f57c330c76bf71829a0f86f0ce8fee8867c72b5b485f0433e7946a",
+   "bytes": 32839,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/013/region_info.json",
+   "dest": "data/simstudio_inputs/regions/013/region_info.json",
+   "sha256": "501c3e684d66a7921f6dc9ea795afd7a2e340bf970638695f5a98fa7ed72ed1b",
+   "bytes": 2545,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/014/region_014_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/014/region_014_sensors.sim.json",
+   "sha256": "6fd4f8d73973847a15570ce241908ca2cc80dddfcb052024690f41dbdd2c6abc",
+   "bytes": 21859,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/014/region_info.json",
+   "dest": "data/simstudio_inputs/regions/014/region_info.json",
+   "sha256": "2cee54ecfdb42b927dec2f073b825f84bc251245d40f82dde8bb353f33fad74c",
+   "bytes": 2411,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/015/region_015_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/015/region_015_sensors.sim.json",
+   "sha256": "40f95fb47683b205d3ce07d2642d83c281a7ea5eaa0957b9602ecbea3dfd51e6",
+   "bytes": 25072,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/015/region_info.json",
+   "dest": "data/simstudio_inputs/regions/015/region_info.json",
+   "sha256": "945e22ffc2cbdcda53a97a8e8f90dff0429dde71773cbe9a071de6d5cfc75670",
+   "bytes": 2152,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/016/region_016_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/016/region_016_sensors.sim.json",
+   "sha256": "26b50cb5716a72f24bb88a1f7fc7a7aafbe66fb14056967ceb777ee76214df2e",
+   "bytes": 32342,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/016/region_info.json",
+   "dest": "data/simstudio_inputs/regions/016/region_info.json",
+   "sha256": "234553a7c16db014e1ddfdd60032cc473e90ac974e33d5f46e6325980f5216f1",
+   "bytes": 2944,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/017/region_017_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/017/region_017_sensors.sim.json",
+   "sha256": "6de079a67a97e1dd8915c3c2640332de07b2b70ef32230a45cc55e87496dd3dd",
+   "bytes": 24340,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/017/region_info.json",
+   "dest": "data/simstudio_inputs/regions/017/region_info.json",
+   "sha256": "d257380159445c10bfc4c68d3a8070f7a0ef8d75601df9072749b83d8f096daf",
+   "bytes": 2596,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/018/region_018_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/018/region_018_sensors.sim.json",
+   "sha256": "60560152be564dac51a3f7298b4bde6331c83e10fbf5ca364b10bae1cfe1b88c",
+   "bytes": 26824,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/018/region_info.json",
+   "dest": "data/simstudio_inputs/regions/018/region_info.json",
+   "sha256": "06f66b67c8d6962e94c1141e3382b996d29223429e902fd51f6972d3b11adfc3",
+   "bytes": 2300,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/019/region_019_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/019/region_019_sensors.sim.json",
+   "sha256": "281c2e07af97aaba3d41d07123f7b7ac5852ed6968059eb485f422ff8b62c651",
+   "bytes": 22939,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/019/region_info.json",
+   "dest": "data/simstudio_inputs/regions/019/region_info.json",
+   "sha256": "8fc9b1a3be381d7e9145fd44da6ddea4a6119f8bba15e649302bc77eb9663f31",
+   "bytes": 2223,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/020/region_020_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/020/region_020_sensors.sim.json",
+   "sha256": "18c8475fc6f6208299ec8892094e0ce7511ce442a51ff728bd9a418321afc455",
+   "bytes": 24596,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/020/region_info.json",
+   "dest": "data/simstudio_inputs/regions/020/region_info.json",
+   "sha256": "9fdb39bc496dd76d99258dad67e0d5c14cc1908ffb1aefdff7e5e4d6b42640e0",
+   "bytes": 1884,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/021/region_021_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/021/region_021_sensors.sim.json",
+   "sha256": "dad899c8f2219c0ba0c1fbd155592fb72105815895570da1d40e1edcba6e95cf",
+   "bytes": 21103,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/021/region_info.json",
+   "dest": "data/simstudio_inputs/regions/021/region_info.json",
+   "sha256": "d97f8b5555cc4ab29ff2b52f7b8613c04772de9776f4843c6ece81562921000e",
+   "bytes": 2066,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/022/region_022_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/022/region_022_sensors.sim.json",
+   "sha256": "bc4a430df07facbbe1462d4a151f16eb6da4f2eb0aaf448ee0eacec4d71934c6",
+   "bytes": 22782,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/022/region_info.json",
+   "dest": "data/simstudio_inputs/regions/022/region_info.json",
+   "sha256": "3b0d18810d7138bec0573c53573ab72447bfa4e5ef3ca212a26ff80d460c5c99",
+   "bytes": 2522,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/023/region_023_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/023/region_023_sensors.sim.json",
+   "sha256": "3de9fda5de07c0b7e4e9b9f0a0626c84c1a300b582a08d14f5386a755bb103fc",
+   "bytes": 23530,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/023/region_info.json",
+   "dest": "data/simstudio_inputs/regions/023/region_info.json",
+   "sha256": "d1295656b1aaa86d3d83afad54f4bb7debcdf90ef5e032db6629124a32cf86c1",
+   "bytes": 2245,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/024/region_024_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/024/region_024_sensors.sim.json",
+   "sha256": "c2a634e1dc2c1beb9559f7b4f292176139307d57259d8284309df11a0183c10d",
+   "bytes": 25275,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/024/region_info.json",
+   "dest": "data/simstudio_inputs/regions/024/region_info.json",
+   "sha256": "0062c4093abbf273dc9cdc31fc36458b9780e02a01cecdc1abfb0d068594b541",
+   "bytes": 2711,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/025/region_025_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/025/region_025_sensors.sim.json",
+   "sha256": "e0ac62b43af350d6d835cecfda2486973ee780045f08ac68c242d33a5780c27c",
+   "bytes": 22234,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/025/region_info.json",
+   "dest": "data/simstudio_inputs/regions/025/region_info.json",
+   "sha256": "f37a498a9b0817bea06deef340ee2395875a1733cf604682ed9b5636cf3a35ad",
+   "bytes": 2081,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/026/region_026_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/026/region_026_sensors.sim.json",
+   "sha256": "ca3ec94311ab3efaafd0b7c91753a620230606822d53ae26a06ee47fa8ad0f27",
+   "bytes": 23586,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/026/region_info.json",
+   "dest": "data/simstudio_inputs/regions/026/region_info.json",
+   "sha256": "6019e133f878852effdfdd9e6d70570bd8d7d3f698e6d859b431b1fdc19bcf3e",
+   "bytes": 2695,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/027/region_027_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/027/region_027_sensors.sim.json",
+   "sha256": "266ecf497a8d465719cdb0c0e405422a7719cdc633a40439fb1bdf0d1f2941d5",
+   "bytes": 22617,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/027/region_info.json",
+   "dest": "data/simstudio_inputs/regions/027/region_info.json",
+   "sha256": "143dd1154f191a961a0d8565bb09d76b7ac877dd586e3ad15bbe323f29bb5b24",
+   "bytes": 2369,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/028/region_028_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/028/region_028_sensors.sim.json",
+   "sha256": "cb5b3f3b4e18939537a632eaf9dae63d3ff86c4fd824a23ce85839e3bca00ff9",
+   "bytes": 26569,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/028/region_info.json",
+   "dest": "data/simstudio_inputs/regions/028/region_info.json",
+   "sha256": "a7e288e176b0a75095f0c6e94c5b6d4841a4626a77e7336c3079784a05d82c02",
+   "bytes": 2083,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/029/region_029_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/029/region_029_sensors.sim.json",
+   "sha256": "7fa5b9f301847f6ad5b10b9293211273145462dd36ac136b927109b16b29d196",
+   "bytes": 26778,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/029/region_info.json",
+   "dest": "data/simstudio_inputs/regions/029/region_info.json",
+   "sha256": "3dc08b1162dbcc5e8989d8e29e373f06559c0e51153ac66ba65aa617528771e0",
+   "bytes": 2914,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/030/region_030_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/030/region_030_sensors.sim.json",
+   "sha256": "60847f06d0af1efb825010dddddcff0cb406dd9cdcd02617e124e2c614b1a620",
+   "bytes": 22739,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/030/region_info.json",
+   "dest": "data/simstudio_inputs/regions/030/region_info.json",
+   "sha256": "4d46af23c5f3bbd7b813893aa28c1fd4b980b4a7a06759b3c17053b943d9ccc4",
+   "bytes": 2030,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/031/region_031_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/031/region_031_sensors.sim.json",
+   "sha256": "5d3cb8438b30571f7bddf5fa7bca0d2833f339759cc7c19eb1e5a9c987d83154",
+   "bytes": 25044,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/031/region_info.json",
+   "dest": "data/simstudio_inputs/regions/031/region_info.json",
+   "sha256": "a4d0f04069fe280ac11dada29c25e1654cbb121b461d39869952f5978517258e",
+   "bytes": 3265,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/032/region_032_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/032/region_032_sensors.sim.json",
+   "sha256": "0bcfc9c280602ed448b9bafe1933dc724a7ce3e626811793341a5b9fa1a487e2",
+   "bytes": 21886,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/032/region_info.json",
+   "dest": "data/simstudio_inputs/regions/032/region_info.json",
+   "sha256": "6e6219eed2b5f2fe0c1c38e3eea78435d68ef5b564e8083ac18216c0d7b92843",
+   "bytes": 1768,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/033/region_033_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/033/region_033_sensors.sim.json",
+   "sha256": "e8b477fd9ab43675e8dfd9a3f217a451a64935398f404fdc37ebc86c8ee7e65f",
+   "bytes": 25224,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/033/region_info.json",
+   "dest": "data/simstudio_inputs/regions/033/region_info.json",
+   "sha256": "beb119b5e41faeb6e6872228b458c3c0f4452eb350cd8db4c763d44bf7038076",
+   "bytes": 3036,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/034/region_034_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/034/region_034_sensors.sim.json",
+   "sha256": "0010a66b02ea2b3991739f7aa0ac181692661046d35aa5e7a36ba61ceb269d5a",
+   "bytes": 26870,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/034/region_info.json",
+   "dest": "data/simstudio_inputs/regions/034/region_info.json",
+   "sha256": "2daccdc3cb915ce76e3a9b3abcb4c6025d4d2809daaffd4d46a95e7be044050d",
+   "bytes": 2358,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/035/region_035_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/035/region_035_sensors.sim.json",
+   "sha256": "4fe9bdbdd4583f32c75c49b21a14f75c48efa03d30db069b84bf0f3ba6db566c",
+   "bytes": 24588,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/035/region_info.json",
+   "dest": "data/simstudio_inputs/regions/035/region_info.json",
+   "sha256": "851fa086843c6cfddc921a283f5185f42ec24f9de9f06a96b9c2bff2e5d9661f",
+   "bytes": 1616,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/036/region_036_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/036/region_036_sensors.sim.json",
+   "sha256": "800e03aaf4b71564e9f3e699992f40258974940419a1a0aae7c8633a2488f5e5",
+   "bytes": 23456,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/036/region_info.json",
+   "dest": "data/simstudio_inputs/regions/036/region_info.json",
+   "sha256": "03eb5199711fafadc1297d5457afcb2e77e7c05149c620932b6dca418322c6af",
+   "bytes": 2308,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/037/region_037_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/037/region_037_sensors.sim.json",
+   "sha256": "b28910243a58ac3c48a04041a5a693f29b0d1d73ebeb777aae28c732e40015dc",
+   "bytes": 24545,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/037/region_info.json",
+   "dest": "data/simstudio_inputs/regions/037/region_info.json",
+   "sha256": "46bb7b69326406165849660896877f9c212679215ba6d875f40a6dca5b535e86",
+   "bytes": 2252,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/038/region_038_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/038/region_038_sensors.sim.json",
+   "sha256": "d77febe9964461eec4ed9e7a9ffcba7fe8f5d33129caff52ee446ef57fe28087",
+   "bytes": 26020,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/038/region_info.json",
+   "dest": "data/simstudio_inputs/regions/038/region_info.json",
+   "sha256": "9cad2e7b1f7976302546845f96c6a1a1f79a125908b71ec58a20918a67df645d",
+   "bytes": 2628,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/039/region_039_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/039/region_039_sensors.sim.json",
+   "sha256": "1c7bfeb721feabe353379891a52c17f48c4d625225fbfd5dfd41ba6e39a6aa1c",
+   "bytes": 24787,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/039/region_info.json",
+   "dest": "data/simstudio_inputs/regions/039/region_info.json",
+   "sha256": "a58bd8075a504c3063eb3e24a4966bd7f0b3283777523dc5d4a88cd3c57cc219",
+   "bytes": 2803,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/040/region_040_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/040/region_040_sensors.sim.json",
+   "sha256": "ad889ce7630e48aa220bf681cb19b971927958ed8ff7478c97449e74e84744c9",
+   "bytes": 22107,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/040/region_info.json",
+   "dest": "data/simstudio_inputs/regions/040/region_info.json",
+   "sha256": "24358008590bffcbf749cfb69c5efb547f2caa35b7b4edf923256a03733bb2ee",
+   "bytes": 2544,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/041/region_041_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/041/region_041_sensors.sim.json",
+   "sha256": "0694e34f176078b231172546779f902121b2779d440bc9844d03b63fa9b73784",
+   "bytes": 25221,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/041/region_info.json",
+   "dest": "data/simstudio_inputs/regions/041/region_info.json",
+   "sha256": "36ea9f8c668d3d9a7bb486ef5d5bbad171f07766c03d2097c8fbc155b6b9e750",
+   "bytes": 2898,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/042/region_042_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/042/region_042_sensors.sim.json",
+   "sha256": "67e5851093cd5781091a010066608735171031f2e125a4689575e55a0c50c039",
+   "bytes": 25215,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/042/region_info.json",
+   "dest": "data/simstudio_inputs/regions/042/region_info.json",
+   "sha256": "a901b2b0ff59ccf4d58790d08131dee3858d4e14774f9de725be1830e6647363",
+   "bytes": 2623,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/043/region_043_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/043/region_043_sensors.sim.json",
+   "sha256": "9dd9748b8671122de6031c57230be96cc1b9bc26170516d7dfde43078dac72d1",
+   "bytes": 23014,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/043/region_info.json",
+   "dest": "data/simstudio_inputs/regions/043/region_info.json",
+   "sha256": "15069fd6296d1a39b4677c154d7216da5042e5ad39c5e25f96b58e38cdda408e",
+   "bytes": 2186,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/044/region_044_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/044/region_044_sensors.sim.json",
+   "sha256": "5c3d85d6415a4ab375b462627171f3a43394d2ce3fcd9307211aa0795c9c35ec",
+   "bytes": 15901,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/044/region_info.json",
+   "dest": "data/simstudio_inputs/regions/044/region_info.json",
+   "sha256": "66d7004a553aca5dedc1d4ebdc740b76dd3985b284dd159aad8a47370b0c805c",
+   "bytes": 1709,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/045/region_045_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/045/region_045_sensors.sim.json",
+   "sha256": "25511da3384d95943f1b04f31979ab8060309c065085956b16640a4935df4655",
+   "bytes": 23628,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/045/region_info.json",
+   "dest": "data/simstudio_inputs/regions/045/region_info.json",
+   "sha256": "96aaf042668e3f8620cb5f946b5a6eda22cd8c30a3161d3f28f65f2e9abd3b05",
+   "bytes": 2189,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/046/region_046_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/046/region_046_sensors.sim.json",
+   "sha256": "2bb0462d8d9498904812d12086df3d37f433d9fee95968ec365fff88ed3592fb",
+   "bytes": 23779,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/046/region_info.json",
+   "dest": "data/simstudio_inputs/regions/046/region_info.json",
+   "sha256": "2bceb19312be8ca1d15ec1699b5c0583038903e8b5f164a436ddf6d52e521f75",
+   "bytes": 2611,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/047/region_047_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/047/region_047_sensors.sim.json",
+   "sha256": "2127936e7a3ffeb7c3970a059ee524744a29eb3992398254f450908df9e2529f",
+   "bytes": 23522,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/047/region_info.json",
+   "dest": "data/simstudio_inputs/regions/047/region_info.json",
+   "sha256": "e376f447ff66528a48399531a10ab252ffbacee74c3cb878becabcc0657f43e5",
+   "bytes": 2022,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/048/region_048_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/048/region_048_sensors.sim.json",
+   "sha256": "96c6397bd8782ef26cdbdea664068ee1f50a316069f15e1e1005402030e248da",
+   "bytes": 25881,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/048/region_info.json",
+   "dest": "data/simstudio_inputs/regions/048/region_info.json",
+   "sha256": "3704998fa9859fb942e4bfd99a412f048f6fa33edbf4dbbc7a4e933301eee157",
+   "bytes": 2516,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/049/region_049_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/049/region_049_sensors.sim.json",
+   "sha256": "1a7b8d06e9be5623e1da69d66b9991a43116d1b728abbcfb4402bdc554fa05a2",
+   "bytes": 20005,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/049/region_info.json",
+   "dest": "data/simstudio_inputs/regions/049/region_info.json",
+   "sha256": "4da913c0bbf9df8a80dfd2c59ca7c510f50729687ed801c054ffe4856cb40cc0",
+   "bytes": 1793,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/050/region_050_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/050/region_050_sensors.sim.json",
+   "sha256": "eb74e7ed112bfe2193f1b9cc428f6fce7495df8d7a77ba0d5495144ee8902d9f",
+   "bytes": 27825,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/050/region_info.json",
+   "dest": "data/simstudio_inputs/regions/050/region_info.json",
+   "sha256": "c14de3c3c0c62736936d93ba29ea9782c3ab0ebdd1c7cd8325b222ade51bc5e3",
+   "bytes": 2124,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/051/region_051_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/051/region_051_sensors.sim.json",
+   "sha256": "f11ad477c59515645e8cb7fb5fe1d596d244bbb49254fc908d931ec23494d78e",
+   "bytes": 24155,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/051/region_info.json",
+   "dest": "data/simstudio_inputs/regions/051/region_info.json",
+   "sha256": "903ad22da6ee5db382538edf09cb8cb918751c1f4f6e8e14e1109996bd852c9a",
+   "bytes": 1846,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/052/region_052_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/052/region_052_sensors.sim.json",
+   "sha256": "2b9853b1ef6435f7e2dc81efb267f86d04329b514444f5982cb88dfbdcd3148a",
+   "bytes": 24747,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/052/region_info.json",
+   "dest": "data/simstudio_inputs/regions/052/region_info.json",
+   "sha256": "2d10fc9f4e2e5736f928b1af3e31af7d4b7719cbb0fbf6c1bc8ef715fc69a0fe",
+   "bytes": 2951,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/053/region_053_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/053/region_053_sensors.sim.json",
+   "sha256": "ced24d87bd3054aeeaaeea72a6fd62bbb1613307d542f6a0d8cbbc01ad7fe004",
+   "bytes": 29356,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/053/region_info.json",
+   "dest": "data/simstudio_inputs/regions/053/region_info.json",
+   "sha256": "5efcdba11c65dd63a9febd45b96ab8c3e6930da9f61bf8f295cfbd4845d7c0be",
+   "bytes": 2525,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/054/region_054_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/054/region_054_sensors.sim.json",
+   "sha256": "83e88d24aed565aa170914e5dd4189234693c031e247dda1a91c0928143941d7",
+   "bytes": 18347,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/054/region_info.json",
+   "dest": "data/simstudio_inputs/regions/054/region_info.json",
+   "sha256": "691ed8fcd52f195ff5823d739f9ed5ea293a0c8d89b1da800d73ef9cf9858432",
+   "bytes": 1768,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/055/region_055_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/055/region_055_sensors.sim.json",
+   "sha256": "45113311b665e671797a319cb38c3a10e1e43f7c6803e24c5f1379e4c1ebcfda",
+   "bytes": 29441,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/055/region_info.json",
+   "dest": "data/simstudio_inputs/regions/055/region_info.json",
+   "sha256": "21180cd646452b94e2cb8b141acc3a2d1bda7c92aeabb2f3ccdf7731645c7ec5",
+   "bytes": 2729,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/056/region_056_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/056/region_056_sensors.sim.json",
+   "sha256": "c1034ce11fb0e24d9d496b0c2bf3c316b9af9c33407fd8ba17cb852909644e14",
+   "bytes": 25473,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/056/region_info.json",
+   "dest": "data/simstudio_inputs/regions/056/region_info.json",
+   "sha256": "b0eb5cd47605e658f5d439ca0fdb77beb8d33dde9b9bd518a9e26e0bb24c50f4",
+   "bytes": 2843,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/057/region_057_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/057/region_057_sensors.sim.json",
+   "sha256": "09aa52644bb3525e1e797101b2fede209c133d5f7758cbcaa3e36e36f42ec250",
+   "bytes": 25556,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/057/region_info.json",
+   "dest": "data/simstudio_inputs/regions/057/region_info.json",
+   "sha256": "78fc192a915d061202392fbca3ec1c8d85df9c84273dcaa3ca59e6dc8a20f4b1",
+   "bytes": 2799,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/058/region_058_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/058/region_058_sensors.sim.json",
+   "sha256": "466abadd9932345ca344167bc587b92e7f1db599a13ad8f5e6a02a8104feac86",
+   "bytes": 22420,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/058/region_info.json",
+   "dest": "data/simstudio_inputs/regions/058/region_info.json",
+   "sha256": "a9ee5916c81e898ae4fb9ab962f40e02749e4e9054dfbe0af2c10f1399c8bed3",
+   "bytes": 1996,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/059/region_059_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/059/region_059_sensors.sim.json",
+   "sha256": "c62a8305dd99ae8d68894be000d56473c2095df32ae47b9c96eb8b9bfb2fa8ed",
+   "bytes": 22664,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/059/region_info.json",
+   "dest": "data/simstudio_inputs/regions/059/region_info.json",
+   "sha256": "436d3e9d05d7ff9b84de27ac3d8c0e65392bfa05da2c2dbd73961c0959fbff27",
+   "bytes": 2279,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/060/region_060_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/060/region_060_sensors.sim.json",
+   "sha256": "336024d70c528a32f0c198abd9add8100a478cdffae9a0226b07f827b1cadb38",
+   "bytes": 22006,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/060/region_info.json",
+   "dest": "data/simstudio_inputs/regions/060/region_info.json",
+   "sha256": "248cde3d79c810897f88a7332bfb150bf6f8cc57f9b9a3ecb7c6e97c1afac01b",
+   "bytes": 1487,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/061/region_061_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/061/region_061_sensors.sim.json",
+   "sha256": "6f3a1b1703e486726be4029dd59767b5ce983ca03bf344a7b26058cf071b479c",
+   "bytes": 23283,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/061/region_info.json",
+   "dest": "data/simstudio_inputs/regions/061/region_info.json",
+   "sha256": "af06fedcce46277c8968e5dd52514a710c5167fc35e8a6eed71021e1d4b36ccc",
+   "bytes": 1738,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/062/region_062_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/062/region_062_sensors.sim.json",
+   "sha256": "09895eb819b441b4169f6a6dc70f8ec524dbb98e3b77b21ec4b0e2e9218dbad3",
+   "bytes": 22683,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/062/region_info.json",
+   "dest": "data/simstudio_inputs/regions/062/region_info.json",
+   "sha256": "58958b42cd58a4338d54832cdb6630ef71215bf65a77f9bb4704ac22c166c552",
+   "bytes": 1795,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/063/region_063_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/063/region_063_sensors.sim.json",
+   "sha256": "445d31edfeee7da660f1ba6a0fe9c58e3af6e1b7fa802243064b09c3bff3b68f",
+   "bytes": 26261,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/063/region_info.json",
+   "dest": "data/simstudio_inputs/regions/063/region_info.json",
+   "sha256": "9e09903d9e39e53e228c5275ecfe480d6556abbba9e59d22edf896c252bd10c2",
+   "bytes": 1799,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/064/region_064_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/064/region_064_sensors.sim.json",
+   "sha256": "f9370428dd148e9b08f4a2eb5c15cab697f86b8a3d81e5781a982fc4b26a7d68",
+   "bytes": 27550,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/064/region_info.json",
+   "dest": "data/simstudio_inputs/regions/064/region_info.json",
+   "sha256": "cbe24498e4617812af444fca1866ead8ec0b3353c5d04502f57918de7714257d",
+   "bytes": 1764,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/065/region_065_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/065/region_065_sensors.sim.json",
+   "sha256": "77bce5430940670bda428f2c93fbace82a301bfdaac94428f3ddb8e67d310e44",
+   "bytes": 31312,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/065/region_info.json",
+   "dest": "data/simstudio_inputs/regions/065/region_info.json",
+   "sha256": "7e1a137e4877931536eebfad47792dd34bd1a99ee5813f5c8c543488a6aa777b",
+   "bytes": 2523,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/066/region_066_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/066/region_066_sensors.sim.json",
+   "sha256": "9a073d07adf611e7bdcc11846477fcd4b75ea0f7f700d045c0ac87d2333ad0c4",
+   "bytes": 24778,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/066/region_info.json",
+   "dest": "data/simstudio_inputs/regions/066/region_info.json",
+   "sha256": "7328f776814315995f78150953e4da912b92bf7a3fb8f5de00a8b1f569b0510a",
+   "bytes": 2544,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/067/region_067_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/067/region_067_sensors.sim.json",
+   "sha256": "25c58bac98b8f7e47f7ae3f88d2918363830a96a66b04e3be234da43b2b14a86",
+   "bytes": 26539,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/067/region_info.json",
+   "dest": "data/simstudio_inputs/regions/067/region_info.json",
+   "sha256": "d3fe4c71e1de49fbf099ff3caaa4209dfd333aa194215bf9542cd3e5d4cc42a6",
+   "bytes": 2394,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/068/region_068_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/068/region_068_sensors.sim.json",
+   "sha256": "4f154ad5d560765f7aa7c23f2c6eba835f6b41f808216ad647feebee77b95165",
+   "bytes": 26277,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/068/region_info.json",
+   "dest": "data/simstudio_inputs/regions/068/region_info.json",
+   "sha256": "f3a370547f2a50d0c3c398e7159f6c7bc957d1a46f96277640bca0f953f39e92",
+   "bytes": 2339,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/069/region_069_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/069/region_069_sensors.sim.json",
+   "sha256": "d533fb39f77e4eb6bba6ed28cc75667cbf48b4948e0a8b8008148f49cb8f4f71",
+   "bytes": 29187,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/069/region_info.json",
+   "dest": "data/simstudio_inputs/regions/069/region_info.json",
+   "sha256": "2d125eda7f4578dd65e3a15158acae8d0cff5ec9c61dae3be89f2a6c35cfab12",
+   "bytes": 2550,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/070/region_070_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/070/region_070_sensors.sim.json",
+   "sha256": "23d0b58b89b7ef74ce1afb24940543fd35e4800fa03aff9650fdcfac1f6c30e6",
+   "bytes": 25872,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/070/region_info.json",
+   "dest": "data/simstudio_inputs/regions/070/region_info.json",
+   "sha256": "bd12ebcd5d89065ef0ad38d4d7e81502b7cb9ac32799a6b47d875b5f91be6296",
+   "bytes": 2845,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/071/region_071_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/071/region_071_sensors.sim.json",
+   "sha256": "45e992d7938147963a0eb9534da712d2180c21d6fba1957dcbb9cf0bfb2e4f70",
+   "bytes": 27622,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/071/region_info.json",
+   "dest": "data/simstudio_inputs/regions/071/region_info.json",
+   "sha256": "9885d24570bfc10f4f0db254fbee7b79fff8e6ecd4f5e8e14ed2a2a9d4b18ea0",
+   "bytes": 2012,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/072/region_072_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/072/region_072_sensors.sim.json",
+   "sha256": "76b4d14995d9022522eeb283de655eda751074c6dddf55191ba0dbec8af8f66b",
+   "bytes": 26019,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/072/region_info.json",
+   "dest": "data/simstudio_inputs/regions/072/region_info.json",
+   "sha256": "44026300636427d5b35a8debbfbe3f8910227340de111d6c79d968f567afa190",
+   "bytes": 3343,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/073/region_073_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/073/region_073_sensors.sim.json",
+   "sha256": "6277448e5abeba9ce6ac69bb30864d90a4d8be1f2b8a12ab812b8d8361fd37b2",
+   "bytes": 30358,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/073/region_info.json",
+   "dest": "data/simstudio_inputs/regions/073/region_info.json",
+   "sha256": "cc0ae12843aab9cbf3ac9b72020a28bbd56001dc80de906eec91ef8afbc5ef49",
+   "bytes": 1943,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/074/region_074_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/074/region_074_sensors.sim.json",
+   "sha256": "374c917363b561bfc27757f6188b975ee7b02c14b37962edf3ec814e63ef4d5b",
+   "bytes": 24239,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/074/region_info.json",
+   "dest": "data/simstudio_inputs/regions/074/region_info.json",
+   "sha256": "9251ebf540790d6d61ba5ad085dcee6905003ae374321d85132d04e415cf8bde",
+   "bytes": 1597,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/075/region_075_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/075/region_075_sensors.sim.json",
+   "sha256": "2cb7b3a573fd3bb484b4c89c9ea56654b1b4c5c82c4abac56aaf40ce6348d35a",
+   "bytes": 22717,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/075/region_info.json",
+   "dest": "data/simstudio_inputs/regions/075/region_info.json",
+   "sha256": "0c03497b303beced73718c269176af2b08b13bdd71f7fac7a3e8daa7582c3987",
+   "bytes": 1741,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/076/region_076_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/076/region_076_sensors.sim.json",
+   "sha256": "9027f3a2c1dd15752360923b326d9250cef7a934f1653e43724aeb49049671f1",
+   "bytes": 26583,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/076/region_info.json",
+   "dest": "data/simstudio_inputs/regions/076/region_info.json",
+   "sha256": "b36364384b87ca200383ce630c79bb7fed7d7d2d00b02b5a7cada4e6e1983012",
+   "bytes": 2367,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/077/region_077_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/077/region_077_sensors.sim.json",
+   "sha256": "845dc5ec692857611e8bdc8974c7636c351a62025e7cf60622bb7160db387f17",
+   "bytes": 26301,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/077/region_info.json",
+   "dest": "data/simstudio_inputs/regions/077/region_info.json",
+   "sha256": "e9e58942d8673ab98614dcdc963caa64fbba5e13ada8d9fe24a718044b2651a7",
+   "bytes": 2034,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/078/region_078_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/078/region_078_sensors.sim.json",
+   "sha256": "121004e8b923deae7837e099613f70ab48761998c34c99de3e782dea1540f185",
+   "bytes": 26140,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/078/region_info.json",
+   "dest": "data/simstudio_inputs/regions/078/region_info.json",
+   "sha256": "dde593a19577646f3d3051f77aca6ecc761345e0d3249c8a0f014411ec9aa73d",
+   "bytes": 2476,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/079/region_079_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/079/region_079_sensors.sim.json",
+   "sha256": "dc428787c4e50db7b87706175dac9db2193dc220b266f05dde64a1973fc69a6a",
+   "bytes": 17895,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/079/region_info.json",
+   "dest": "data/simstudio_inputs/regions/079/region_info.json",
+   "sha256": "80d1cde3aa26cc48a215ab88fb12e4202d97984dd6a51cfcacc13f9ca49408e1",
+   "bytes": 1383,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/080/region_080_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/080/region_080_sensors.sim.json",
+   "sha256": "ff6b7a74dc9ebfee7ea4d310e0011b3ea4eb08a8f3b9eeb5bc1180bf7d32a422",
+   "bytes": 24467,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/080/region_info.json",
+   "dest": "data/simstudio_inputs/regions/080/region_info.json",
+   "sha256": "e5f4910115f881007ea31cec4baa32323c0302e2673be2fa52e5ee4145390c40",
+   "bytes": 1858,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/081/region_081_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/081/region_081_sensors.sim.json",
+   "sha256": "323d2f744e2e86dfd2003d12112528d4f5a1d283ca9a11ea1f54e6a529e023d0",
+   "bytes": 30222,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/081/region_info.json",
+   "dest": "data/simstudio_inputs/regions/081/region_info.json",
+   "sha256": "86331c5c63b5d33d9330f1421238503865824daf96836b0b5b6fc493a1162bc9",
+   "bytes": 2846,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/082/region_082_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/082/region_082_sensors.sim.json",
+   "sha256": "3b17cd8e088bb26d47c6443fb546f9ee75fa1b585e18a67fa8404505ef6e50f3",
+   "bytes": 27779,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/082/region_info.json",
+   "dest": "data/simstudio_inputs/regions/082/region_info.json",
+   "sha256": "bef0295e0358cbb2c3b8e596b2a3837adb6ab622c2954b9e689e4e35bb2fdd7c",
+   "bytes": 2497,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/083/region_083_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/083/region_083_sensors.sim.json",
+   "sha256": "95269a59ccbaea66d6643db34014204451d0876b5dc95bbe8d64cd13d7f6d8bf",
+   "bytes": 21421,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/083/region_info.json",
+   "dest": "data/simstudio_inputs/regions/083/region_info.json",
+   "sha256": "848f7652a9fee65dc6c0e3a94283ecb73c6c8dd72adb64801e6ff01db8d856d9",
+   "bytes": 1441,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/084/region_084_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/084/region_084_sensors.sim.json",
+   "sha256": "1ec57bfbadf9287cc52eb12951c301996cfdbb3a0120fca03c4130c84ca33ed0",
+   "bytes": 18068,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/084/region_info.json",
+   "dest": "data/simstudio_inputs/regions/084/region_info.json",
+   "sha256": "2123ca2d1cf634af19ff59914cb38cdf1bdb6d573c45158afa07790ec60252b9",
+   "bytes": 1394,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/085/region_085_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/085/region_085_sensors.sim.json",
+   "sha256": "89d3df3fefdd98dff2185309ea9ea860b44985fff191f18823c90e924aad441f",
+   "bytes": 23135,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/085/region_info.json",
+   "dest": "data/simstudio_inputs/regions/085/region_info.json",
+   "sha256": "7c5461586a6d2369cd10ac42ecda085112cb589f49128ed4fe010faab1f4c2eb",
+   "bytes": 2207,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/086/region_086_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/086/region_086_sensors.sim.json",
+   "sha256": "030806090a37adc1f3e96dd281c0bbf64a08f6ceb5d47bdb7c56ada426bab792",
+   "bytes": 24364,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/086/region_info.json",
+   "dest": "data/simstudio_inputs/regions/086/region_info.json",
+   "sha256": "a7c89186ec8bb8c8d68d16bc5d7f9cee1e6773843f7df713b8d4431b13514e0f",
+   "bytes": 2930,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/087/region_087_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/087/region_087_sensors.sim.json",
+   "sha256": "e360b2a79377e2e3fffb397b37e484a3a419e1514e2de5c56082d0c861496eb5",
+   "bytes": 24789,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/087/region_info.json",
+   "dest": "data/simstudio_inputs/regions/087/region_info.json",
+   "sha256": "491e10961a35c54c339bc8728580bc856c8433f09e9bde357cad078793073dda",
+   "bytes": 1799,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/088/region_088_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/088/region_088_sensors.sim.json",
+   "sha256": "d6f048f4f87c087d9da9585b7974513e74b3db0bf2e8677f9b4195cd99d3db3d",
+   "bytes": 35981,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/088/region_info.json",
+   "dest": "data/simstudio_inputs/regions/088/region_info.json",
+   "sha256": "fe379bb454fc61d8c89da13a681e7d019f2453a3388bd8e98aa589dbd1000fac",
+   "bytes": 2760,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/089/region_089_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/089/region_089_sensors.sim.json",
+   "sha256": "24f18124d8becd095ee4763542d891aeb6ca92670172cdb514316439c0447a5f",
+   "bytes": 30165,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/089/region_info.json",
+   "dest": "data/simstudio_inputs/regions/089/region_info.json",
+   "sha256": "a1a2f95d869a94aec6ae7b1ca46fbfcc680f6c0c781325a200d1a573826a2ebd",
+   "bytes": 3421,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/090/region_090_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/090/region_090_sensors.sim.json",
+   "sha256": "dab48599baac237f2a132cece24037277492c14bd2a2afd82055626ba55c59a7",
+   "bytes": 39283,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/090/region_info.json",
+   "dest": "data/simstudio_inputs/regions/090/region_info.json",
+   "sha256": "b4e5687fd7016d20df89a6eaef54bbd06f0aa42f2f21e53ca41944e9253b2d52",
+   "bytes": 3030,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/091/region_091_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/091/region_091_sensors.sim.json",
+   "sha256": "b6c150d5b36de89979458a531e633d8e9335fb925a1687f3f714a89c32664cee",
+   "bytes": 26910,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/091/region_info.json",
+   "dest": "data/simstudio_inputs/regions/091/region_info.json",
+   "sha256": "ba6afd0350e1231ebe5af112b5f9ec8c4825c5f4943f393ccae773ae72523fa5",
+   "bytes": 2913,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/092/region_092_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/092/region_092_sensors.sim.json",
+   "sha256": "c533e3e76d75cf4c9b72093d8cb4542cbe4a66d86a60f61753801ea3dec9d167",
+   "bytes": 24604,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/092/region_info.json",
+   "dest": "data/simstudio_inputs/regions/092/region_info.json",
+   "sha256": "d1efe5288835737547caac282d9fef2817ff289b857d01935c51fa2a58c34b57",
+   "bytes": 2916,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/093/region_093_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/093/region_093_sensors.sim.json",
+   "sha256": "7d0379b5d06754c8a4e66c63d7d5b023c8f883a27b60d85ed26c3e8043f5d95c",
+   "bytes": 23164,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/093/region_info.json",
+   "dest": "data/simstudio_inputs/regions/093/region_info.json",
+   "sha256": "2b8e6702b330cfb699fccc44fb4d631ecc4a3806f90d246652b304faddb62a53",
+   "bytes": 1771,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/094/region_094_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/094/region_094_sensors.sim.json",
+   "sha256": "eaf69d94580f263637eadd32128a840547f205d52d0915eaca25fe5bc7220838",
+   "bytes": 30636,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/094/region_info.json",
+   "dest": "data/simstudio_inputs/regions/094/region_info.json",
+   "sha256": "5c60f40c8265f3276b04fd7c281db6269016b3cd2bc953d862b1b7c08e381525",
+   "bytes": 1328,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/095/region_095_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/095/region_095_sensors.sim.json",
+   "sha256": "fad22c38cc3ecce1157a5b541f5be2278c529ab394048a742cc0c32d90170524",
+   "bytes": 26247,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/095/region_info.json",
+   "dest": "data/simstudio_inputs/regions/095/region_info.json",
+   "sha256": "ac357bc461fa7eafd3a6358087c8d544d02bc75459e09303301217caa817a730",
+   "bytes": 2647,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/096/region_096_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/096/region_096_sensors.sim.json",
+   "sha256": "60923893a9dca9d87c40d4a2fd93a71b18cbb0996fce570712bca72880e983d2",
+   "bytes": 34048,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/096/region_info.json",
+   "dest": "data/simstudio_inputs/regions/096/region_info.json",
+   "sha256": "1e9934b191cc17826a650cb1a8aa5d0ecbab834cf53b03f6dcfe803c02af3994",
+   "bytes": 2552,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/097/region_097_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/097/region_097_sensors.sim.json",
+   "sha256": "843dddbc5be75791d9599dc360df40880a3af2100b2c863d308ac975d2b4fb96",
+   "bytes": 26709,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/097/region_info.json",
+   "dest": "data/simstudio_inputs/regions/097/region_info.json",
+   "sha256": "241615e4c434286342a6c7622886158ad653fe56a6830285dd3cccb2d91082df",
+   "bytes": 2968,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/098/region_098_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/098/region_098_sensors.sim.json",
+   "sha256": "96826c7dacc574c1c71424d59df5171d61314e4faee5fc8c69b678c3438136ad",
+   "bytes": 28345,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/098/region_info.json",
+   "dest": "data/simstudio_inputs/regions/098/region_info.json",
+   "sha256": "db48bfad7b07ac51ad9cdfb9bc789ff7a58b173881ad7db514d0d0a666bf9513",
+   "bytes": 2804,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/099/region_099_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/099/region_099_sensors.sim.json",
+   "sha256": "9bfca60e19284bf9fb11964ec4af15470d81c744160686c37916429de619a7a1",
+   "bytes": 27686,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/099/region_info.json",
+   "dest": "data/simstudio_inputs/regions/099/region_info.json",
+   "sha256": "adbe63ca91bd61598c14ed6291b87ad80863bd534a09fd3248f9d0aa103141e7",
+   "bytes": 2520,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/100/region_100_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/100/region_100_sensors.sim.json",
+   "sha256": "b73d1a9ceb9670812ea4d88c699e501e20bf9eb72454138a1ccbda72843afb32",
+   "bytes": 25876,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/100/region_info.json",
+   "dest": "data/simstudio_inputs/regions/100/region_info.json",
+   "sha256": "6812f5034ec668717d4b43b5e3ed98a8a670b6b0a5ab6161681a1f4669b2bc6e",
+   "bytes": 2973,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/101/region_101_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/101/region_101_sensors.sim.json",
+   "sha256": "b699df8af5145197feb077d25e80d8af80c0533555c0e70a2bee9480a4a03ba4",
+   "bytes": 26621,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/101/region_info.json",
+   "dest": "data/simstudio_inputs/regions/101/region_info.json",
+   "sha256": "aa04724132fc54734278d443916f726ec4cb02478d4cd338aed14eff603b644b",
+   "bytes": 3135,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/102/region_102_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/102/region_102_sensors.sim.json",
+   "sha256": "c60374f4d9f9ef19404fb5b00cbd54f912a73b39acfb05d6a88d4750877e8c7f",
+   "bytes": 33363,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/102/region_info.json",
+   "dest": "data/simstudio_inputs/regions/102/region_info.json",
+   "sha256": "778f450eef3fe43a086a5dc1007d3cbfe46f9b45128be434508cef1be31e4154",
+   "bytes": 2619,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/103/region_103_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/103/region_103_sensors.sim.json",
+   "sha256": "47cff1da264bfe5532f2c21236c0f4878e18c333e6225a6f8e1accf01b59e4d0",
+   "bytes": 20221,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/103/region_info.json",
+   "dest": "data/simstudio_inputs/regions/103/region_info.json",
+   "sha256": "ce96d69bda80e5c26b30437f2c9c8e3046d4efc4dc99f560a4bbadd5940e562b",
+   "bytes": 2477,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/104/region_104_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/104/region_104_sensors.sim.json",
+   "sha256": "f84da12a80369ac2a0418689df4357a541133433aa4b7f0186f170b4105bb7e2",
+   "bytes": 29465,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/104/region_info.json",
+   "dest": "data/simstudio_inputs/regions/104/region_info.json",
+   "sha256": "c600d22640ce405b5a27d0e5b125e345fbcb5a12812c863780be1d9739ef20df",
+   "bytes": 2627,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/105/region_105_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/105/region_105_sensors.sim.json",
+   "sha256": "d62589862ab860db33878223b938f56ec1c3e1d17a2b6dcaab70a4608dc5a7be",
+   "bytes": 22473,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/105/region_info.json",
+   "dest": "data/simstudio_inputs/regions/105/region_info.json",
+   "sha256": "ab48f5fb1d7462e1e00bda832bce4341545d676214d7c897066d32fd28194d86",
+   "bytes": 3185,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/106/region_106_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/106/region_106_sensors.sim.json",
+   "sha256": "e4419bf718c7056e93ac6f2d659f5e882d528a95ae5a11e21ff1fbce390e6b33",
+   "bytes": 25143,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/106/region_info.json",
+   "dest": "data/simstudio_inputs/regions/106/region_info.json",
+   "sha256": "5d19512536559b58e4559dc634c735a390790a8bbce9c3ee97ff27ff7f406145",
+   "bytes": 2158,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/107/region_107_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/107/region_107_sensors.sim.json",
+   "sha256": "80ce9be0de5163bbddaaea931b081003a2a8118688bd5658abfddd22f6fd5fb8",
+   "bytes": 26521,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/107/region_info.json",
+   "dest": "data/simstudio_inputs/regions/107/region_info.json",
+   "sha256": "a47b0a5d5764bed55e318eea3252aae592db6f8d0c9643cfb59d4d11ab0fd468",
+   "bytes": 2176,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/108/region_108_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/108/region_108_sensors.sim.json",
+   "sha256": "2075051eaafe6fbf3fd957255532416dd0fe8e3acd3072d347687c965218b0f0",
+   "bytes": 24253,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/108/region_info.json",
+   "dest": "data/simstudio_inputs/regions/108/region_info.json",
+   "sha256": "b9cbd65dd5942c83bf5901904430891eabdfef1996f6fb884cc64ac96eafb7b2",
+   "bytes": 2126,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/109/region_109_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/109/region_109_sensors.sim.json",
+   "sha256": "6d8575b64bdcd2cc6dbc2362c04df131afad8c08ca14452737b3fc206a522307",
+   "bytes": 23082,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/109/region_info.json",
+   "dest": "data/simstudio_inputs/regions/109/region_info.json",
+   "sha256": "177adffa2c9503e0e26a2517ef18c948ba66c8c7b9a4c52d694dfbed5f022531",
+   "bytes": 1701,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/110/region_110_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/110/region_110_sensors.sim.json",
+   "sha256": "88ec4e72f23fc1cdcb79e9b8747e50bbe8c38bd39429c541bcad4daa5036bffc",
+   "bytes": 28142,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/110/region_info.json",
+   "dest": "data/simstudio_inputs/regions/110/region_info.json",
+   "sha256": "fcc5f0aba0cc8bc21dc2bb4ffb5dfcb65e74c491c30df5a2872287f76da60e02",
+   "bytes": 2591,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/111/region_111_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/111/region_111_sensors.sim.json",
+   "sha256": "eecdf21e1e4fee9e9cd7155dc43013b3f9a0022048aa8b6ef21cf3952ffb3813",
+   "bytes": 23727,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/111/region_info.json",
+   "dest": "data/simstudio_inputs/regions/111/region_info.json",
+   "sha256": "4e75859546a43cdbf001146b7552eb8020fcd8e3df3d65c00f785a3fcad8d39d",
+   "bytes": 1842,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/112/region_112_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/112/region_112_sensors.sim.json",
+   "sha256": "c2173195a13389193ef65d6ba50c42b2081d6e8d135eca0bdffcfc6e485bcd50",
+   "bytes": 23602,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/112/region_info.json",
+   "dest": "data/simstudio_inputs/regions/112/region_info.json",
+   "sha256": "677a3d6fe31ed4207799faf3b6fca201dff5839c7a01f0e9523dc9555e0fa8a1",
+   "bytes": 1886,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/113/region_113_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/113/region_113_sensors.sim.json",
+   "sha256": "4c32e6e259e1c3cc911b274ac991adba9845a2f351b5936ca82296ea62a238f1",
+   "bytes": 31430,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/113/region_info.json",
+   "dest": "data/simstudio_inputs/regions/113/region_info.json",
+   "sha256": "4b6b69a5ba2d280d6c85dcf10139df7736efe7bd614353899fb8adad4f322f96",
+   "bytes": 2279,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/114/region_114_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/114/region_114_sensors.sim.json",
+   "sha256": "db2120b7c144bce7380f870f8bfcbc355b92a0f63eddb750db44e722e0897645",
+   "bytes": 26206,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/114/region_info.json",
+   "dest": "data/simstudio_inputs/regions/114/region_info.json",
+   "sha256": "68e77cdcf6fcf28b7b337f92e2bed924b1a9f6df4325c16535db57a354ebd462",
+   "bytes": 1756,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/115/region_115_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/115/region_115_sensors.sim.json",
+   "sha256": "66a27573c9819353fa9475e55fb573b97567f7a3ac277d77fae5a8a52fa61795",
+   "bytes": 29082,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/115/region_info.json",
+   "dest": "data/simstudio_inputs/regions/115/region_info.json",
+   "sha256": "0955c78227ea891933ef0d4e3b39906036f505ff0258381a07a239f34de03b23",
+   "bytes": 1719,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/116/region_116_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/116/region_116_sensors.sim.json",
+   "sha256": "10a901ab9c5eb620f0fa4c40944aa808470b3992072c16dcc9b5335aa534715d",
+   "bytes": 25709,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/116/region_info.json",
+   "dest": "data/simstudio_inputs/regions/116/region_info.json",
+   "sha256": "cdd9a30c283e9963482d853d0d8ca0d2083b83f57c0364f30f254b424f3a0aa6",
+   "bytes": 1691,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/117/region_117_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/117/region_117_sensors.sim.json",
+   "sha256": "72932cfacef73921c0d6b94d32d1ff4e8ad5e75056146c205423801fe55e3f73",
+   "bytes": 26759,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/117/region_info.json",
+   "dest": "data/simstudio_inputs/regions/117/region_info.json",
+   "sha256": "0bc353bd1ea4c7ae1e872b49edb2476af30e43f6cfe2673dd8c0e38c2435c559",
+   "bytes": 3038,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/118/region_118_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/118/region_118_sensors.sim.json",
+   "sha256": "8d294ac86301e9b9496f3109cd329344aa710fa0f9b6d55fb1c11bc75ff74d11",
+   "bytes": 23885,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/118/region_info.json",
+   "dest": "data/simstudio_inputs/regions/118/region_info.json",
+   "sha256": "a03a25c2ad9c2fa8613cee91d3e8b0cd2bdb159de190d310967f3cd01cfac416",
+   "bytes": 3033,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/119/region_119_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/119/region_119_sensors.sim.json",
+   "sha256": "9169ccb05b768d21b04bb2bebfdecd7da85b14973573b6fc7bf689bda172940b",
+   "bytes": 37404,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/119/region_info.json",
+   "dest": "data/simstudio_inputs/regions/119/region_info.json",
+   "sha256": "b0760bb3bed20cc7609488700fee662c43643b4c3fab579c354a0152e5d7b4c6",
+   "bytes": 2260,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/120/region_120_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/120/region_120_sensors.sim.json",
+   "sha256": "a0315df9dfe23782486e306a2ee2da1590ec63be4d71caa8e33f9e5e35ce2144",
+   "bytes": 31134,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/120/region_info.json",
+   "dest": "data/simstudio_inputs/regions/120/region_info.json",
+   "sha256": "d3ac990f388b11f8b35cc59df805b5edf8a60a180f49590dba36ee8dd68076ee",
+   "bytes": 3207,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/121/region_121_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/121/region_121_sensors.sim.json",
+   "sha256": "6de5ab733d88383d53f1f6796503a67d6faaeee15b77133f3414a3369522f4e2",
+   "bytes": 24901,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/121/region_info.json",
+   "dest": "data/simstudio_inputs/regions/121/region_info.json",
+   "sha256": "01a6b877249a1af94d8d1c728a841463b5f5c4a317cf259caa14f8b36e245ae4",
+   "bytes": 2504,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/122/region_122_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/122/region_122_sensors.sim.json",
+   "sha256": "7f4d385430b47281cc690a9eeea6e698f75d7b3433a5d4e3baa358dde1d8b767",
+   "bytes": 32569,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/122/region_info.json",
+   "dest": "data/simstudio_inputs/regions/122/region_info.json",
+   "sha256": "5c52e2a1a8d8f4b6ccdea8dda1e19a69dfed49819c4e7dd12b7a306678d8f0e5",
+   "bytes": 1779,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/123/region_123_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/123/region_123_sensors.sim.json",
+   "sha256": "d99f8598c556c055964c2fd2e8faa132e8378557d7c3ad82838f5cc12f07cc31",
+   "bytes": 25730,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/123/region_info.json",
+   "dest": "data/simstudio_inputs/regions/123/region_info.json",
+   "sha256": "a3b36fed9fa741f54eb62f5dcee137dd9c9a73d90de3f0043e7b1b14a904204a",
+   "bytes": 2488,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/124/region_124_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/124/region_124_sensors.sim.json",
+   "sha256": "77dddc8c2cb83644e5c411c041c7bdcb991a9fa84b364c11021d4d2a88c0eed4",
+   "bytes": 24000,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/124/region_info.json",
+   "dest": "data/simstudio_inputs/regions/124/region_info.json",
+   "sha256": "b9d62a5401b450ff1b6689c17acd53726d0f6a0eff7610abdd4e4c4da69041ab",
+   "bytes": 1765,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/125/region_125_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/125/region_125_sensors.sim.json",
+   "sha256": "a1c655ed35a3adf0656245004f884b9ecf9d01b6096eeb5bbc68cd5057ab22ac",
+   "bytes": 24836,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/125/region_info.json",
+   "dest": "data/simstudio_inputs/regions/125/region_info.json",
+   "sha256": "321c25ea8bf68d7ce5d0d2743ed126758fdb9ad28fe3a7a257cd705253327dde",
+   "bytes": 1658,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/126/region_126_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/126/region_126_sensors.sim.json",
+   "sha256": "00c459b735ad39b0515b7c67356f884739e5fd39d5762b80da244d6367a5af7e",
+   "bytes": 23785,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/126/region_info.json",
+   "dest": "data/simstudio_inputs/regions/126/region_info.json",
+   "sha256": "b5ac7e868b5afb9cd7890c1cf803c8bf4f3589fc8fbc0958043ebf857d08057d",
+   "bytes": 2140,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/127/region_127_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/127/region_127_sensors.sim.json",
+   "sha256": "33ef03c344cce2a64ce6f3aaad1567c881418d89c7ab9109f4cb2305f28005c5",
+   "bytes": 21835,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/127/region_info.json",
+   "dest": "data/simstudio_inputs/regions/127/region_info.json",
+   "sha256": "a2c51bff5b01f0ac0879e485e4177cb47447be2672f65878dcb08511ecba16f3",
+   "bytes": 2018,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/128/region_128_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/128/region_128_sensors.sim.json",
+   "sha256": "5360c06606d666e6ce4050776581fdd898468daa76981c57c69cfeae0573bd9a",
+   "bytes": 25022,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/128/region_info.json",
+   "dest": "data/simstudio_inputs/regions/128/region_info.json",
+   "sha256": "40d3568608aaf4eedb69c4e74d4858def4bbc5c5eef4a4e8118d0afc4e759b64",
+   "bytes": 2183,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/129/region_129_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/129/region_129_sensors.sim.json",
+   "sha256": "7904f619ff80d7743bd1003146ffb5edec4902c93f5249263fce71bec56b4fad",
+   "bytes": 22801,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/129/region_info.json",
+   "dest": "data/simstudio_inputs/regions/129/region_info.json",
+   "sha256": "5a44fed947513082db76560ad4570f11a7f82715a1c6c39bced082831ebad2af",
+   "bytes": 2068,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/130/region_130_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/130/region_130_sensors.sim.json",
+   "sha256": "a2a3854de7cf076728d6a82f0d47e929a0374652038fe8c432d4d44ca8baacef",
+   "bytes": 23145,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/130/region_info.json",
+   "dest": "data/simstudio_inputs/regions/130/region_info.json",
+   "sha256": "cc4392d9195dac8a9f08c05e3b2498b45202e03d3fbcec3500ded0a03e457bdb",
+   "bytes": 2137,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/131/region_131_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/131/region_131_sensors.sim.json",
+   "sha256": "76c8354eac578aca9150c793bc909dcd4a784183bfedd39c591562b47d3091bf",
+   "bytes": 33615,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/131/region_info.json",
+   "dest": "data/simstudio_inputs/regions/131/region_info.json",
+   "sha256": "69f799adbcab3c03903af7199af4d36ebfe2970fa31aa2a96c1abc9fdda47c2d",
+   "bytes": 1440,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/132/region_132_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/132/region_132_sensors.sim.json",
+   "sha256": "9a75007f300a5a746cb8f80713f833b39477fdb99ab9b57591f2f0bda44fe9c9",
+   "bytes": 28860,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/132/region_info.json",
+   "dest": "data/simstudio_inputs/regions/132/region_info.json",
+   "sha256": "97e33fab5f1f91ae4e6076d374bdcd23b4a2cac0026947b7737d2fe22c18f0ab",
+   "bytes": 2323,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/133/region_133_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/133/region_133_sensors.sim.json",
+   "sha256": "70505a8fea1509c2f432ecc586e53e023d2ff2570472d5e46b45dcca66ab1333",
+   "bytes": 24966,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/133/region_info.json",
+   "dest": "data/simstudio_inputs/regions/133/region_info.json",
+   "sha256": "0d7315c2018bbe0b05f67995662920bab6784a81d1c0ee37a67e1080282e548d",
+   "bytes": 2617,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/134/region_134_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/134/region_134_sensors.sim.json",
+   "sha256": "a58a2a4cb53ebd523ad586aa0276000eb461b1b2648cdd5d5a7fb1d35234fe5d",
+   "bytes": 22531,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/134/region_info.json",
+   "dest": "data/simstudio_inputs/regions/134/region_info.json",
+   "sha256": "800afb849167de8db87d5361b8baca363d35c927f2d6959326b7b0d7d16bb2d2",
+   "bytes": 2153,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/135/region_135_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/135/region_135_sensors.sim.json",
+   "sha256": "9ad941a09c05a4c1207b07bc382b1c862667017144ea26982d927b4153b8679b",
+   "bytes": 29299,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/135/region_info.json",
+   "dest": "data/simstudio_inputs/regions/135/region_info.json",
+   "sha256": "a3d1a60521e6da7562564ea508a80e28227e006a8ef24999c4f1ae2d75101b69",
+   "bytes": 3007,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/136/region_136_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/136/region_136_sensors.sim.json",
+   "sha256": "b6334885d11d876ee164f5e870d2f8edcaabfad10ee653c052cbbd825821417d",
+   "bytes": 30803,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/136/region_info.json",
+   "dest": "data/simstudio_inputs/regions/136/region_info.json",
+   "sha256": "ecf5ebceadf04c4c05693b997e3539982bd3bb1e2ed44a7ac746b71df5ce863c",
+   "bytes": 1872,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/137/region_137_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/137/region_137_sensors.sim.json",
+   "sha256": "8de5d8d2aca662ccfd3188b7f33fafabdb89cf207651f82a3c3729451305738c",
+   "bytes": 26486,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/137/region_info.json",
+   "dest": "data/simstudio_inputs/regions/137/region_info.json",
+   "sha256": "24e1f02aadb0acabdb22e58bc252cfe6bcb59c2e035e36bca1ab38894790e389",
+   "bytes": 3171,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/138/region_138_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/138/region_138_sensors.sim.json",
+   "sha256": "d360938447ef187b050ed87fb44a5d7846ebdc683736a8482b75ac3d81d2eade",
+   "bytes": 23665,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/138/region_info.json",
+   "dest": "data/simstudio_inputs/regions/138/region_info.json",
+   "sha256": "ec9a8b3f89c9fabf8073e8864438a6a9010f06d1b4f5a58d53e88012a46c33cb",
+   "bytes": 1986,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/139/region_139_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/139/region_139_sensors.sim.json",
+   "sha256": "71edd3320da696c9c73eca48e38805b4eeb5e37137b0f6caa4b8dc7c4c814d46",
+   "bytes": 27920,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/139/region_info.json",
+   "dest": "data/simstudio_inputs/regions/139/region_info.json",
+   "sha256": "e99e892db13c82754dbeb0b28ee2c779f40f0031efec457b8498609e99f46484",
+   "bytes": 2611,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/140/region_140_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/140/region_140_sensors.sim.json",
+   "sha256": "43abe12272cc17ecfa695263e16506773828e682e31a849aceff27b145ecfe01",
+   "bytes": 31212,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/140/region_info.json",
+   "dest": "data/simstudio_inputs/regions/140/region_info.json",
+   "sha256": "3a62cf85cbed22bb71a68b4828d4497693d7e393ad68a8a7435e3780e71ee07c",
+   "bytes": 2235,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/141/region_141_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/141/region_141_sensors.sim.json",
+   "sha256": "fe57557654f3288d4aaaec961b921f68a595e427cc7d5a43005f12ba4dc32c30",
+   "bytes": 29254,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/141/region_info.json",
+   "dest": "data/simstudio_inputs/regions/141/region_info.json",
+   "sha256": "294eaa666a931f8632031894260bf5060da73fb10a8b7dad64677518d8132794",
+   "bytes": 1613,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/142/region_142_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/142/region_142_sensors.sim.json",
+   "sha256": "fa390f6dc2e90fe317371131a6ecfbe2e9be6f8c7e0e916826226e214aa2c1ed",
+   "bytes": 22871,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/142/region_info.json",
+   "dest": "data/simstudio_inputs/regions/142/region_info.json",
+   "sha256": "697e30a5abb86b6b604f6c689457d7fa70f6260c46bacc39a349ea633c7f7e77",
+   "bytes": 1429,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/143/region_143_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/143/region_143_sensors.sim.json",
+   "sha256": "a48954f511cb2e380d3ec117690b10b68b78f16a51d110ec6d70435ac7c07157",
+   "bytes": 26644,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/143/region_info.json",
+   "dest": "data/simstudio_inputs/regions/143/region_info.json",
+   "sha256": "2536d5feac51f2e06e77d40fc312b978a348ae66660f5114b14933faec94add1",
+   "bytes": 1793,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/144/region_144_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/144/region_144_sensors.sim.json",
+   "sha256": "3212bf1c0826a15f51b7a931455138be04a8d7cbc48cbbc6eeb7ac90e0856d50",
+   "bytes": 27131,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/144/region_info.json",
+   "dest": "data/simstudio_inputs/regions/144/region_info.json",
+   "sha256": "be8a8c318b1e2353cfa7718b522ce361b94bd3bb36a8136e8f2532cc1c2c5db1",
+   "bytes": 2341,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/145/region_145_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/145/region_145_sensors.sim.json",
+   "sha256": "b5a33c6b324482206977da237324a3d2074e72806bfcd6c3841f80e1b7b538f4",
+   "bytes": 26683,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/145/region_info.json",
+   "dest": "data/simstudio_inputs/regions/145/region_info.json",
+   "sha256": "0999f490acdc33515ef39c1c7004c9b963a451265a40836ccb79bffb94996e0e",
+   "bytes": 2662,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/146/region_146_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/146/region_146_sensors.sim.json",
+   "sha256": "6dbac569343709298b09e6420e201d67b614f61a5ae2011eb033661ce9e150e6",
+   "bytes": 25995,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/146/region_info.json",
+   "dest": "data/simstudio_inputs/regions/146/region_info.json",
+   "sha256": "55ad13747c7cc5ec175a72e4d49fe92a159039f5fb1b5b3e960fe804f6724d06",
+   "bytes": 1948,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/147/region_147_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/147/region_147_sensors.sim.json",
+   "sha256": "c3e15fd42e8d6b02394a96fd0aec8e2e2ada452abb4873281d799a91387f2f79",
+   "bytes": 17377,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/147/region_info.json",
+   "dest": "data/simstudio_inputs/regions/147/region_info.json",
+   "sha256": "f0b1f6700616ed0cbc0a40b48a01144f2daa226437d2b277aea2e3e77c403c0d",
+   "bytes": 1714,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/148/region_148_sensors.sim.json",
+   "dest": "data/simstudio_inputs/regions/148/region_148_sensors.sim.json",
+   "sha256": "c5da3d263214e7931aa220c293b3500ee354fcddd88bf993c283c74ce545a472",
+   "bytes": 22957,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/148/region_info.json",
+   "dest": "data/simstudio_inputs/regions/148/region_info.json",
+   "sha256": "41222f7a725f3435b335d586a711fd11fcf14e95d9acbd096618b9bcf9b3f9b5",
+   "bytes": 2009,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_003/region_003_anomaly_speeding.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_003_anomaly_speeding.sim.json",
+   "sha256": "8b2e188a5d42b98cefe3588cddc3b88c38771d2f3b75609403133e93dfb5f07a",
+   "bytes": 27691,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_010/region_010_anomaly_hard_braking.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_010_anomaly_hard_braking.sim.json",
+   "sha256": "3850d264ead7d972879986003272b37c414bf4877835effc92d91be9f4a15b21",
+   "bytes": 27827,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_020/region_020_anomaly_stalled_vehicle.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_020_anomaly_stalled_vehicle.sim.json",
+   "sha256": "948923555ee163a3cd7a0713ad396b016d5564695923a2f265d2ebda718ef44d",
+   "bytes": 27839,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_037/region_037_anomaly_lane_weaving.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_037_anomaly_lane_weaving.sim.json",
+   "sha256": "2ebee6732cafb723188f4a5956e05cc161aa714beba64ad0f9cda5264cdd72cf",
+   "bytes": 27831,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_062/region_062_anomaly_tailgating.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_062_anomaly_tailgating.sim.json",
+   "sha256": "ff2950b04a5d1a3d48fb1335d5da2b57b3c1c0739ee3a9d901698d023a0fe07c",
+   "bytes": 25883,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_083/region_083_anomaly_lane_straddling.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_083_anomaly_lane_straddling.sim.json",
+   "sha256": "adf9a28269ee7dacd7d54182e72bbaa57168ce01b93a8312ccc2218e21f9710c",
+   "bytes": 24747,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_120/region_120_anomaly_collision.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_120_anomaly_collision.sim.json",
+   "sha256": "8144a726d587f82121bd7e0d79c124b6a1fe8488e255f946a28d08dfc7a919b8",
+   "bytes": 34402,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_120/region_120_anomaly_reckless_driver.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_120_anomaly_reckless_driver.sim.json",
+   "sha256": "326fb0724673853c08c2f53c8f3e0d43079faddc65172e3860bf21e4927d5a6a",
+   "bytes": 34394,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_140/region_140_anomaly_overweight_vehicle.sim.json",
+   "dest": "data/simstudio_inputs/anomalies/region_140_anomaly_overweight_vehicle.sim.json",
+   "sha256": "6df33631f1546971398dd7e6b98e8f30f1b62d4c922240f427d8c3d690d05b4f",
+   "bytes": 34451,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/simulations/normal_medium_traffic/region_001_normal_medium_traffic.sim.json",
+   "dest": "data/simstudio_inputs/reference_exports/001_normal_medium_traffic/region_001_normal_medium_traffic.sim.json",
+   "sha256": "f2df84d0bbe6a1b526aa85f5d5e9db4fc403ffb9fc6084db9b02b5ba3a8bc8f0",
+   "bytes": 38511,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/simulations/normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/tracking_audit.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/001_normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/tracking_audit.xlsx",
+   "sha256": "18203fd3b814bb5466b5279344b088c2924217124ee504d5f3bc3c302f749143",
+   "bytes": 5633368,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/simulations/normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/kalman_measurement_audit.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/001_normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/kalman_measurement_audit.xlsx",
+   "sha256": "7ca28fc5e4d9789a6878cb76d5101bb486980876bd15ae3d58bedde67a654948",
+   "bytes": 1803088,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "maps/north_TLV/tiles_north_tlv_south/001/simulations/normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/coverage_summary.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/001_normal_medium_traffic/region_001_normal_medium_traffic.sim_export_20260516_230109_tracking_audit/coverage_summary.xlsx",
+   "sha256": "b924aa9981d34f65874db5b57950143869f9f591b44fabf13fb7af36813a1246",
+   "bytes": 5287,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_003/region_003_anomaly_speeding.sim.json",
+   "dest": "data/simstudio_inputs/reference_exports/region_003_anomaly_speeding/region_003_anomaly_speeding.sim.json",
+   "sha256": "8b2e188a5d42b98cefe3588cddc3b88c38771d2f3b75609403133e93dfb5f07a",
+   "bytes": 27691,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_003/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/tracking_audit.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/region_003_anomaly_speeding/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/tracking_audit.xlsx",
+   "sha256": "5bdd12a58715f1074e5edc5d4a682ca0b221707aebd2cbc830027abdcd86da74",
+   "bytes": 1069673,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_003/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/kalman_measurement_audit.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/region_003_anomaly_speeding/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/kalman_measurement_audit.xlsx",
+   "sha256": "edb66fba4d94dec6e01471a6f97d5f1a8bc362d017edbe1904d67ae492a180c7",
+   "bytes": 352953,
+   "encoding": "identity"
+  },
+  {
+   "kind": "data",
+   "source": "anomaly_model/simulations/region_003/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/coverage_summary.xlsx",
+   "dest": "data/simstudio_inputs/reference_exports/region_003_anomaly_speeding/region_003_anomaly_speeding.sim_export_20260517_202258_tracking_audit/coverage_summary.xlsx",
+   "sha256": "fd06cb2f3b0629699b24ede8ae3caa2888414cd813b87e8c580003525c0a3264",
+   "bytes": 5286,
+   "encoding": "identity"
+  }
+ ]
+}

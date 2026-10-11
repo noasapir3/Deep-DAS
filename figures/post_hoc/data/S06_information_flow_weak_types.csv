@@ -1,0 +1,7 @@
+type,input_probe_AUC(13 stats),"encoder_probe_AUC(E_DIV seeds, mean)",model_score_AUC(E_DIV ens),recall_at_frozen_thr,n_anomaly_tracks,n_normal_tracks
+hard_braking,0.997,0.912,0.803,1/11,11,1018
+speeding,0.863,0.808,0.775,4/12,12,1018
+overweight_vehicle,0.871,0.961,0.832,4/12,12,1018
+lane_straddling,0.999,0.954,0.929,5/12,12,1018
+collision,1.0,1.0,0.985,6/10,10,1018
+lane_weaving,0.999,0.943,0.896,7/11,11,1018

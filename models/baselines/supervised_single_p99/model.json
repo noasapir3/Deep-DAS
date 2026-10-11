@@ -1,0 +1,12 @@
+{
+ "name": "Supervised single model (P99)",
+ "development_id": "DL_supervised_crossregion_P99",
+ "checkpoint": "checkpoint.pt",
+ "thresholds": "thresholds.json",
+ "artifact_cleaning": false,
+ "extra_features": [],
+ "threshold": -5.523461642265342,
+ "decision": "ALARM if logit > threshold; fewer than 3 windows -> no decision",
+ "checkpoint_sha256": "aa517c02878b0f48da6d3a40425ea37fa4b87f199fb15154051fa00c216c2083",
+ "threshold_name": "P99 of the logits of the 1,242 sufficient-evidence val_B normal vehicles"
+}

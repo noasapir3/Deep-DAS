@@ -1,0 +1,130 @@
+3,6c3,11
+< Stall diversity / quantity arms (../stall_diversity_20261008/plan/PLAN_PREREGISTERED.md): x_train_eval_c.py + STALLARM env (none|quantity|diversity),
+< an exposure log and the stallval evaluation group; everything else unchanged. Was: Experiments A–D (see PLAN_PREREGISTERED.md).  One script, one run per call:
+<     python x_train_eval.py <run_name> <clean 0|1> <feats comma list or none> <out_dir>
+< Phase 1 trains (p12 recipe, unchanged), phase 2 freezes val_B thresholds, phase 3 evaluates.  Writes only inside <out_dir>.
+---
+> W1 / W2 training (weak_types_W1W2_20261010/plan/PLAN_W1_W2_FROZEN.md) = a copy of ../../stall_diversity_20261008/x_train_eval_s.py (the E_DIV recipe,
+> run there with STALLARM=diversity NEWDATA=1 clean=1 feats=tg) with ONLY these changes (diff in plan/DIFF_x_train_eval_w_vs_s.txt):
+>   * paths (this script lives two levels deeper);
+>   * the W batch (data/W_vehicles.csv): train anomalies / unaffected backgrounds / targeted controls -> train; all W val vehicles -> val;
+>     the 18 stallval stalls -> val (checkpoint AP on the expanded validation, plan section 6);
+>   * ARM env: W1 = the unchanged sampler (48 normals + 16 positives, uniform); W2 = 36 normals (original + new backgrounds) + 4 new targeted controls
+>     + 16 positives from the 105 original positives + 8 from the new positives (batch 64 in both arms);
+>   * phase 3 removed: every model (E_DIV, W1, W2) is scored by the same frozen scripts/w07_evaluate.py.
+> One run per call:  python x_train_eval_w.py <run_name> 1 tg <out_dir>   (env ARM=W1|W2, SEED, NTHREADS)
+15c20
+< HERE = Path(__file__).resolve().parent; DL = HERE.parents[1]
+---
+> HERE = Path(__file__).resolve().parent; DL = HERE.parents[2]; WDIR = HERE.parent
+143c148
+< SDD = HERE.parent / "stall_diversity_20261008"; ARM = os.environ.get("STALLARM", "none"); assert ARM in ("none", "quantity", "diversity")
+---
+> SDD = DL / "experiments_followup/stall_diversity_20261008"; ARM = os.environ.get("STALLARM", "none"); assert ARM in ("none", "quantity", "diversity")
+153a159,171
+> # ---- W batch (this round) ----
+> WARM = os.environ.get("ARM"); assert WARM in ("W1", "W2"), "ARM must be W1 or W2"; assert ARM == "diversity" and NEWDATA and CLEAN and FEATS == ["tg"]
+> WV = pd.read_csv(WDIR / "data/W_vehicles.csv", dtype={"region": str}); WV = WV[WV.tracks_usable.fillna("") != ""]
+> WLAB = {"anomaly_verified": 1, "normal_unaffected_background": 0, "normal_targeted_control": 0, "normal_matched_control": 0}
+> for r in WV.itertuples():
+>     y = WLAB.get(r.label)
+>     if y is None:
+>         continue
+>     src_ = "W_new" if y == 1 else ("W_control" if r.label == "normal_targeted_control" else ("W_tg_control" if r.label == "normal_matched_control" else "W_bg"))
+>     V.append({"vkey": f"W/{r.run_id}|{r.vehicle_id_oracle}", "tracks": r.tracks_usable.split(";"), "y": y, "set": "train" if r.split == "train" else "val", "source": src_,
+>               "anomaly_type": f"anomaly_{r.type}" if y == 1 else (r.type if src_ == "W_control" else ("normal_matched_control" if y == 0 and src_ == "W_tg_control" else "normal"))})
+> for r in SB[(SB.split_role == "stallval") & (SB.label == "anomaly_verified")].itertuples():      # stallval stalls in the checkpoint validation (plan section 6)
+>     V.append({"vkey": f"stall_div/{r.run_id}|{r.vehicle_id_oracle}", "tracks": r.tracks.split(";"), "y": 1, "set": "val", "source": "stallval", "anomaly_type": r.anomaly_type})
+162c180
+< for P_ in [TGD / "data/batch_processed_v3", TGD / "data/batch_processed_v4", SDD / "data/batch_processed"]:
+---
+> for P_ in [TGD / "data/batch_processed_v3", TGD / "data/batch_processed_v4", SDD / "data/batch_processed", WDIR / "data/W_processed"]:
+217a236,238
+> trp_orig = tr[(tr.y == 1) & (tr.source != "W_new")].vkey.tolist(); trp_new = tr[(tr.y == 1) & (tr.source == "W_new")].vkey.tolist()
+> trn_main = tr[(tr.y == 0) & (tr.source != "W_control")].vkey.tolist(); trn_ctl = tr[(tr.y == 0) & (tr.source == "W_control")].vkey.tolist()
+> say(json.dumps({"ARM": WARM, "positives_original": len(trp_orig), "positives_new": len(trp_new), "normals_main": len(trn_main), "normals_targeted_controls": len(trn_ctl)}))
+227c248
+<     say("added stall_div train vehicles:", V[V.source == "stall_div"].groupby(["y", "anomaly_type"]).size().to_dict() if "stall_div" in set(V.source) else {})
+---
+>     say("W train vehicles:", V[(V.set == "train") & V.source.str.startswith("W")].groupby(["source", "anomaly_type"]).size().to_dict()); say("added stall_div train vehicles:", V[V.source == "stall_div"].groupby(["y", "anomaly_type"]).size().to_dict() if "stall_div" in set(V.source) else {})
+234,236c255,261
+<             ks = list(rng.choice(trn, NB, replace=True)) + list(rng.choice(trp, PB, replace=True)); y = torch.tensor([0.] * NB + [1.] * PB)
+<             for k_ in ks[NB:]:                                   # exposure log only (consumes no random numbers)
+<                 expo.append((ep, typ[k_]))
+---
+>             if WARM == "W1":          # unchanged E_DIV sampler over the enlarged pools
+>                 ks = list(rng.choice(trn, NB, replace=True)) + list(rng.choice(trp, PB, replace=True)); y = torch.tensor([0.] * NB + [1.] * PB)
+>             else:                     # W2: 36 + 4 normals, 16 original + 8 new positives (batch 64, positive share 37.5 %)
+>                 ks = (list(rng.choice(trn_main, 36, replace=True)) + list(rng.choice(trn_ctl, 4, replace=True)) + list(rng.choice(trp_orig, 16, replace=True))
+>                       + list(rng.choice(trp_new, 8, replace=True))); y = torch.tensor([0.] * 40 + [1.] * 24)
+>             for k_ in ks:                                        # exposure log only (consumes no random numbers)
+>                 expo.append((ep, typ[k_] if typ[k_] != "normal" else ("normal_W_bg" if k_.startswith("W/") else "normal_original")))
+267,331c292,293
+< # ================================================================== phase 3: evaluation
+< dec = lambda lg, n, t: "no decision" if n < 3 else ("ALARM" if lg > t else "no")
+< rows = []
+< for sp in ("test", "val"):
+<     ks = V[(V.set == sp) & (V.y == 0) & (V.source == "normal corpus")].vkey.tolist(); lg, _ = logits_of(ks)
+<     rows += [{"group": f"normal_{sp}", "vkey": k, "logit": float(l)} for k, l in zip(ks, lg)]
+< rows += [{"group": "normal_val_B", "vkey": k, "logit": float(l)} for k, l in zip(vb, lgb)]
+< lgv, _ = logits_of(va.vkey.tolist())
+< rows += [{"group": "validation", "vkey": k, "logit": float(l), "y": int(y), "anomaly_type": t, "source": so}
+<          for k, l, y, t, so in zip(va.vkey, lgv, va.y, va.anomaly_type.fillna("normal"), va.source)]
+< 
+< 
+< def score_external(ch_, amp_, vehicles):
+<     global X, win, EX
+<     ks = set(k for t in vehicles.tracks for k in t); arr = load_arrays(ch_, amp_, ks)
+<     X = tensors(arr); EX = vehicle_extras(vehicles, arr)
+<     win = {r.vkey: [(k, s) for k in r.tracks if k in X for s in window_starts(X[k].shape[1], T, STRIDE)] for r in vehicles.itertuples()}
+<     ok = [k for k in vehicles.vkey if len(win[k]) > 0]; lg, _ = logits_of(ok)
+<     return {k: (float(l), len(win[k])) for k, l in zip(ok, lg)}
+< 
+< 
+< orig = usable[usable.group == "fp_anomaly"].groupby(["scenario_id", "vehicle_id_oracle"]).track_key.apply(sorted).reset_index().rename(columns={"track_key": "tracks"})
+< orig["vkey"] = orig.scenario_id + "|" + orig.vehicle_id_oracle
+< res = score_external(ch, amp, orig)
+< R = AMPX / "data/r1_runs"; cc, ca, cv = [], [], []
+< for run in ["C1_hard_braking", "C2_lane_straddling", "C3_tailgating", "C4_collision_contact_REUSED"]:
+<     c = pd.read_parquet(R / f"{run}_channels.parquet"); m = pd.read_parquet(R / f"{run}_track_meta.parquet"); a = pd.read_parquet(R / f"{run}_amp.parquet")
+<     for d_ in (c, m, a):
+<         d_["track_key"] = run + "::" + d_.track_key.astype(str)
+<     cc.append(c); ca.append(a)
+<     vv = m[m.usable].groupby("vehicle_id_oracle").track_key.apply(sorted).reset_index().rename(columns={"track_key": "tracks"}); vv["vkey"] = run + "|" + vv.vehicle_id_oracle; cv.append(vv)
+< res.update(score_external(pd.concat(cc, ignore_index=True), pd.concat(ca, ignore_index=True), pd.concat(cv, ignore_index=True)))
+< NSD = DL / "experiments_followup/newscene_test_20261007"
+< if (NSD / "data/batch_vehicles.csv").exists():
+<     nb = pd.read_csv(NSD / "data/batch_vehicles.csv"); nb = nb[nb.label.isin(["anomaly_verified", "normal_unaffected_background"])].copy()
+<     nb["vkey"] = "newscene/" + nb.run_id + "|" + nb.vehicle_id_oracle; nb["tracks"] = nb.tracks.str.split(";")
+<     nc = pd.concat([pd.read_parquet(f, columns=["track_key", "bin"] + CHANNELS + ["burn_in"]) for f in sorted((NSD / "data/batch_processed").glob("*_channels.parquet"))])
+<     na = pd.concat([pd.read_parquet(f) for f in sorted((NSD / "data/batch_processed").glob("*_amp.parquet"))])
+<     nc["track_key"] = nc.track_key.astype(str); na["track_key"] = na.track_key.astype(str)
+<     res.update(score_external(nc, na, nb))
+<     for r in nb.itertuples():
+<         if r.vkey in res:
+<             rows.append({"group": "newscene_anomaly" if r.label == "anomaly_verified" else "newscene_background", "vkey": r.vkey, "logit": res[r.vkey][0],
+<                          "n_windows": res[r.vkey][1], "anomaly_type": r.anomaly_type})
+< SVV = SB[(SB.split_role == "stallval") & SB.label.isin(["anomaly_verified", "normal_matched_control", "normal_legit_stop", "normal_unaffected_background"])].copy()
+< SVV["vkey"] = "stallval/" + SVV.run_id + "|" + SVV.vehicle_id_oracle; SVV["tracks"] = SVV.tracks.str.split(";")
+< SC_ = pd.concat([pd.read_parquet(f, columns=["track_key", "bin"] + CHANNELS + ["burn_in"]) for f in sorted((SDD / "data/batch_processed").glob("st_st_*_channels.parquet"))])
+< SA_ = pd.concat([pd.read_parquet(f) for f in sorted((SDD / "data/batch_processed").glob("st_st_*_amp.parquet"))])
+< SC_["track_key"] = SC_.track_key.astype(str); SA_["track_key"] = SA_.track_key.astype(str)
+< res.update(score_external(SC_, SA_, SVV))
+< for r in SVV.itertuples():
+<     rows.append({"group": "stallval", "vkey": r.vkey, "logit": res[r.vkey][0] if r.vkey in res else np.nan, "n_windows": res[r.vkey][1] if r.vkey in res else 0,
+<                  "y": int(r.label == "anomaly_verified"), "anomaly_type": r.label, "stall_mode": r.mode, "sensing": r.sensing})
+< VALID9 = {"speeding": "region_003/anomaly_speeding|veh001", "C1 real braking": "C1_hard_braking|veh001", "stalled": "region_020/anomaly_stalled_vehicle|veh001",
+<           "C4 collision striker": "C4_collision_contact_REUSED|veh001", "reckless": "region_120/anomaly_reckless_driver|veh001",
+<           "weaving": "region_037/anomaly_lane_weaving|veh001", "overweight": "region_140/anomaly_overweight_vehicle|veh001",
+<           "C2 straddling": "C2_lane_straddling|veh001", "C3 tailgating": "C3_tailgating|veh001"}
+< for nm, k in VALID9.items():
+<     rows.append({"group": "valid9", "case": nm, "vkey": k, "logit": res[k][0], "n_windows": res[k][1]})
+< S = pd.DataFrame(rows)
+< S["n_windows"] = S.n_windows.fillna(3)
+< for op in ("P99", "P95"):
+<     S[op] = [dec(l, n, THR[op]) for l, n in zip(S.logit, S.n_windows)]
+< S.to_csv(OUT / "evaluation/vehicle_scores.csv", index=False)
+< say("evaluation written:", S.group.value_counts().to_dict())
+---
+> vbk = V[V.set == "val_B"].vkey.tolist(); pd.DataFrame({"vkey": vbk, "logit": lgb}).to_csv(OUT / "model/valB_logits.csv", index=False)
+> say("phase 2 done: thresholds frozen on val_B; evaluation is done by scripts/w07_evaluate.py (frozen, common to E_DIV / W1 / W2)")

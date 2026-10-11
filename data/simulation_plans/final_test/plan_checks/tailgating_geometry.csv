@@ -1,0 +1,13 @@
+tg_run,region,start_lane,start_lane_m,v_lead,T_f,D_s,route_needed_m,route_available_m,margin,route_min_limit_mps,leader_speed_ok,route_ends_at_exit,n_route_lanes,start_lane_free_of_background
+0,003,seg1545_fwd_lane1,101.4,6.0,0.2,8.0,196.0,259.4,1.32,13.889,True,True,5,True
+1,010,seg115_fwd_lane1,240.8,6.0,0.3,8.0,196.0,240.8,1.23,8.333,True,True,1,True
+2,020,seg1462_fwd_lane1,145.7,6.0,0.2,15.0,238.0,643.0,2.7,8.333,True,True,6,True
+3,037,seg1179_fwd_lane1,146.7,6.0,0.3,15.0,238.0,471.3,1.98,13.889,True,True,4,True
+4,062,seg138_fwd_lane1,77.5,6.0,0.2,8.0,196.0,379.7,1.94,13.889,True,True,4,True
+5,083,seg2023_fwd_lane1,72.3,6.0,0.3,8.0,196.0,288.9,1.47,8.333,True,True,3,True
+6,120,seg1385_fwd_lane1,151.5,6.0,0.2,15.0,238.0,924.6,3.88,8.333,True,True,6,True
+7,140,seg1448_fwd_lane1,113.7,6.0,0.3,15.0,238.0,387.1,1.63,8.333,True,True,3,True
+8,010,seg116_fwd_lane1,65.3,9.0,0.2,8.0,274.0,370.8,1.35,13.889,True,True,3,True
+9,020,seg208_fwd_lane1,57.2,9.0,0.3,8.0,274.0,360.3,1.31,13.889,True,True,4,True
+10,037,seg1181_bwd_lane1,78.0,9.0,0.2,8.0,274.0,549.3,2.0,13.889,True,True,5,True
+11,062,seg695_fwd_lane1,81.2,9.0,0.3,8.0,274.0,379.5,1.39,13.889,True,True,4,True

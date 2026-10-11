@@ -1,0 +1,4 @@
+detector,threshold,normal_above,n_normal,legit_above,n_legit,anomalies_above,n_anomalies,missed
+DeepDAS Ensemble v1,1.9726181803233118,20,1008,20,28,57,101,44
+Supervised single model,-5.523461642265342,5,1008,14,28,37,101,64
+SimStudio Z-score,15.392482911229285,7,1008,22,28,23,101,78
